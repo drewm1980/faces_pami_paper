@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+
+\begin{center}
+{\bf \large Summary of Improvements upon our CVPR '09 paper}
+\end{center}
+
+\begin{enumerate}
+
+\item We have proposed a faster algorithm, based on the method of Augmented Lagrange Multipliers, for solving the $\ell^1$-norm minimization problems at the alignment and recognition stages of our system. Compared to the highly customized interior-point method used in the conference version of this paper, the new algorithm is slightly faster at the alignment step and is more than 10 times faster for global recognition.
+
+\item Our alignment algorithm has been discussed in more detail in the current version of our paper. For example, the effectiveness of using multiple scales for alignment is empirically justified, and the local convergence of the iterative alignment algorithm is briefly discussed.
+
+\item The discussion on illumination models motivating our acquisition system has been expanded, and a small section on gamma correction, aimed at practitioners, has been added.
+
+\item We have improved the performance of our system by carefully studying the failure cases in the experiments. Observing that the output of a face detector may be poorly centered on the face, and may contain a significant amount of background, we now compute an average transformation based on the per subject alignment results and apply it to the test image before global recognition. In our experiments on CMU Multi-PIE dataset, the effect of using different sampling windows is studied and a new window is proposed to further improve the performance of our system. Higher recognition rates on both public Multi-PIE dataset and our own dataset are reported.
+
+\item We have conducted additional experiments on the Multi-PIE database to study the effect of random block occlusion. We have also compared our approach with the recently proposed Supervised Translation-Invariant Sparse Coding model (Yang et al).
+
+\item We have expanded our own dataset by including more subjects, and by adding many more challenging test images. The number of subjects in our dataset has been increased from 74 to 109, and the number of test images has been increased from 593 to 935.
+
+\item We have proposed a simple partition scheme to improve the performance of system with contiguous occlusion, i.e., sunglasses.  
+
+\end{enumerate}
+
+\end{document}
