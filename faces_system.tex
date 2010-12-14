@@ -207,15 +207,61 @@ We briefly review existing techniques for recognition, image registration, and h
 Our system is based purely on 2D techniques.  This fact immediately distinguishes our technique from systems that either require a 3D data as an input, or attempt to estimate a 3D model from input 2D data \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While these techniques have been shown to achieve better robustness to pose variation given a sufficiently accurate 3D model, for access control applications where the user is cooperative in aligning their head to the camera, robustness to moderate misalignment is sufficient.  Furthermore, many 3D techniques rely on multiple views to estimate their model, and may have trouble if all of the training images are captured from one pose.  Note that images of people's faces under varying illumination contain shape-related discriminative information, and this information can be leveraged by 2D algorithms even if shape is not reconstructed explicitly.
 
 % Alignment
-In holistic recognition algorithms, correspondence between points in the test image and in the training must be achieved.  A long line of research exists on using Active Appearance Models \cite{Cootes2001-PAMI}, and the closely related Active Shape Models \cite{cootes1992active} to register images against a relatively high-dimensional model of plausible face appearances, often leveraging face-specific contours.  While these model-based techniques have advantages in dealing with variations in expression and pose, they may add unnecessary complexity to a system where subjects are willing to present a neutral expression.  We prefer to focus on warpings with far fewer parameters, and to use the training images themselves as the appearance model. Iterative registration in this spirit dates at least back to the Lucas-Kanade algorithm \cite{lucas1981iterative}.
+In holistic recognition algorithms, correspondence between points in the test
+image and in the training must be achieved.  A long line of research exists on
+using Active Appearance Models \cite{Cootes2001-PAMI}, and the closely related
+Active Shape Models \cite{cootes1992active} to register images against a
+relatively high-dimensional model of plausible face appearances, often
+leveraging face-specific contours.  While these model-based techniques have
+advantages in dealing with variations in expression and pose, they may add
+unnecessary complexity to a system where subjects are willing to present a
+neutral expression.  We prefer to focus on warpings with far fewer parameters,
+and to use the training images themselves as the appearance model. Iterative
+registration in this spirit dates at least back to the Lucas-Kanade algorithm
+\cite{lucas1981iterative}.
 
-However, whereas much of the early work on image registration is aimed at the problem of registering nearly identical images, say by minimizing a sum of squared distances, here we must confront several physical factors simultaneously: misalignment, illumination variations, and certain amount of occlusion. As we discuss further below, illumination variation can be dealt by expressing the test image as a linear combination of an appropriate set of training images. Similar representations have been exploited in illumination-robust tracking (e.g., \cite{Belhumeur1999-PAA,Murase1995-IJCV}). For robustness to gross errors, the $\ell^1$-norm of the residual is a more appropriate objective function than the classical $\ell^2$-norm. Its use here is loosely motivated by theoretical results due to Candes and Tao  \cite{CandesE2005-IT} (see also \cite{Wright2008-IT}). These two observations lead us to pose the registration problem as the search for a set of transformations and illumination coefficients that minimize the $\ell^1$-norm of the representation error. We solve this problem using a generalized Gauss-Newton method which solves a sequence of affine-constrained $\ell^1$-norm minimization problems \cite{Osborne1990-JAMSSB,Jittorntrum1980-NM}. Each of these problems can also be solved efficiently using recently developed first-order techniques for $\ell^1$-minimization, which are reviewed in \cite{YangA2010-pp}.
+However, whereas much of the early work on image registration is aimed at the
+problem of registering nearly identical images, say by minimizing a sum of
+squared distances, here we must confront several physical factors
+simultaneously: misalignment, illumination variations, and certain amount of
+occlusion. As we discuss further below, illumination variation can be dealt by
+expressing the test image as a linear combination of an appropriate set of
+training images. Similar representations have been exploited in
+illumination-robust tracking (e.g., \cite{Belhumeur1999-PAA,Murase1995-IJCV}).
+For robustness to gross errors, the $\ell^1$-norm of the residual is a more
+appropriate objective function than the classical $\ell^2$-norm. Its use here
+is loosely motivated by theoretical results due to Candes and Tao
+\cite{CandesE2005-IT} (see also \cite{Wright2008-IT}). These two observations
+lead us to pose the registration problem as the search for a set of
+transformations and illumination coefficients that minimize the $\ell^1$-norm
+of the representation error. We solve this problem using a generalized
+Gauss-Newton method which solves a sequence of affine-constrained $\ell^1$-norm
+minimization problems \cite{Osborne1990-JAMSSB,Jittorntrum1980-NM}. Each of
+these problems can also be solved efficiently using recently developed
+first-order techniques for $\ell^1$-minimization, which are reviewed in
+\cite{YangA2010-pp}.
 
 
 % Illumination
-Researchers have tried various techniques to deal with illumination variation.  In almost all recognition algorithms where only a single gallery image is available per individual, illumination effects are regarded as a nuisance that must be removed before the algorithm can continue.  This is typically done by making statistical assumptions about how illumination affects the image, and using those assumptions to extract a new representation that is claimed to be illumination invariant.  Recent examples include \cite{chen2006total} and \cite{zhou2007appearance}.
-However, despite these efforts, truly illumination-invariant features are difficult to obtain from a single input image.
-So, if one's primary concern in designing the recognition system is achieving a high recognition rate, it makes no sense to limit the gallery to a single image per person.  We therefore take the strategy of sampling many gallery images of each individual under varying illuminations.  These images are used as the basis for either a convex cone model \cite{Georghiades2001-PAMI,belhumeur1998set}, or a subspace model \cite{Basri2003-PAMI}.  Images are captured using a simple-to-construct projector based light stage.  Most light stages used for face recognition have been constructed for the purpose of creating public data sets to study illumination invariance \cite{Georghiades2001-PAMI, Gross2008-FGR}.  Many other light stages have been used for computer graphics purposes \cite{debevec2000acquiring, jones2005performance}. The light source can be moved around manually \cite{masselus2002free}, but this may result in poor consistency between users.  Structured light applications use projectors to directly illuminate the face (or other object) \cite{zhang2002rapid} for 3D reconstruction, but this is very disturbing to the user.  To our knowledge, we are the first to use projectors to indirectly illuminate a subject's face for the purpose of face recognition.
+Researchers have tried various techniques to deal with illumination variation.
+In almost all recognition algorithms where only a single gallery image is
+available per individual, illumination effects are regarded as a nuisance that
+must be removed before the algorithm can continue.  This is typically done by
+making statistical assumptions about how illumination affects the image, and
+using those assumptions to extract a new representation that is claimed to be
+illumination invariant.  Recent examples include \cite{chen2006total} and
+\cite{zhou2007appearance}.  However, despite these efforts, truly
+illumination-invariant features are difficult to obtain from a single input
+image.  So, if one's primary concern in designing the recognition system is
+achieving a high recognition rate, it makes no sense to limit the gallery to a
+single image per person.  We therefore take the strategy of sampling many
+gallery images of each individual under varying illuminations.  These images
+are used as the basis for either a convex cone model
+\cite{Georghiades2001-PAMI,belhumeur1998set}, or a subspace model
+\cite{Basri2003-PAMI}.  Images are captured using a simple-to-construct
+projector based light stage.  To our knowledge, we
+are the first to use projectors to indirectly illuminate a subject's face for
+the purpose of face recognition.
 
 \subsection{Contributions} In this paper, we show how the two
 {\em strongly coupled} issues of registration and illumination
@@ -1001,25 +1047,26 @@ In the above section, we have made the assumption that the test image, although 
 
 The strongest theoretical results so far regarding the relationship
 between illumination and the resulting sets of images is due to Basri and Jacobs \cite{Basri2003-PAMI}.
-That paper assumes that convex, Lambertian objects are photographed under distant illuminations with a fixed pose.
-Under those assumptions, the incident and reflected light are represented using distributions on a sphere and can thus be studied in a spherical harmonic basis.
-The Lambertian nature of the object acts as a low-pass filter between the incident and reflected light distributions,
-and as a result, the set of images of the object end up lying very
-close to the subspace corresponding to low frequency spherical harmonics.\footnote{This is highly condensed; please refer to \cite{Basri2003-PAMI} for a  complete description of this result.}
-Indeed, only nine (properly chosen) basis illuminations are sufficient to generate basis images
-that span all possible images of the object to a good approximation.  While this is a very important result for understanding the image
+The main result of this paper is that for convex Lambertian objects, distant illuminations, and fixed pose,
+%Under those assumptions, the incident and reflected light are represented using distributions on a sphere and can thus be studied in a spherical harmonic basis.
+%The Lambertian nature of the object acts as a low-pass filter between the incident and reflected light distributions,
+%and as a result, the set of images of the object end up lying very
+%close to the subspace corresponding to low frequency spherical harmonics.\footnote{This is highly condensed; please refer to \cite{Basri2003-PAMI} for a  complete description of this result.}
+all images of the object can be well approximated by linear combinations of
+nine (properly chosen) basis images.  The basis images have mixed sign, and
+their illuminations consist of the lowest frequency spherical harmonics.
+While this is a very important result for understanding the image
 formation process, the direct application of this result in most practical
 systems is misguided for several reasons.
 % Non-physicality
-Neither the basis illuminations, nor the basis images used
-in the Basri analysis are physical.  Like Fourier bases, they have negative components,
-and are thus not, at least directly, physically realizable.
+%Neither the basis illuminations, nor the basis images used
+%in the Basri analysis are physical.  Like Fourier bases, they have negative components,
+%and are thus not, at least directly, physically realizable.
 % This alone is not
 % a showstopper, however: one could, for example, decompose the basis images into
 % their positive and negative parts and use them separately.  If the images
 % are being rendered from a 3D model, ``negative'' light can be permitted.
-There are ways to engineer around this difficulty\footnote{such as allowing negative light while rendering from a 3D model, decomposing mixed-sign illuminations and images into positive negative parts, and enforcing positivity only in the output image}, but the photometric and geometric assumptions behind this model limit its applicability even more severely.
-
+%There are ways to engineer around this difficulty\footnote{such as allowing negative light while rendering from a 3D model, decomposing mixed-sign illuminations and images into positive negative parts, and enforcing positivity only in the output image}, but the photometric and geometric assumptions behind this model limit its applicability even more severely.
 %Studio photographers and movie-makers
 %go to great lengths to control their effects through makeup and lighting.
 % Not only does specularity allow some of the high angular frequency components of the
@@ -1030,14 +1077,35 @@ There are ways to engineer around this difficulty\footnote{such as allowing nega
 % images is any lower dimensional than the set of illuminations.
 Specularities, self-shadowing, and inter-reflections all dramatically affect the appearance of face images,
 and they all do so in a way that violates the modeling assumptions of the Basri analysis.
-Self-shadowing and inter-reflection break the simple relationship between the outgoing light
-and the resulting images, and specularity even invalidates the representation of outgoing light itself,
-since it is no longer independent of viewing angle.
-%If the surface has a specular component, the relationship between incoming and outgoing light
+%Specifically, self-shadowing and inter-reflection break the simple relationship between the outgoing light
+%and the resulting images, and specularity even invalidates the representation of outgoing light that is used.
+% itself,
+%since it is no longer independent of viewing angle.
+%%If the surface has a specular component, the relationship between incoming and outgoing light
 %is no longer expressible as a convolution, and if there is self-shadowing or inter-reflection the illumination
 %of each patch will depend not only on its location on the surface, but on the illumination of other pixels in the image.
 
-Fortunately, even with these effects, the relationship between the space of illuminations and the space of images is still linear; all we have to assume is that the image is dominated by scattered light.\footnote{Phenomena that break this assumption include fluorescence, the photochromic (``Transition'') lenses in some eyeglasses, and, the infrared light radiated by all warm objects.}.  Note that while the relationship between illuminations and images is linear, only positive weights are allowed; the space of all images of an object with fixed pose and varying illumination is a convex cone lying in the positive orthant.  The question becomes, how many images does it take to do a good job of representing images sampled from this cone?
+Fortunately, even with these effects, the relationship between the space of
+illuminations and the space of images is still linear
+\footnote{Materials that break
+this assumption include fluorescent materials and the photochromic (``Transition'') lenses
+in some eyeglasses.  Most materials emmit light in proportion to their
+incident light.}, 
+and that the sensor has a linear response curve. 
+\footnote{ Proper handling of gamma encoding is an important consideration for
+practitioners.  Most cameras apply a non-linear and often undocumented response
+curve to captured images.  A slight degradation of performance will occur if
+gamma compressed images are treated as if they were linear.  We recommend the use
+of cameras with well documented response curves that can be inverted when the 
+image file is loaded.}
+For a more indepth study 
+of the relationship between illumination and images, we refer the reader to
+\cite{belhumeur1998set}.
+While the relationship between illuminations and images is linear,
+only positive weights are allowed; the space of all images of an object with
+fixed pose and varying illumination is a convex cone lying in the positive
+orthant. The question becomes, how many images does it take to do a good job
+of representing images sampled from this cone?
 
 It has been observed in various empirical studies that
 one can get away with using a small number of frontal
@@ -1057,9 +1125,27 @@ of training illuminations that are indeed {\em sufficient} to
 linearly represent a wide variety of practical indoor and
 outdoor illuminations.
 
-\subsection{Capturing a Sufficient Set of Training
-Illuminations} To this end, we have designed a system that can
-acquire frontal images of a subject while simultaneously illuminating the subject from all directions above horizontal.
+\subsection{Capturing a Sufficient Set of Training Illuminations} To this end,
+we have designed a system that can acquire frontal images of a subject while
+simultaneously illuminating the subject from all directions above horizontal.
+
+Most light stages used for face recognition have
+been constructed for the purpose of creating public data sets to study
+illumination invariance \cite{Georghiades2001-PAMI, Gross2008-FGR}.  Many other
+light stages have been used for computer graphics purposes
+\cite{debevec2000acquiring, jones2005performance}. 
+In particular, both LED's
+and projectors have been used for the purpose of acquiring BRDF's for various materials.
+
+" Y. Y. Schechner, S. K. Nayar, P. N. Belhumeur " A Theory of multiplexed illumination", ICCV 2003.  
+Y. Y. Schechner, S. K. Nayar, P. N. Belhumeur "Multiplexing for Optimal Lighting", PAMI 2007.  "
+
+The light source can be
+moved around manually \cite{masselus2002free}, but this may result in poor
+consistency of illuminations between users.  Structured light applications use projectors to
+directly illuminate the face (or other object) \cite{zhang2002rapid} for 3D
+reconstruction, but this is very disturbing to the user. 
+
 A sketch of the
 system is shown in Figure \ref{fig:system}: The illumination
 system consists of four projectors that display various bright
@@ -1070,7 +1156,7 @@ we rotate the chair by 180 degrees and take pictures from the
 opposite direction.  Having two cameras speeds the process
 since only the chair needs to be moved in between frontal and
 rear illuminations. Our projector-based system has several
-advantages over flash-based illumination systems:
+advantages over flash-based illumination systems for face recognition:
 \begin{itemize}
 \item The illuminations can be modified in software, rather than hardware.
 \item It is easy to capture many different illuminations quickly.
@@ -1250,25 +1336,6 @@ See below for the 38 training images of one subject:
 %coefficients $\x$ be non-negative.
 
 %One of the main factors that complicates face recognition, and computer vision in general, is that two images of the same person's face can be very different, even if the pose is carefully controlled and all points on the person's face are visible in both images.  The most safe, reliable, and general assumption that can be made about the imaging process is that it is linear with respect to the intensity of different light sources.  The set of images of a given object is therefore a cone in the non-negative orthant of the pixel basis.  All recognition algorithms that rely on vision for training rely on images sampled from this cone.
-
-\subsection{Compensating for Gamma Compression} Any algorithm
-based on representing a testing image as a weighted sum of
-training images must make sure that the image intensity has
-been coded linearly with image intensity. While most modern machine vision
-cameras capture linearly in intensity, older analog video
-cameras often used NTSC defined gamma compression, while most
-modern digital consumer and SLR cameras record in sRGB defined
-gamma compression.  There are several public face recognition
-databases that do not specify the gamma compression of their
-images. Similarly most of the software
-tools used for computer vision research do not provide any facilities
-for gamma decompression, and several common image file formats fail to specify the gamma encoding of
-the data they contain.  Because of this situation, the burden of handling
-gamma correctly falls entirely on the practitioner.  If gamma correction is not applied properly,
-most algorithms (including ours)
-will degrade gracefully, but the performance of our recognition algorithm
-benefits significantly if gamma is handled properly for both
-the training and testing images.
 
 \section{Tests on Public Databases}\label{sec:multipie}
 In this section and the next section, we conduct comprehensive

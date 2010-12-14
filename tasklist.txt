@@ -1,0 +1,45 @@
+Reviewer 1:
+
+cut down ALM section slightly (?) (Arvind)
+
+cite more references for the projectors (Drew)
+
+In general, reduce the emphasis on disguises and large occlusions in the paper, 
+instead phrase more in terms of small occlusions, i.e. hairstyle changes.
+
+***add results with local binary patterns and perhaps ERCF on both our data and FRGC (Zihan)
+***add results for our algorithm on FRGC (Zihan)
+
+tone down contribution section? Or just more frequently emphasize our scenario. (John or Yi?)
+	It seemed Reviewer 1 was offended at least partly because he felt we over-sold our work 
+
+add more discussion of pros/cons of this system vs. 
+	3D systems that can handle more pose variation. (Drew)
+
+Say what we mean by "Strong Coupling between illumination and registration" -> we really mean that when both are present, the problems compound each other. (Drew)
+
+add more references for illumination, cite the ones requested.  Emphasize that we're only claiming novelty for use in face recognition. (Drew)
+
+include sentence from rebuttal clarifying our contributions somewhere:  "We believe
+we have demonstrated that using a well-though-out combination of existing ideas
+(iterative image alignment, l1-error function, SRC, using projectors for
+illumination), one can build a recognition that is conceptually simple, well
+motivated, and competitive with state-of-the-art recognition systems for access
+control scenarios." (Drew)
+
+Reviewer 2
+discuss convergence criteria.  In general discuss motivation for convergence more. (Arvind)
+
+Reviewer 3
+***add results for S=1, or in general, either demonstrate necessity of SCI or cite previous results.
+
+streamline introduction. make the overall structure of our system clear earlier in the
+paper to avoid confusion.
+
+DONE: 
+
+cut down discussion on illumination (Drew) (search for Basri)
+
+Wants a reference for illumination being linear when you only have scattered light. (Drew)
+
+trim section on gamma (Drew)
