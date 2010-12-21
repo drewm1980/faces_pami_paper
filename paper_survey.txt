@@ -1,0 +1,337 @@
+ICCV2007
+
+*** Video-based Face Recognition on Real-World Data
+Johannes Stallkamp, Hazim Kemal Ekenel, Rainer Stiefelhagen
+	Uses local DCT features, K-nearest neighbors to identify each frame, a handful of weighting schemes for temporal fusion.
+
+Leveraging archival video for building face datasets (PDF)
+Deva Ramanan, Simon Baker, Sham Kakade
+
+
+Fitting a Morphable Model to 3D Scans of Faces
+Volker Blanz, Kristina Scherbaum, Hans-Peter Seidel
+
+*** A Manifold Approach to Face Recognition from Low Quality Video Across Illumination and Pose using Implicit Super-Resolution (PDF)
+Ognjen Arandjelovic, Roberto Cipolla
+
+Probabilistic Linear Discriminant Analysis for Face Recognition
+Simon Prince, James Elder
+
+Hierarchical Ensemble of Global and Local Classifiers for Face Recognition
+Yu Su, Shiguang Shan, Xilin Chen, Wen Gao
+
+*** Unsupervised Joint Alignment of Complex Images (PDF)
+Gary Huang, Vidit Jain, Erik Learned-Miller
+
+Blurred/Non-Blurred Image Alignment using Sparseness Prior (PDF)
+Yuan Lu, Jian Sun, Quan Long, Shum Heung-Yeung
+
+ICCV2009
+
+Is that you? Metric Learning Approaches for Face Identification (PDF, supplementary material, project, results)
+Matthieu Guillaumin, Jakob Verbeek, Cordelia Schmid
+
+Learning Long Term Face Aging Patterns from Partially Dense Aging Databases
+Jinli Suo, Xilin Chen, Shiguang Shan, Wen Gao
+
+*** Face Alignment through Subspace Constrained Mean-shifts (PDF)
+Jason M. Saragih, Simon Lucey, Jeffrey F. Cohn
+
+*** Face Recognition With Contiguous Occlusion Using Markov Random Fields (PDF)
+Zihan Zhou, Andrew Wagner, Hossein Mobahi, John Wright, Yi Ma
+
+*** On Optimizing Subspaces for Face Recognition
+Jilin Tu, Xiaoming Liu, Peter Tu
+
+*** Unsupervised Face Alignment by Robust Nonrigid Mapping (PDF, Project)
+Jianke Zhu, Luc Van Gool, and Steven C.H. Hoi
+
+A Robust Elastic and Partial Matching Metric for Face Recognition (PDF)
+Gang Hua, Amir Akbarzadeh
+
+*** Simultaneous Alignment and Clustering for an Image Ensemble
+Xiaoming Liu, Yan Tong , Fred W. Wheeler
+
+CVPR2007
+
+*** Generic Face Alignment using Boosted Appearance Model (PDF, PPT)
+Xiaoming Liu
+
+Skin Detail Analysis for Face Recognition (PDF)
+Jean-Sebastien Pierrard and Thomas Vetter
+
+Quality-Driven Face Occlusion Detection and Recovery
+Dahua Lin and Xiaoou Tang
+
+3D Face Recognition Founded on the Structural Diversity of Human Faces
+Shalini Gupta, J. K. Aggarwal, Mia K. Markey, and Alan C. Bovik
+
+*** Learning a Spatially Smooth Subspace for Face Recognition
+Deng Cai, Xiaofei He, Yuxiao Hu, Jiawei Han, and Thomas Huang
+
+Filtered Component Analysis to Increase Robustness to Local Minima in Appearance Models (Project & abstract)
+Fernando De la Torre, Alvaro Collet, Manuel Quero, Jeff Cohn, and Takeo Kanade
+
+*** Discriminant Mutual Subspace Learning for Indoor and Outdoor Face Recognition
+Zhifeng LI, Dahua LIN, Helen MENG, and Xiaoou TANG
+
+Face Recognition Using Kernel Ridge Regression (PDF)
+Senjian An, Wanquan Liu, and Svetha Venkatesh
+
+3D Face Recognition in the Presence of Expression: A Guidance-based Constraint Deformation Approach
+Yueming Wang, Gang Pan, and Zhaohui Wu
+
+Robust 3D Face Recognition Using Learned Visual Codebook
+Cheng Zhong, Zhenan Sun, and Tieniu Tan
+
+A Minutiae-based Fingerprint Individuality Model
+Jiansheng Chen and Yiu-Sang Moon
+
+CVPR2008
+
+Learning Patch Correspondences for Improved Viewpoint Invariant Face Recognition (PDF, abstract)
+Ahmed Bilal Ashraf, Simon Lucey, Tsuhan Chen
+
+*** Face Alignment via Boosted Ranking Models (PDF)
+Hao Wu, Xiaoming liu, Gianfranco Doretto
+
+*** Manifold-Manifold Distance with Application to Face Recognition based on Image Set (PDF)
+Ruiping Wang, Shiguang Shan, Xilin Chen, Wen Gao
+
+*** Misalignment Robust Face Recognition
+
+*** In Defense of Nearest-Neighbor Based Image Classification (PDF)
+Oren Boiman, Eli Shechtman, Michal Irani
+
+3D Shape Reconstruction of Mooney Faces (PDF)
+Ira Kemelmacher-Shlizerman, Ronen Basri, Boaz Nadler
+
+On the use of Independent Tasks for Face Recognition
+
+Real-Time Face Pose Estimation from Single Range Images (PDF)
+Michael D. Breitenstein, Daniel Kuettel, Thibaut Weise, Luc van Gool, Hanspeter Pfister
+
+Unified Principal Component Analysis with Generalized Covariance Matrix for Face Recognition (PDF)
+Shiguang Shan, Bo Cao, Yu Su, Laiyun Qing, Xilin Chen, Wen Gao
+
+*** Simultaneous Super-Resolution and Recognition of Low-Resolution Faces (PDF)
+Pablo Hennings-Yeomans, Simon Baker, B.V.K. Vijaya Kumar
+
+*** Face Illumination Normalization on Large and Small Scale Features
+
+*** Beyond the Lambertian Assumption: A generative model for Apparent BRDF field for Faces using Anti-Symmetric Tensor Splines
+
+*** Robust 3D Face Recognition in Un-Controlled Environments
+
+Cost-Sensitive Face Recognition (PDF)
+Yin Zhang, Zhi-Hua Zhou
+
+Joint Data Alignment Up To (Lossy) Transformations
+
+CVPR2009
+
+Physiological Face Recognition Is Coming of Age
+Pradeep Buddharaju, Ioannis Pavlidis
+
+*** Support Vector Machines in Face Recognition with Occlusions (PDF)
+Hongjun Jia, Aleix Martinez
+
+Volterrafaces: Discriminant Analysis using Volterra Kernels (PDF)
+Ritwik Kumar, Arunava Banerjee, Baba C. Vemuri
+
+*** Maximizing Intra-individual Correlations for Face Recognition Across Pose Differences (PDF, video)
+Annan Li, Shiguang Shan, Xilin Chen, Wen Gao
+
+3D Morphable Face Models Revisited
+Ankur Patel, William Smith
+
+*** Implicit Elastic Matching with Random Projections for Pose-variant Face Recognition (PDF)
+John Wright, Gang Hua
+
+*** Joint and Implicit Registration for Face Recognition (PDF)-formely: Registration-Free Face Recognition
+
+Peng Li, Simon J. D. Prince
+A Compressive Sensing Approach for Expression-Invariant Face Recognition
+Pradeep Nagesh, Baoxin Li
+
+*** Textural Hausdorff Distance for Wider-Range Tolerance to Pose Variation and Misalignment in 2D Face Recognition
+Sanqiang Zhao, Yongsheng Gao
+
+Expression-Insensitive 3D Face Recognition using Sparse Representation
+Xiaoxing Li, Tao Jia, Richard Zhang
+
+*** How far can you get with a modern face recognition test set using only simple features? (PDF)
+Nicolas Pinto, James J. DiCarlo, David D. Cox
+
+*** Efficient image alignment using linear appearance models
+Jose Gonzalez-Mora, Fernando De la Torre, Nicolas Guil, Emilio Zapata
+
+CVPR2010
+
+*** Face Recognition Based on Image Sets (PDF)
+Hakan Cevikalp, Bill Triggs
+
+*** Morphable Reflectance Fields for Enhancing Face Recognition (PDF)
+Ritwik Kumar, Michael Jones, Tim Marks
+
+An Extension of Multifactor Analysis for Face Recognition Based on Submanifold Learning
+Sung Won Park, Marios Savvides
+
+*** Cost-Sensitive Subspace Learning for Face Recognition
+Jiwen Lu, Tan Yap-Peng
+
+*** A Novel Markov Random Field Based Deformable Model for Face Recognition
+Shu Liao, Albert C.S. Chung
+
+*** Discriminative K-SVD for Dictionary Learning in Face Recognition
+Qiang Zhang, Baoxin Li
+
+Face Recognition with Learning-based Descriptor (PDF)
+Zhimin Cao, Qi Yin, Jian Sun, Xiaoou Tang
+
+Bidirectional relighting for 3D-aided 2D Face Recognition - formely: 3D-aided 2D Face Recognition
+George Toderici, George Passalis, Stefanos Zafireiou, Georgios Tzimiropoulos, Maria Petrou, Theoharis Theoharis, Ioannis Kakadiaris
+
+*** Rapid Face Recognition Using Hashing (PDF)
+Qinfeng Shi, Hanxi Li, Chunhua Shen
+
+*** RASL: Robust Alignment by Sparse and Low-rank Decomposition for Linearly Correlated Images (PDF)
+Yigang Peng, Arvind Balasubramanian, John Wright, Ma Yi
+
+*** Fast Image Alignment in the Fourier Domain (PDF, video)
+Ahmed Ashraf, Simon Lucey, Tsuhan Chen
+
+*** Supervised Translation-Invariant Sparse Coding
+uni-muenchen.de [PDF]J Yang, K Yu, T Huang - dbs.informatik.uni-muenchen.de
+
+ECCV2008
+
+*** Grassmann Registration Manifolds for Face Recognition (PDF)
+Yui Man Lui, J. Ross Beveridge
+
+*** Face Alignment via Component-based Discriminative Searching
+Lin Liang, Fang Wen, Jian Sun
+
+*** A Generative Shape Regularization Model for Robust Face Alignment
+Gu Leon, Kanade Takeo
+
+*** Learning from Real Images to Model Lighting Variations for Face Images
+Jiang Xiaoyue, Hichem Sahli, Kong Yuk On, Huang Jianguo, Zhao Rongchun, Zhang Yanning
+
+ECCV2010
+
+Gabor Feature based Sparse Representation for Face Recognition with Gabor Occlusion Dictionary (PDF)
+Meng Yang, Lei Zhang
+
+*** A Robust and Scalable Approach to Face Identification
+
+Robust Face Recognition Using Probabilistic Facial Trait Code
+
+*** Kernel Sparse Representation for Image Classification and Face Recognition
+
+*** Exploring the Identity Manifold: Constrained Operations in Face Space
+
+*** Sparse Non-Linear Least Squares Optimization for Geometric Vision
+
+ICPR2008
+
+Face Recognition Using Curvelet Based PCA
+Tanaya Mandal, Q. M. Jonathan Wu
+
+Color Face Recognition Based on 2DPCA
+Wang Chengzhang, Yin Baocai, Bai Xiaoming, Sun Yanfeng
+
+A Comparative Evaluation of Average Face on Holistic and Local Face Recognition Approaches
+Sanqiang Zhao, Xiaozheng Zhang, Yongsheng Gao
+
+3D Face Recognition Using Sparse Spherical Representations
+Roser Sala Llonch, Effrosyni Kokiopoulou, Ivana Tosic, Pascal Frossard
+
+Real-Time Face Alignment with Tracking in Video
+Yanchao Su, Haizhou Ai, Shihong Lao
+
+Efficient Tensor Based Face Recognition
+Santu Rana, Wanquan Liu, Mihai Lazarescu, Svetha Venkatesh
+
+On Averaging Face Images for Recognition under Pose Variations
+Xiaozheng Zhang, Sanqiang Zhao, Yongsheng Gao
+
+IR and Visible Face Recognition Using Fusion of Kernel Based Features
+Shahbe Mat Desa, Subhas Hati
+
+Pose Adaptive LDA Based Face Recognition
+Zhenger Wang, Xiaoqing Ding, Chi Fang
+
+A New Image Division for LBP Method to Improve Face Recognition under Varying Lighting Conditions
+Heydi Mendez, Edel Garcia, Yadira Condes
+
+Randomized Trees for Real-Time One-Step Face Detection and Recognition
+Vaishak Belle, Thomas Deselaers, Stefan Schiffer
+
+Face Recognition Using Complete Fuzzy LDA
+
+ACCV2007
+
+Using Wireless Sensor Nodes to Aid Face Recognition from the Variations in Illumination and Head Pose Rotation
+Chia-Sheng Tsai and Bo-Fu Shen
+
+*** Discriminant Clustering Embedding for Face Recognition with Image Sets
+Youdong Zhao, Shuang Xu and Yunde Jia
+
+*** Kernel Discriminant Analysis Based on Canonical Differences for Face Recognition in Image Sets
+Wen-Sheng Vincnent Chu, Ju-Chin Chen and Jenn-Jier James Lien
+
+Recognition of Digital Images of the Human Face at Ultra Low Resolution via Illumination Spaces (PDF)
+Jen-Mei Chang, Michael Kirby, Holger Kley, Chris Peterson, Bruce Draper and J. Ross Beveridge
+
+A regularized Approach to Feature Selection for Face Detection
+Augusto Destrero, Christine De Mol, Francesca Odone and Alessandro Verri
+
+Face Mis-alignment Analysis by Multiple-Instance Subspace
+Zhiguo Li, Qingshan Liu and Dimitris Metaxas
+
+PAMI
+
+Face Recognition Algorithms Surpass Humans Matching Faces Over Changes in Illumination
+O'Toole, A.J.; Phillips, P.J.; Fang Jiang; Ayyad, J.; Penard, N.; Abdi, H.; 
+	Not doing recognition! Ran on FRGC data set. Had to decide if pairs of passport-type photos were of the same person or not.  Again kept only white people.  Only compared images of the same sex, so no gender recognition involved.
+
+On the Dimensionality of Face Space
+Meytlis, M.; Sirovich, L.; 
+	Tries to experimentally estimate an upper bound on the number of dimensions our brains use to model faces for recognition.  Experiment deliberately used all white people under uniform illumination.  If eigenspace is used, they claim 200-300 dimensions.  Not really relevant to us; we aren't pushing dimension reduction of the face images.
+
+Appearance Characterization of Linear Lambertian Objects, Generalized Photometric Stereo, and Illumination-Invariant Face Recognition
+Zhou, S.K.; Aggarwal, G.; Chellappa, R.; Jacobs, D.W.; 
+	Factorizes a gallery of training images from multiple people to try to learn something about normals of faces as a class.  Claims to be able to use a training set with one illumination, gallery set with another illumination, and probe set with a third illumination.  Assumes a single light source (extended to 2-3 light sources).  Uses face symmetry, estimates of shadows and specularities to deal with non-linearity.  Does not perform alignment.  Some variants discussed include images rendered from 3D models.  Claims almost perfect scores on original PIE.
+
+Total variation models for variable lighting face recognition
+Chen, T.; Wotao Yin; Xiang Sean Zhou; Comaniciu, D.; Huang, T.S.;
+	Tries to remove facial features from a single image that are illumination invariant.  Assumes that illumination dependent component has Low Total Variation.  Finds illumination image that minimizes weighted sum of TV and L1 difference with log of the original image.  Works at multiple scales.
+
+Eigenfeature Regularization and Extraction in Face Recognition
+Xudong Jiang; Mandal, B.; Kot, A.; 
+	Tries to learn a discriminative dictionary, argues against initial dimensionality reduction on the basis of lost discriminative information, saves dimensionality reduction for last.  Clobbers illumination cone structure by subtracting off image means in the scatter matrices.  Performs several questionably motivated space decompositions.  Uses practically no prior information that is even motivated by vision, let alone faces.
+
+Discriminative Face Alignment
+Xiaoming Liu; 
+	Treats the alignment problem as a two-class classifier, "aligned" and "non-aligned" relative to presumably hand-picked ground truth.  Uses boosting over multiple Haar-like feature choices.  Assumes you want to learn and align to a generic (non-person specific) model.  Score from combined classifier is used as a distance metric, and optimized by perturbing test image.  The weak classifier parameters are the global model.  Claim robustness to partial occlusion.  Claims to beat active shape and appearance models.  In their language, our alignment is a person-specific Active Appearance Model where the training images of the individual form the model.  
+
+Lucas-Kanade 20 years on: A unifying framework
+S. Baker, I. Matthews
+IJCV 2004
+BIG Overview paper.  Seems like it might contain pretty much all of our ideas within the taxonomy.
+Started as a series of 4 tech reports.  Part 1 got turned into a journal paper.
+http://www.ri.cmu.edu/research_project_detail.html?project_id=515&menu_id=261
+Compared to Lucas-Kanade we...
+* Minimize L1 norm of error instead of L2 norm
+* (We are NOT using a compositional approach)
+
+Efficient Region Tracking With Parametric Models of Geometry and Illumination
+G. D. Hager and P. N. Belhumeur, PAMI 1998
+A VERY close competitor.  Basically doing the same thing, but for tracking.  Discusses combining the Jacobian with training examples to simultaneously deal with illumination variation and misalignment.  Minimizes L2 norm, but discusses using reweighted least-squares to achieve robustness.
+
+Face recognition using IPCA-ICA algorithm
+Dagher, I.; Nachar, R.; 
+
+The Asymmetry of Image Registration and Its Application to Face Tracking
+Dedeoglu, G.; Kanade, T.; Baker, S.; 
