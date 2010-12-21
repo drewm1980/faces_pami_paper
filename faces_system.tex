@@ -141,45 +141,58 @@ Sparse Representation,  Error Correction, Validation and Outlier Rejection.
 \PARstart{T}{here} is a historical tendency for face recognition algorithms to work well under laboratory conditions but degrade when tested in less-controlled environments.  While there have been several high profile failed trials of face recognition technology for extremely difficult mass surveillance / watch-list applications, face recognition has not even seen widespread applications in more tractable settings, such as access control for buildings, computer systems, automobiles, or even automatic teller machines.\footnote{Face recognition scenarios where both gallery and test data are uncontrolled is an active research area as well \cite{LFW}.}  These applications are very interesting due to their potential sociological impact.  They are also qualitatively different from surveillance applications because they demand extremely reliable systems, and because the gallery subjects are allies, rather than opponents, of the recognition system.  This creates the possibility of carefully controlling the acquisition of the training data, even if the testing data may be less controlled for usability reasons.
 
 Classical holistic subspace based methods
-\cite{Turk1991-CVPR,Belhumeur1997-PAMI} are well known for
-their speed and simplicity, as well as for their natural
-extension to linear illumination models.  However, their
-performance has been shown to be extremely brittle not only to
-alignment variation, but to occlusions. One promising recent
-direction, set forth in \cite{Wright2009-PAMI}, casts the
-recognition problem as one of finding a sparse representation
-of the test image in terms of the training set as a whole, up
-to some sparse error due to occlusion. A \emph{sparse
-representation-based classification} (SRC) method is then proposed for
-recognition. The main idea is that the sparse nonzero
-coefficients should concentrate on the training samples with
-the same class label as the test sample. SRC has demonstrated
-striking recognition performance despite severe occlusion or
-corruption by solving a simple convex program.
+\cite{Turk1991-CVPR,Belhumeur1997-PAMI} are well known for their speed and
+simplicity, as well as for their natural extension to linear illumination
+models.  However, their performance has been shown to be extremely brittle not
+only to alignment variation, but to even minor occlusions caused by, say, a
+wisp of hair, a blinked eye, or mouth that is slightly open. One promising
+recent direction, set forth in \cite{Wright2009-PAMI}, casts the recognition
+problem as one of finding a sparse representation of the test image in terms of
+the training set as a whole, up to some sparse error due to occlusion. A
+\emph{sparse representation-based classification} (SRC) method is then proposed
+for recognition. The main idea is that the sparse nonzero coefficients should
+concentrate on the training samples with the same class label as the test
+sample. SRC has demonstrated striking recognition performance despite severe
+occlusion or corruption by solving a simple convex program.  For this
+reason, the final recognition stage of our proposed system will consist of SRC,
+and the alignment stage that precedes it will be based on similar techniques.
 
-
-\begin{figure}
-\centering
-\begin{tabular}{cc}
-\includegraphics[height=1in]{figures_cvpr/promo/case1/detector.png}& \hspace{3mm}
-\includegraphics[height=1in]{figures_cvpr/promo/case1/sci_with_axis_face_case1.png} \\
-\includegraphics[height=1in]{figures_cvpr/promo/alignment_and_detector.png}& \hspace{3mm}
-\includegraphics[height=1in]{figures_cvpr/promo/case2/sci_with_axis_face_case2.png} \\
-\includegraphics[height=1in]{figures_cvpr/promo/case3/alignment.png} & \hspace{3mm}
+\begin{figure} \centering \begin{tabular}{cc}
+\includegraphics[height=1in]{figures_cvpr/promo/case1/detector.png}&
+\hspace{3mm}
+\includegraphics[height=1in]{figures_cvpr/promo/case1/sci_with_axis_face_case1.png}
+\\ \includegraphics[height=1in]{figures_cvpr/promo/alignment_and_detector.png}&
+\hspace{3mm}
+\includegraphics[height=1in]{figures_cvpr/promo/case2/sci_with_axis_face_case2.png}
+\\ \includegraphics[height=1in]{figures_cvpr/promo/case3/alignment.png} &
+\hspace{3mm}
 \includegraphics[height=1in]{figures_cvpr/promo/case3/sci_with_axis_face_case3.png}
-\end{tabular}
-\caption{{\bf Compound effect of registration and illumination}. The task is to identify the girl among 20 subjects, by computing the sparse representation of her input face with respect to the entire training set. The absolute sum of the coefficients associated with each subject is plotted on the right. We also show the faces reconstructed with each subject's training images weighted by the associated sparse coefficients. The red line (cross) corresponds to her true identity, subject 12. {\bf Top:} The input face is from Viola and Jones' face detector (the black box) and all 38 illuminations specified in Section \ref{sec:illumination} are used in the training.  {\bf Middle:} The input face is well-aligned (the white box) with the training by our algorithm specified in Section \ref{sec:registration} but only 24 frontal illuminations are used in the training for recognition (see Section \ref{sec:illumination}). {\bf Bottom:} Informative representation obtained by using both well-aligned input face and sufficient (all 38) illuminations in the training. }
-\label{fig:promo}
+\end{tabular} \caption{{\bf Effects of registration and illumination on
+Recognition}. In this example we identify the girl among 20 subjects, by
+computing the sparse representation of her input face with respect to the
+entire training set. The absolute sum of the coefficients associated with each
+subject is plotted on the right. We also show the faces reconstructed with each
+subject's training images weighted by the associated sparse coefficients. The
+red line (cross) corresponds to her true identity, subject 12. {\bf Top:} The
+input face is from Viola and Jones' face detector (the black box) and all 38
+illuminations specified in Section \ref{sec:illumination} are used in the
+training.  {\bf Middle:} The input face is well-aligned (the white box) with
+the training by our algorithm specified in Section \ref{sec:registration} but
+only 24 frontal illuminations are used in the training for recognition (see
+Section \ref{sec:illumination}). {\bf Bottom:} The input face is well aligned and 
+a sufficient set (all 38) of
+illuminations are used in the training. Both are necessary for correct recognition
+using SRC.} \label{fig:promo}
 %\vspace{-.5in}
 \end{figure}
-
 %\subsection{Compound Effect of Registration and Illumination}
+
 Unfortunately, while SRC achieves impressive results, it does not deal with misalignment
-between the test and training images.  Furthermore, the experiments were carried out on public
-datasets
-taken under controlled laboratory conditions
-such as
-Extended Yale B \cite{Georghiades2001-PAMI}, which do not contain realistic test images.
+between the test and training images, and it requires a rich set of illuminations
+in the gallery images for good performance.  
+%Furthermore, the experiments were carried out on public datasets taken under
+%controlled laboratory conditions such as Extended Yale B
+%\cite{Georghiades2001-PAMI}, which do not contain realistic test images.
 %two critical aspects of real world face recognition must be addressed:  significant variations in both the {\em image domain} and in
 %the {\em image value}.
 We illustrate this with an example in Figure \ref{fig:promo}.
@@ -196,15 +209,27 @@ training. Otherwise, even for perfectly aligned test images,
 the representation will not necessarily be sparse or
 informative, as shown by the example in Figure
 \ref{fig:promo}(middle). Clearly, both good alignment, as well
-as sufficient training images are needed.
+as sufficient training images are needed.  
 %Unfortunately, most public face databases lack images with a
 %significant component of rear (more than 90 degrees from
 %frontal) illumination, either for training or testing.
 
 \subsection{Related Work}
 
-We briefly review existing techniques for recognition, image registration, and handling of illumination variation.
-Our system is based purely on 2D techniques.  This fact immediately distinguishes our technique from systems that either require a 3D data as an input, or attempt to estimate a 3D model from input 2D data \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While these techniques have been shown to achieve better robustness to pose variation given a sufficiently accurate 3D model, for access control applications where the user is cooperative in aligning their head to the camera, robustness to moderate misalignment is sufficient.  Furthermore, many 3D techniques rely on multiple views to estimate their model, and may have trouble if all of the training images are captured from one pose.  Note that images of people's faces under varying illumination contain shape-related discriminative information, and this information can be leveraged by 2D algorithms even if shape is not reconstructed explicitly.
+We briefly review existing techniques for recognition, image registration, and
+handling of illumination variation.  Our system is based purely on 2D
+techniques.  This fact immediately distinguishes our technique from systems
+that either require a 3D data as an input, or attempt to estimate a 3D model
+from input 2D data \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While these
+techniques have been shown to achieve better robustness to pose variation given
+a sufficiently accurate 3D model, for access control applications where the
+user is cooperative in aligning their head to the camera, robustness to
+moderate misalignment is sufficient.  Furthermore, many 3D techniques rely on
+multiple views to estimate their model, and may have trouble if all of the
+training images are captured from one pose.  Note that images of people's faces
+under varying illumination contain shape-related discriminative information,
+and this information can be leveraged by 2D algorithms even if shape is not
+reconstructed explicitly.
 
 % Alignment
 In holistic recognition algorithms, correspondence between points in the test
@@ -223,8 +248,8 @@ registration in this spirit dates at least back to the Lucas-Kanade algorithm
 However, whereas much of the early work on image registration is aimed at the
 problem of registering nearly identical images, say by minimizing a sum of
 squared distances, here we must confront several physical factors
-simultaneously: misalignment, illumination variations, and certain amount of
-occlusion. As we discuss further below, illumination variation can be dealt by
+simultaneously: misalignment, illumination variations, and corrupted pixels.
+As we discuss further below, illumination variation can be dealt by
 expressing the test image as a linear combination of an appropriate set of
 training images. Similar representations have been exploited in
 illumination-robust tracking (e.g., \cite{Belhumeur1999-PAA,Murase1995-IJCV}).
@@ -252,19 +277,21 @@ using those assumptions to extract a new representation that is claimed to be
 illumination invariant.  Recent examples include \cite{chen2006total} and
 \cite{zhou2007appearance}.  However, despite these efforts, truly
 illumination-invariant features are difficult to obtain from a single input
-image.  So, if one's primary concern in designing the recognition system is
-achieving a high recognition rate, it makes no sense to limit the gallery to a
+image.  We argue that if one has the luxury of designinig the recognition algorithm,
+but also the acquisition system, and the application demands a high recognition rate,
+it is inadvisable to limit the gallery to a
 single image per person.  We therefore take the strategy of sampling many
 gallery images of each individual under varying illuminations.  These images
 are used as the basis for either a convex cone model
 \cite{Georghiades2001-PAMI,belhumeur1998set}, or a subspace model
 \cite{Basri2003-PAMI}.  Images are captured using a simple-to-construct
-projector based light stage.  To our knowledge, we
+projector based light stage.  While similar systems have been used for
+other applications, to our knowledge, we
 are the first to use projectors to indirectly illuminate a subject's face for
 the purpose of face recognition.
 
-\subsection{Contributions} In this paper, we show how the two
-{\em strongly coupled} issues of registration and illumination
+\subsection{Contributions} In this paper, we show how the 
+mutually confounding issues of registration and illumination
 can be naturally addressed within the sparse representation
 framework. We show that face registration, a challenging
 nonlinear problem, can be solved by a series of linear programs
@@ -354,7 +381,7 @@ linear combination $A \x_0$ of all of the images in the
 database,\footnote{We assume the illuminations in the training
 set are sufficient. We will address how to ensure illumination
 sufficiency in the next section.} plus a sparse error $\e_0$
-due to occlusion. The sparse representation can be recovered by
+due to corrupted pixels. The sparse representation can be recovered by
 minimizing the $\ell^1$-norm\footnote{The $\ell^1$-norm of a
 vector, denoted by $\|\cdot\|_1$, is the sum of absolute values of its entries.} of
 $\x$ and $\e$:
@@ -1133,18 +1160,19 @@ Most light stages used for face recognition have
 been constructed for the purpose of creating public data sets to study
 illumination invariance \cite{Georghiades2001-PAMI, Gross2008-FGR}.  Many other
 light stages have been used for computer graphics purposes
-\cite{debevec2000acquiring, jones2005performance}. 
-In particular, both LED's
-and projectors have been used for the purpose of acquiring BRDF's for various materials.
-
-" Y. Y. Schechner, S. K. Nayar, P. N. Belhumeur " A Theory of multiplexed illumination", ICCV 2003.  
-Y. Y. Schechner, S. K. Nayar, P. N. Belhumeur "Multiplexing for Optimal Lighting", PAMI 2007.  "
-
+\cite{debevec2000acquiring, jones2005performance}.
 The light source can be
 moved around manually \cite{masselus2002free}, but this may result in poor
 consistency of illuminations between users.  Structured light applications use projectors to
 directly illuminate the face (or other object) \cite{zhang2002rapid} for 3D
 reconstruction, but this is very disturbing to the user. 
+Y. Schechner \cite{schechner2007multiplexing}
+studies techniques for multiplexing illumination that can dramatically reduce the noise 
+of the demultiplexed images for certain classes of objects and cameras.  
+While these techniques have not been incorporated into the current
+system, they fit elegantly into our framework and will likely be used
+in future implementations.  We stress that use of this multiplexing technique
+is independent from the choice of original (directional) illuminations.
 
 A sketch of the
 system is shown in Figure \ref{fig:system}: The illumination
@@ -1199,13 +1227,12 @@ to prevent saturation or low SNR, in a sort of offline exposure control.
 %\footnote{This is true if $\x>0$ is enforced;
 %the effect of negative coefficients in $\x$ is still under study.}
 
-Assuming that the sequentially illuminated regions do not overlap
-results in a set of training images that span a larger
-cone than a similar number of overlapping regions.  
-This results in training images that require fewer negative
-coefficients in $\x$ to represent test images under natural illuminations.
-The effect of negative coefficients in $\x$ appears to depend partly
-on how the test images are taken and is still under study.
+Assuming that the sequentially illuminated regions do not overlap results in a
+set of training images that span a larger cone than a similar number of
+overlapping regions.  This results in training images that require fewer
+negative coefficients in $\x$ to represent test images under natural
+illuminations.  The effect of negative coefficients in $\x$ appears to depend
+partly on how the test images are taken and is still under study.
 
 We ran two experiments to guide our choice of illuminations for
 our large-scale experiments:
@@ -1379,6 +1406,10 @@ algorithm on each of the 3 testing sessions. Our algorithm
 achieves recognition rates above $90\%$ for all three sessions,
 with input {\em directly} obtained from the Viola and Jones'
 face detector; there was no manual intervention for the test images.
+To demonstrate that the SCI-based recognition step is indeed beneficial
+even when there are no imposters, we include results for recognition
+based only on the alignment error residuals, shown in row 6.
+{\bf DISCUSSION OF ZIHAN'S LBP IMPLEMENTATION GOES HERE}
 \begin{table}
 \caption{Recognition rates on large-scale Multi-PIE database.}
 \centerline{
@@ -1394,6 +1425,10 @@ NN$_d$ (NN$_m$)  & 26.4 (67.3)\% & 24.7 (66.2)\% & 21.9 (62.8)\%  \\
 NS$_d$ (NS$_m$) &  30.8 (77.6)\% & 29.4 (74.3)\% & 24.6 (73.4)\% \\
 \hline
 \cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
+\hline
+{LBP} & ?\% & ?\% & ?\% \\
+\hline
+{Algorithm 1 w/o SCI} & 90.7\% & 89.6\% & 87.5\% \\
 \hline
 {Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
 \hline
@@ -1423,8 +1458,31 @@ NS$_d$ (NS$_m$) &  30.8 (77.6)\% & 29.4 (74.3)\% & 24.6 (73.4)\% \\
 \label{fig:failed-examples}
 %\vspace{-.8in}
 \end{figure}
-\subsection{Improving the Performance by Choosing Different Sampling Windows}
+Our algorithm is not designed for recognition when there is only a single
+gallery image per user, and will not achieve competitive performance,
+especially if the illumination in the test image is significantly different
+from the gallery image. For applications that are constrained to a single
+gallery image per user, algorithms such as LBP are much more appropriate.  We
+demonstrate this by running Algorithm 1, as well as our LBP implementation, on
+three standard subsets of the FERET \cite{phillips1998feret} dataset,
+summarized in Table \ref{tab:FERET-recognition}.  
+\begin{table}
+\caption{Recognition rates on single gallery image FERET dataset}
+\centerline{
+\begin{tabular}{|c|c|c|c|c| }
+\hline
+Recognition rate & fb & fc & ? \\
+\hline
+\hline
+{LBP} & ?\% & ?\% & ?\% \\
+\hline
+{Algorithm 1} & ?\% & ?\% & ?\% \\
+\hline
+\end{tabular}
+\label{tab:FERET-recognition} }
+\end{table}
 
+\subsection{Improving the Performance by Choosing Different Sampling Windows}
 Our algorithm's errors are mostly caused by a few subjects who
 significantly change their appearances between sessions (such
 as hair, facial hair, and eyeglasses). Some representative
@@ -1711,7 +1769,7 @@ algorithm on each category.
 Test Category & C1 & C2 & C3 & C4  \\
 \hline
 \hline
-Recognition rate & 98.4\% & 95.8\% & 95.1\% & 40.9\% \\
+Recognition Rate & 98.4\% & 95.8\% & 95.1\% & 40.9\% \\
 \hline
 \end{tabular}
 \label{tab:UIUC-recognition}
@@ -1783,12 +1841,13 @@ recognition with both misalignment and occlusion as an
 interesting future work.\vspace{-0.2in}
 
 \section{Conclusion}\label{sec:conclusion}
-We have proposed a new algorithm and system for recognizing
-human faces from images taken under practical conditions. The
-proposed system is very {\em simple}, {\em scalable} both in
-terms of computational complexity and recognition performance.
-The system is compatible with off-the-shelf face
-detectors.
+Using a well-though-out combination of existing ideas
+(iterative image alignment, l1-error function, SRC, using projectors for
+illumination), one can build a system for recognizing human faces
+from images taken under practical conditions that is conceptually simple, well
+motivated, and competitive with state-of-the-art recognition systems for access
+control scenarios. 
+
 The system achieves extremely {\em stable} performance under
 a wide range of variations in illumination, misalignment, and even under small amounts of
 pose and occlusion. We achieve very good recognition performance on
