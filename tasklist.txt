@@ -1,15 +1,15 @@
 TO DO:
 
-create changelist in second document.
-
 streamline introduction more?
+cut down ALM section slightly? (Arvind)
+discuss convergence more in paper?  I already answered some of the questions in the rebuttal.  At minimum a citation is probably needed.
 
-cut down ALM section slightly (?) (Arvind)
-discuss convergence criteria.  In general discuss motivation for convergence more. (Arvind)
-
+Add brief description of the version of LBP we implemented (Zihan)
 Finalize numbers for LBP on Multi-PIE (Zihan)
 Finalize numbers for Algorithm1 on FERET
 Finalize numbers for LBP on FERET
+
+create changelist in second document, based on a diff of the old with the new .tex file. (Drew)
 
 ---------------DONE: -----------------------------
 make the overall structure of our system clear earlier in the
