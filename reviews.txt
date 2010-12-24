@@ -1,0 +1,296 @@
+Dear Mr. Andrew Wagner,
+
+We have completed the review process of the above referenced paper for the IEEE Transactions on Pattern Analysis and Machine Intelligence and recommend that your paper undergo a Major Revision.
+
+Enclosed are your reviews. If you should choose to revise your paper, please prepare a separate document describing how each of the reviewers' comments are responded to in your revision and send it to us by 20-Jan-2011.
+
+To revise your manuscript, log into https://mc.manuscriptcentral.com/tpami-cs and enter your Author Center, where you will find your manuscript title listed under "Manuscripts with Decisions." Under "Actions," click on "Create a Revision." Your manuscript number has been appended to denote a revision.
+
+Once the revised manuscript is prepared, you can upload it and submit it through your Author Center.
+
+When submitting your revised manuscript, you will be able to respond to the comments made by the reviewer(s) in the space provided. You can use this space to document any changes you make to the original manuscript. In order to expedite the processing of the revised manuscript, please be as specific as possible in your response to the reviewer(s)’ questions and comments. You may also upload your responses as separate files for review along with your revision. If you choose to do this, please choose “Summary of Changes” as the file designation.
+
+IMPORTANT: Your original files are available to you when you upload your revised manuscript. Please delete any redundant files before completing the submission.
+
+When the submission process is complete, you will receive an automated confirmation email immediately. If you did not receive that email, your submission is not yet complete.
+
+I will contact you should we have any concerns or questions regarding your revision. Otherwise, your revision will be forwarded to the assigned Associate Editor with a request to begin the second round of reviews.
+
+Please be mindful when making your revisions that you still need to maintain the size limitations for papers submitted to TPAMI. Our manuscript types and submission length guidelines (including the main text, the abstract, index terms, illustrations and references) are found at,
+
+http://www.computer.org/portal/web/peerreviewjournals/author#manuscript
+
+Please note that double column will translate more readily into the final publication format. Our peer review double column templates can be found at,
+
+http://www.computer.org/portal/web/peerreviewjournals/author#templates
+
+Please do not hesitate in contacting us should you have any questions about our process or are experiencing technical difficulties. You can reach me at tpami@computer.org.
+
+Thank you for your contribution to TPAMI, and we look forward to receiving your revised manuscript.
+
+Thank you,
+
+Andy Morton, Administrator on behalf of Prof. Ramin Zabih, EIC
+IEEE Transactions on Pattern Analysis and Machine Intelligence
+tpami@computer.org
+(800) 627-0326 x454 / (785) 843-1234 x454
+
+**************
+Editor Comments
+
+Editor
+Comments to the Author:
+According ot the reviewers comments the authors should prepapre a major review addressing the specific items outlined. In particular, the authors should better elaborate on the novelty of the method and the advantages with respect to the state of the art as a novel technique/algorithm/application.
+
+********************
+
+Reviewer Comments
+
+Reviewer: 1
+
+Recommendation: Revise and resubmit as “new”
+
+Comments:
+Summary: This paper builds on the SRC framework of Wright et al [4] for face recognition by making it robust to illumination and registration problems. Three important problems are addressed: image misalignment, variations in illumination, and partial occlusion. [4] proposed a L-1 minimization framework to specifically handle occlusion. This paper extends [4] to handle image misalignement and illumination variation.
+
+a) Misalignment is removed by iteratively finding a transformation which minimizes the L-1 norm of the error between the transformed test image and the closest representation of it from a class of training images. L-1 norm is more robust to occlusions than L-2 norm as argued in [4]. Since minimizing L-1 norm is computationally harder the authors use an augmented lagrange multiplier (ALM) approach to make the algorithm faster.
+
+b) Illumination effects are handled by building a dataset with a large gallery of images under different illumination conditions including illumination behind the subject.
+
+To illustrate the effectivenes of the approach experiments are performed on the Extended Yale B dataset, Multi PIE dataset and on the dataset built by the authors where the test images are collected under natural conditions.
+
+
+Presentation:
+The paper is presented well, and easy to understand but it can be shortened considerably without losing important information. For example, Section II-D is quite long and the description of the ALM algorithm can be cut down especially since it is not a contribution of the paper. The discussion about illumination in III-A is a standard discussion, especially in face recongnition, and can be cut down too. Also, section III-B while relevant to the narrative of the paper is long and can be cut down significantly. For example, the idea of using projectors with a reflecting wall for illumination is a well known idea (see below for reference). Also, the importance of gamma compression while classifying (III-D) can be described in a couple of sentences and doesn't warrant a paragraph.
+
+Positioning and Novelty:
+The paper validly raises the problems of current face recognition algorithms under practical settings but unfortunately it doesnt live up to the standards it sets in the first paragraph. Fundamentally, this paper assumes that it is good to have a large gallery, which I agree, but only if it is possible and makes sense. Naturally, without rendundancy of some sort it would be hard to handle partial occlusion which as I mentioned is the strength of the paper.
+The paper assumes a restrictive setting where a lot of gallery images, which are all aligned, are available. If such a gallery were indeed available then the same subjects would cooperate for access control as pointed out in lines 19-25 on page 2, line 4-7 on page 4 and 23-27 on page 4. In such a case, most of the occlusion problems which the paper solves wouldn't be a real issue and the need for using an elaborate L-1 minimization approach for finding the transformation is questionable.
+
+
+Detailed Technical Comments:
+The paper certainly succeeds in making the method more robust to the above mentioned factors. Unfortunately, a significant lack of understanding about issues involved and the challenges of face recognition is demonstrated. Despite claims of a 'practical system', practical issues of the face recognition field are not considered. Comparisons are made to pattern recognition toolboxes like PCA, LDA and not to real systems. The philosophical underpinnings of the paper are myopic. The paper fails to place its contributions in practical context i.e. positioning needs a lot more work. More details below.
+
+1. SRC based methods are based on the implicit assumption that users are co-operative, which allows sufficient population of the dictionary. This limits the applicability to access-control type settings where users readily enroll their biometric and even co-operate at the recognition stage. Now any practitioner of biometrics will readily inform us that in such nice settings, fingerprint or iris is a far more reliable and convenient biometric than face. Further, with co-operative subjects is occlusion really a problem ? Given the fact that SRC requires enrollment with fancy illumination patterns as proposed in this paper, a practitioner would consider this even more of a liability for using faces as a biometric. Thus, in the applications implicitly targeted by SRC, it has questionable impact !
+
+2. Face as a biometric really has impact in cases where users do not necessarily co-operate - especially at the enrollment stage. Think of identifying terrorists at airports. They certainly would not have enrolled their other biometrics like fingerprint or iris. In such cases, face is the only viable means of identifying them. But in such cases, there is no control over what constitutes the gallery. We have to use whatever is available to us. Thus, the field of face recognition has set itself the goal of recognition with as few gallery images as possible. Therefore, in these applications the proposed philosophy as said in the paper - "it makes no sense to limit the gallery to a single image per person" - has questionable impact !
+
+3. Even if one were to subscribe to the philosophy of this paper, and were to compare different methods in this restrictive setting for face recognition where one has freedom to choose the gallery, any practitioner would tell us that baseline methods such as PCA, LDA are really just that - baselines. No practical system works on PCA and LDA. We are hitting 20 years since PCA was introduced for FR. PCA and LDA have been around for close to a 100 years as pattern recognition tools. In the last ten years, many newer pattern recognition toolboxes have been used such as SVMs, Neural Nets, non-linear classifiers, Kernel machines and more recently partial least squares (PLS), etc. So if SRC is to be viewed as a pattern recognition toolbox, then it needs to be compared with other toolboxes beyond just PCA and LDA. And what about feature based methods for FR ? Real systems are often combinations of interesting features and classifiers. It is conceivable that SRC is applicable to any feature as well - which underscores the fact that it is simply a pattern classification toolbox - on par with any found in a textbook on pattern recognition. What is it that makes it special for face recognition ?
+
+4. The role of datasets is somewhat overemphasised in the paper. But equating the dataset with the problem itself is fallacious. Two methods that work in the same ballpark -- such as the method of [39] and the proposed one in table I -- make the conclusion that one is better than the other meaningless. Statements such as "although the new window performs better on Multi-PIE, the same window doesn't help at all on our own database", reveal that the role of a dataset is over emphasised ! In any case, there are many other standard datasets from NIST such as FRGC, FRVT, FERET, MBGC etc which are used to grade face recognition algorithms. More recently there is a new dataset from NIST - Good, Bad, Ugly - GBU which is considered challenging. It is important to test new methods on these datasets to know where one stands with respect to state-of-the-art recognition algorithms and systems. Old datasets like PIE, AR are considered legacy datasets.
+
+5. The comparisons to [4] and [39] are not sufficient since that would be restricting to only algorithms with similar framework.
+
+6. Credit is due to the original SRC paper which demonstrated that it is indeed more robust than some other standard methods for recognition. In all honesty, this is simply to be viewed as a pattern recognition toolbox with some favorable properties. It is certainly not an answer to all the problems of face recognition research, which is what the claims and philosophy of this paper seemingly make it out to be.
+
+7. The advantage of methods such as [6] and [7] is in the ability to handle large variations in pose in an unrestricted setting and the advantages of those methods can't be dismissed. The real contribution of this paper is in handling occlusion under small misalignments and under varying illumination and as such is an extension of [4]. But this comes at a cost of performance loss when there are large variations in pose. The paper should make a considerable effort in contrasting the pros and cons of various prior methods with that of this paper to warrant a PAMI publication.
+
+8. In section I-B, it is said that registration and illumination are "strongly coupled". What is this strong coupling ? This is not elaborated anywhere in the paper.
+
+9. In section II-B, it is claimed "near the correct alignment.... testing image to differ .. only for the minority of pixels corrupted by occlusion". I would like to see this demonstrated - even slight error in registration will cause non-sparse errors related to underlying edges - and not related to occlusion ! Now it may be the case that at low resolutions the edges are blurred out so that the errors in registration do not give rise to significant pixelwise errors. But this would be countering the claims of the paper that registration is a major issue. It is known empirically that registration effects can be somewhat mollified by blurring the image or downsampling the image - which is what is being done in experiments - but with an algorithmic considerations are cited as the reason. Is it the case that unknowingly registration problems have been mollified by this ? This needs significant elaboration.
+
+10. In section III-A, there is this discussion on scattered light being sufficient to assure linear models for illumination. What exactly is scattered light ? Is there a reference that proves this statement ? If not, shouldn't the proof be included somewhere ?
+
+11. The paper eventually makes intuitive assumptions about lighting without rigorous justification. Is it really to be considered a 'sufficient set' of illuminations without justification ? Or does it simply fall in the philosophy of inundating with more data when you can afford it ?
+
+12. The discussion in section I-A on illumination acquisition setups is incomplete and surely it is not a novelty. Using projectors for indirect illumination is not a new idea. It has been used for acquiring BRDFs in the graphics community for a long time. The advantages of projectors over LED type light sources is well documented. Please see papers by Schechner et al etc for example:
+
+Y. Y. Schechner, S. K. Nayar, P. N. Belhumeur " A Theory of multiplexed illumination", ICCV 2003.
+Y. Y. Schechner, S. K. Nayar, P. N. Belhumeur "Multiplexing for Optimal Lighting", PAMI 2007.
+
+13. The paper anyway tackles registration and recognition separately. So the same registration algorithm can be used with any other recognition algorithm as well. How exactly is this framework coherently dealing with registration and recognition ?
+
+14. In algorithm 1, step 13 all the training images are aligned by the respective transformation of the class. Wouldn't that require extensive computation when the number of classes increase. Also, since the training images are all aligned frontally with different illumination how different are \tau_i for each class. Wouldn't it be possible to use a generic face to estimate the alignment of the test image?
+
+15. Adapting the transformation estimation algorithm to a L-1 norm cost function is not novel and doesn't add much to the face recognition literature. Similarly building a large gallery under varying illumination does not even count as a contribution. But the authors do make an interesting point that if such a gallery is to be built then having illumination from behind improves the recognition rate.
+
+Summary Recommendation: While the paper has certain merits, there is a lack of clarity on positioning the paper. If this is a system, then why no other real systems are considered. If it is a toolbox, then why the best toolboxes are not considered. Need to either conclusively prove that it is more practical than other real systems instead of token toolboxes. Or simply reposition the paper with more justifiable claims. One way to do this would be to simply call this a toolbox and provide rigorous comparisons to state-of-the-art toolboxes. These issues need to be addressed before the paper can be considered further. In the current form, the differences with the conference version are not very significant.
+
+Additional Questions:
+1. Which category describes this manuscript?: Research/Technology
+
+2. How relevant is this manuscript to the readers of this periodical? If you answer Not very relevant or Irrelevant please explain your rating under Public Comments below.: Relevant
+
+1. Please evaluate the significance of the manuscript’s research contribution.: Fair - Even with the recommended changes, the contribution of this paper is unlikely be significant enough for publication in TPAMI.
+
+2. Please explain how this manuscript advances this field of research and/or contributes something new to the literature. : Summary: This paper builds on the SRC framework of Wright et al [4] for face recognition by making it robust to illumination and registration problems. Three important problems are addressed: image misalignment, variations in illumination, and partial occlusion. [4] proposed a L-1 minimization framework to specifically handle occlusion. This paper extends [4] to handle image misalignement and illumination variation.
+
+3. Is the manuscript technically sound? In the Public Comments section, please provide detailed explanations to support your assessment: Partially
+
+4. How thorough is the experimental validation (where appropriate)? Please discuss any shortcomings in the Public Comments section.: Lacking in some respects; some cases of interest not tested
+
+1. Are the title, abstract, and keywords appropriate? If not, please comment in the Public Comments section.: Yes
+
+2. Does the manuscript contain sufficient and appropriate references? Please comment and include additional suggested references in the Public Comments section.: Important references are missing; more references are needed
+
+3. Does the introduction state the objectives of the manuscript in terms that encourage the reader to read on? If not, please explain your answer in the Public Comments section.: Yes
+
+4. How would you rate the organization of the manuscript? Is it focused? Please elaborate with suggestions for reorganization in the Public Comments section.: Satisfactory
+
+5. Please rate the readability of the manuscript. Explain your rating under Public Comments below. : Easy to read
+
+6. How is the length of the manuscript? If changes are suggested, please make explicit recommendations in the Public Comments section.: Should be trimmed a bit
+
+Please rate the manuscript overall. Explain your choice.: Fair
+
+
+Reviewer: 2
+
+Recommendation: Author Should Prepare A Minor Revision
+
+Comments:
+The presented approach may be applicable to certain open world problems. This
+is an advantage over most existing methods. However, I have several concerns:
+
+The approach casts the problem as constrained optimization, without discussing
+potential numerical pitfalls.
+In general, when solving a nonconvex constrained optimization problem, it
+may be safer to sit by the computer and watch the progress, perhaps varying
+some parameters if the progress is too slow or if an infinite loop has been
+encountered. Moreover, one may (re)start from many initial points to convince
+him/her self that the solution is global, and not local.
+The authors say they use linear approximation and go through iterations. The
+justification is that the starting point is close to the solution. But,
+although, the starting point may be close to solution in some sense, it may
+very well be in the basin of attraction of a wrong face.
+
+It would be informative to know:
+
+(i) How often an infinite loop is encountered, and how it is handled.
+(ii) How often the starting point happens to be located in a wrong basin of
+attraction, i.e. a wrong face. (If there is any way to know this.)
+(iii) How often the solution gets drifted away into a wrong basin of
+attraction. (If there is any way to know this.)
+
+
+(iv) Both presented algorithms (pages 11 and 14) involve going through one or
+two loops until convergence is achieved. What is the criteria or threshold
+for convergence? If the threshold is stringent, the algorithms are likely
+to get stuck in infinite loops, and if the threshold is liberal, premature
+convergence would occur. How are such thresholds picked and how universal
+are they? Does every new dataset need its own threshold?
+
+
+(v) In page 12-13 the manuscript reads:
+
+"To further reduce the complexity of the problem, we adopt an
+approach used in [32], called alternating direction method of
+multipliers [33], which proposes to minimize L_{mu}(x,e,lambda_{k})
+with respect to x and e separately."
+
+The problem, however, is that if we minimize a function one variable at
+a time, we may actually end up increasing the function value. Given that
+the proposed system is automated, the question is what does the algorithm
+or the system do when this happens?
+
+
+
+
+Additional Questions:
+1. Which category describes this manuscript?: Research/Technology
+
+2. How relevant is this manuscript to the readers of this periodical? If you answer Not very relevant or Irrelevant please explain your rating under Public Comments below.: Relevant
+
+1. Please evaluate the significance of the manuscript’s research contribution.: Good
+
+2. Please explain how this manuscript advances this field of research and/or contributes something new to the literature. : In a previous publication, the authors have shown that their approach gives better results than other approaches when images are perfectly registered. In this paper, they extend the approach to loosely registered images for scenarios such as access control where the user is cooperative and can be photographed under a variety of illuminations during system training.
+
+3. Is the manuscript technically sound? In the Public Comments section, please provide detailed explanations to support your assessment: Partially
+
+4. How thorough is the experimental validation (where appropriate)? Please discuss any shortcomings in the Public Comments section.: Lacking in some respects; some cases of interest not tested
+
+1. Are the title, abstract, and keywords appropriate? If not, please comment in the Public Comments section.: Yes
+
+2. Does the manuscript contain sufficient and appropriate references? Please comment and include additional suggested references in the Public Comments section.: References are sufficient and appropriate
+
+3. Does the introduction state the objectives of the manuscript in terms that encourage the reader to read on? If not, please explain your answer in the Public Comments section.: Yes
+
+4. How would you rate the organization of the manuscript? Is it focused? Please elaborate with suggestions for reorganization in the Public Comments section.: Could be improved
+
+5. Please rate the readability of the manuscript. Explain your rating under Public Comments below. : Readable - but requires some effort to understand
+
+6. How is the length of the manuscript? If changes are suggested, please make explicit recommendations in the Public Comments section.: Should be trimmed a bit
+
+Please rate the manuscript overall. Explain your choice.: Good
+
+
+Reviewer: 3
+
+Recommendation: Author Should Prepare A Minor Revision
+
+Comments:
+I would have liked to see the experiment for the case S=1, without
+impostors in the dataset, to judge the effect of the "Sparse
+Concentration Index". The SCI seems to be a bit of an appendix to the
+system, to make the system fit into the "Sparse Representation"
+pidgeonhole.
+
+Generally, I would also retitle the paper to include "robust measure"
+instead of "sparse representation", as the L1 Cost is just a robust
+cost, and the system would probably work as well or better with other
+(even non-convex) robust cost functions.
+
+Regarding the organization of the paper, it became only clear after
+many pages that the recognition algorithm alluded to in figure 1 is
+not used for recognition in the paper, but is only used for impostor
+rejection.
+
+I did not rate the paper as "Easy to Read", because it is meandering a
+bit. It might be possible to streamline the introduction a bit more,
+such that it clearly describes the algorithm before going into the
+details.
+
+Using and requiring several input images of a person asks for a
+comment on the advantage or difference to a system that uses
+a 3D representation of a face. Please comment on this!
+
+Additional Questions:
+1. Which category describes this manuscript?: Research/Technology
+
+2. How relevant is this manuscript to the readers of this periodical? If you answer Not very relevant or Irrelevant please explain your rating under Public Comments below.: Very Relevant
+
+1. Please evaluate the significance of the manuscript’s research contribution.: Good
+
+2. Please explain how this manuscript advances this field of research and/or contributes something new to the literature. : The paper describes an 2D face recognition system, focusing on the
+need to align the test and training images properly to make a
+decision. The system corrects for a homographic distortion between the
+training face and the target image. A speciality of this approach is,
+that for each subject in the training gallery a large number of images
+with varying lighting but exactly the same pose is acquired. A probe
+image for which the identity has to be determined is then matched
+against the subspaces spanned by the linear combinations of these
+training images for every subject. As the gallery images of a single
+subject are perfectly registered due to the acquisition setup, it is
+valid to use a linear subspace to describe the lighting variations.
+The probe image is registered with each subspace using a coordinate
+descend approach.
+
+The probe is assigned to the identity, which resulted in the smallest
+registration residual.
+
+Additionally, it is tested if the probe image can be well represented
+by images from only a single individual, or if images from more than
+one individual are necessary to describe the probe. If a single
+individual does not give a good representation of the probe, then it
+is rejected as an impostor. This heuristic was termed "Sparse
+Concentration Index".
+
+Throughout the paper robust costs are used, to improve recognition performance.
+
+3. Is the manuscript technically sound? In the Public Comments section, please provide detailed explanations to support your assessment: Yes
+
+4. How thorough is the experimental validation (where appropriate)? Please discuss any shortcomings in the Public Comments section.: Lacking in some respects; some cases of interest not tested
+
+1. Are the title, abstract, and keywords appropriate? If not, please comment in the Public Comments section.: No
+
+2. Does the manuscript contain sufficient and appropriate references? Please comment and include additional suggested references in the Public Comments section.: References are sufficient and appropriate
+
+3. Does the introduction state the objectives of the manuscript in terms that encourage the reader to read on? If not, please explain your answer in the Public Comments section.: Yes
+
+4. How would you rate the organization of the manuscript? Is it focused? Please elaborate with suggestions for reorganization in the Public Comments section.: Could be improved
+
+5. Please rate the readability of the manuscript. Explain your rating under Public Comments below. : Readable - but requires some effort to understand
+
+6. How is the length of the manuscript? If changes are suggested, please make explicit recommendations in the Public Comments section.: About right
+
+Please rate the manuscript overall. Explain your choice.: Good 
