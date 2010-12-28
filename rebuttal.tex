@@ -40,96 +40,129 @@
 
 We thank the reviewers for their constructive comments, and in particular
 reviewer 1 for an extra in-depth review.  While we have philosophical
-differences on several points, we deeply appreciate that the valuable constructive 
-criticisms raised by the reviewers have helped us strengthen the paper considerably.  
-Below we will respond to comments of the reviewers in order as well as indicate 
-specific changes that we have made to address their concerns.
+differences on several points, we deeply appreciate that the valuable
+constructive criticisms raised by the reviewers have helped us strengthen the
+paper considerably.  Below we will respond to comments of the reviewers in
+order as well as indicate specific changes that we have made to address their
+concerns.
 
+\section{Respond to Reviewer \#1} Reviewer 1 makes several specific
+recommendations for improving the presentation of the paper, many of which we
+have heeded.  Please refer to the change list for details. 
 
-\section{Respond to Reviewer \#1}
-Reviewer 1 makes several specific recommendations for improving the
-presentation of the paper, many of which we have heeded.  Please refer to the change
-list for details. 
+\paragraph{About Presentation:} The reviewer has suggested we can reduce the
+description of the ALM algorithm in Section II-D. We agree ALM has been
+extensively studied in the optimization literature. We do not claim any novelty
+here. However, we believe a complete description of the algorithm here is
+important for the TPAMI audience: There are many algorithms for solving the
+associated optimization problem, with drastically different complexity and
+speed. Typical vision researchers might not be so familiar with some of the
+recent developments in these algorithms. In particular some of the more
+effective improvements to ALM are fairly recent and scattered accross the
+litterature.  In fact, many of the questions raised by reviewer \#2 ask for
+even more detailed explanation about the algorithms. We feel that a complete
+but brief description of the ALM-based algorithm is important for the audience
+of TPAMI to implement and test the ideas efficiently and correctly.
 
-\paragraph{About Presentation:} The reviewer has suggested we can reduce the description
-of the ALM algorithm in Section II-D. We agree ALM has been extensively studied in the optimization 
-literature. We do not claim any novelty here. However, we believe a complete description of the algorithm 
-here is important for the TPAMI audience: There are
-many algorithms for solving the associated optimization problem, with drastically different complexity
-and speed. Typical vision researchers might not be so familiar with some of the recent
-developments in these algorithms. In particular some of the more effective improvements to ALM are fairly 
-recent and scattered in different literatures. In fact, many of the questions raised by reviewer \#2
-ask for even more detailed explanation about the algorithms. So we believe, a complete but brief 
-description of the ALM-based algorithm is important for the audience of TPAMI to implement and 
-test the ideas efficiently and correctly.
+We find other suggestions on presentation useful and have made changes
+accordingly. 
 
-We find other suggestions on presentation useful and have made changes accordingly. 
+\paragraph{About Positioning and Novelty:} As we have tried to make it clear in
+the very beginning, the proposed method does not aim to solve face recognition
+for all scenarios! It is not designed for the case where the training is
+uncontrolled and limited, hence it may not have any advantages over other face
+recognition techniques/systems specifically designed for such scenarios.
+However, there are many practical scenarios where the proposed system is very
+relevant: access control or recognizing refugees, where cooperative training
+images can (and should) be obtained in advance but NO COOPERATIVE TEST IMAGES
+ARE NEEDED OR AVAILABLE. No need of cooperative test images is arguably the
+main (or only) advantage that face recognition has over other biometric
+measures for security, such as fingerprint, iris, and DNA.  If the subjects can
+cooperate for both training and testing, as suggested by the reviewers, then
+face recognition may no longer be the best choice, in terms of cost and
+accuracy. The proposed system is an attempt to build a system that is not only
+accurate and robust enough to compete with other biometric measures but also
+discreet and non-intrusive when in use. To the best of our knowledge (probably
+the reviewer may agree), even for this admittedly restricted scenario, there is
+no practical face-recognition system whose performance can meet the standards
+of most access control and security purposes. Existing systems have found
+success  mostly in applications that are less-demanding in performance such as
+online image search or photo album organization etc. 
 
-\paragraph{About Positioning and Novelty:}
-As we have tried to make it clear in the very beginning, the proposed method does not aim to solve face 
-recognition for all scenarios! It is not designed for the case where the training is uncontrolled and limited, hence it
-may not have any advantages over other face recognition techniques/systems specifically designed for such scenarios. 
-However, there are many practical scenarios where the proposed setting is very relevant: access control
-or recognizing refugees, where cooperative training images can (and should) be obtained in advance but no cooperative test
-images are needed or available. No need of cooperative test images is arguably the main (or only) advantage that 
-face recognition has over other biometric measures for security, such as fingerprint, iris, and DNA. 
-If the subjects can cooperate for both training and testing, as suggested by the reviewers, then face 
-recognition may no longer be the best choice, in terms of cost and accuracy. The proposed system is an attempt
-to build a system that is not only accurate and robust enough to compete with other biometric measures but also 
-discreet and non-intrusive when in use. To the best of our knowledge (probably the reviewer may agree), even 
-for this admittedly restricted scenario, there is no practical face-recognition system whose performance can meet
-the standards of most access control and security purposes. Existing systems have found success  mostly in applications
-that are less-demanding in performance such as online image search or photo album organization etc. 
+\paragraph{About Summary Recommendation:} While we agree with the reviewer that
+careful evaluation of our system is needed by comparing it with other face
+recognition techniques/systems, we must point out that most face recognition
+systems are not designed for the scenario considered by this paper, hence a
+fair and meaningful comparison can be difficult. Nevertheless, to better
+evaluate both the strengths and limitations of our method, we have added an
+experimental comparison of our system with LBP, one of the leading techniques
+used for face verification for most commercial face recognition systems (in
+addition to other techniques already compared in the paper). We compare both
+methods with the same settings on two datasets that are representative of
+controlled and uncontrolled training: the Multi-PIE and the FERET datasets.
+The results indicate both suboptimal performance of LBP for applications where
+many controlled training images (under different illuminations) are available,
+and conversely, suboptimal performance of our algorithm on the FERET dataset
+where the training is not controlled nor sufficient.
 
-\paragraph{About Summary Recommendation:} While we agree with the reviewer that careful evaluation of our
-system is needed by comparing it with other face recognition techniques/systems. We must point out that most face recognition systems are not designed for the scenario considered by this paper, hence a fair and meaningful comparison can be difficult. Nevertheless, to better evaluate both the strength and limitation of our method, we have added experimental comparison of our system with LBP, one of the leading techniques used for face verification for most commercial face recognition systems (in addition to other techniques already compared in the paper). We compare both methods with the same settings on two datasets that are representative of controlled and uncontrolled training: the Multi-PIE and the FERET
-datasets.  The results indicate both suboptimal performance of LBP for applications where many controlled training images (under different illuminations) are available, and conversely, suboptimal performance of our algorithm on the FERET dataset where the training is not controlled nor sufficient.
+\paragraph{Detailed Concerns or Comments by Reviewer 1:} \begin{enumerate}
+\item As we have mentioned earlier, we completely agree with the reviewer that
+if the users are completely cooperative at both training and testing phases,
+face recognition may not necessarily be the best choice of biometric measure --
+fingerprint and iris are arguably better choices. However, our method does NOT
+require the users to be cooperative at the test stage. The purpose of having a
+good training set and a robust recognition system is precisely to alleviate the
+users from being so cooperative at the test stage. This will allow the system
+to be less intrusive and much more user-friendly as it can handle typically
+daily change of faces such as occlusion by glasses, hats, or beard and
+variation in lighting and shadow. Ideally, face recognition will take place
+automatically and unknowingly as a user walks through a door or works in front
+a desktop.
 
-\paragraph{Detailed Concerns or Comments by Reviewer 1:}
-\begin{enumerate}
-\item As we have mentioned earlier, we completely agree with the reviewer that if the users are completely cooperative at
-both training and testing phases, face recognition may not necessarily be the best choice of biometric measure -- fingerprint
-and iris are arguably better choices. However, our method does NOT require the users to be cooperative at the test
-stage. The purpose of having a good training set and a robust recognition system is precisely to alleviate the users 
-from being so cooperative at the test stage. This will allow the system to be less intrusive and much more user-friendly 
-as it can handle typically daily change of faces such as occlusion by glasses, hats, or beard and variation in lighting and shadow. Ideally, face recognition will take place automatically and unknowingly as a user walks through a door or works in front a desktop.
+In addition, if the accuracy and reliability of a face recognition system can
+truly get close to that of fingerprint and iris, it can serve as a
+complementary measure in a multi-modal system and improve the overall security
+for high-stake applications. To the best of our knowledge, no existing face
+recognition system, with or without cooperative training, comes close to meet
+the standards of high-stake security applications. 
 
-In addition, if the accuracy and reliability of a face recognition system can truly get close to that of fingerprint and iris, it can serve as a complementary measure in a multi-modal system and improve the overall security for high-stake applications. To the best of our knowledge, no existing face recognition system, with or without cooperative training, comes close to meet the standards of high-stake security applications. 
-
-Furthermore, we have found that the use of the L1-norm as a robust error function improves performance 
-even when the test image does not contain occlusions.  Any boundaries where the intensity changes in a
-misaligned image can result in a large localised error component.  While
-unoccluded faces are mostly smooth, sharp boundaries still occur where there
-are cast shadows, especially at depth discontinuities such as the nostrils, the
-sides of the nose, and partially open mouths.  
+Furthermore, we have found that the use of the L1-norm as a robust error
+function improves performance even when the test image does not contain
+occlusions.  Any boundaries where the intensity changes in a misaligned image
+can result in a large localised error component.  While unoccluded faces are
+mostly smooth, sharp boundaries still occur where there are cast shadows,
+especially at depth discontinuities such as the nostrils, the sides of the
+nose, and partially open mouths.  
 
 
 \item Reviewer 1's interest in face recognition for terrorist watchlist and law
 enforcement applications is of limited relevance to the evaluation of this
 article.  By claiming that ``the field of face recognition has set itself the
 goal of recognition with as few gallery images as possible,'' the reviewer is
-conflating the constraints of one particular type of applications of face recognition
-(surveillance) with those of face recognition as a whole. This is a (noble) goal probably easy to
-set than to meet. Although progresses have been made towards this goal, the reviewer
-probably has to agree that after several decades (and several high-profile failures of
-face recognition systems in real-world testing), people are still looking for techniques 
-that can achieve the performance required by high-end applications such as homeland 
-security. We believe that, before such techniques can be found or such a goal can be
-achieved at all, we should not preventing ourselves from making progress in developing systems that 
-can already provide good guarantee for success, even if the conditions are somewhat limited. 
+conflating the constraints of one particular type of applications of face
+recognition (surveillance) with those of face recognition as a whole. This is a
+(noble) goal probably easy to set than to meet. Although progresses have been
+made towards this goal, the reviewer probably has to agree that after several
+decades (and several high-profile failures of face recognition systems in
+real-world testing), people are still looking for techniques that can achieve
+the performance required by high-end applications such as homeland security. We
+believe that, before such techniques can be found or such a goal can be
+achieved at all, we should not preventing ourselves from making progress in
+developing systems that can already provide good guarantee for success, even if
+the conditions are somewhat limited. 
 
-A huge part of the message of our paper is that for applications that allow it, we can and should
-be gathering more and higher quality data at enrollment to our advantage. In fact, majority 
-of the crime watch-list consists of criminals who have been committed before. Today,
-the acquisition standards for fingerprints are far more strict than that for
-capturing face images of criminals and foreigners -- precisely because they are shown to
-help fingerprint identification systems. Of course, the idea of better training helps is certainly
-not new or even recent.  What is new is the confluence of: 1. The availability
-of hardware to efficiently acquire such data (high intensity, high contrast
-ratio DLP projectors), 2. Robust and efficient computational tools to use such data in a
-principled fashion, 3. Computer hardware fast enough to even contemplate using
-entire images as features.
-
+A huge part of the message of our paper is that for applications that allow it,
+we can and should be gathering more and higher quality data at enrollment to
+our advantage. In fact, majority of the crime watch-list consists of criminals
+who have been committed before. Today, the acquisition standards for
+fingerprints are far more strict than that for capturing face images of
+criminals and foreigners -- precisely because they are shown to help
+fingerprint identification systems. Of course, the idea of better training
+helps is certainly not new or even recent.  What is new is the confluence of:
+1. The availability of hardware to efficiently acquire such data (high
+intensity, high contrast ratio DLP projectors), 2. Robust and efficient
+computational tools to use such data in a principled fashion, 3. Computer
+hardware fast enough to even contemplate using entire images as features.
 
 \item ``It is conceivable that SRC is applicable to any feature as well - which
 underscores the fact that it is simply a pattern classification toolbox - on
@@ -140,27 +173,28 @@ Most general pattern classification algorithms do not take into account the
 physically motivated linear model that is central (though by no means unique)
 to the problem of illumination variation.
 
-\item Our goal is not to achieve the best recognition rates on the NIST family of
-benchmarks (FERET, FRVT, FRGC, MBGC, GBU); rather it is to advance state of
+\item Our goal is not to achieve the best recognition rates on the NIST family
+of benchmarks (FERET, FRVT, FRGC, MBGC, GBU); rather it is to advance state of
 the art in face recognition given cooperative subjects.  The motivating
 application of the NIST data sets is government law enforcement (originally for
 enforcement of drug prohibition, and more recently shifting towards border
 security).  This requires backwards compatibility with old image data, some of
-which was gathered before computers and digital cameras were even in widespread use.  
-Due to these historical reasons, none of these data sets contain multiple controlled
-illuminations.  For example, FRGC contains at most two illuminations per person
-in the gallery.  (Two studio lights were kept on, and a third light was
-switched either on or off.) The techniques used to gather these data sets are not a wise 
-choice for applications where users are cooperative (foreigners applying for a visa)
-or forced to be so (suspects or criminals in custody), and are needlessly
-restrictive.  While large public data sets are critical to the rigorous
-comparison of recognition algorithms, their existence should not be used to
-argue against the development of new data acquisition techniques and algorithms
-appropriate for them.
+which was gathered before computers and digital cameras were even in widespread
+use.  Due to these historical reasons, none of these data sets contain multiple
+controlled illuminations.  For example, FRGC contains at most two illuminations
+per person in the gallery.  (Two studio lights were kept on, and a third light
+was switched either on or off.) The techniques used to gather these data sets
+are not a wise choice for applications where users are cooperative (foreigners
+applying for a visa) or forced to be so (suspects or criminals in custody), and
+are needlessly restrictive.  While large public data sets are critical to the
+rigorous comparison of recognition algorithms, their existence should not be
+used to argue against the development of new data acquisition techniques and
+algorithms appropriate for them.
 
-\item We have added comparison with a Local Binary Patterns based recognition system, and
-have shown that both our system and LBP perform better in the application domains or settings
-for which they were designed.  Please see the change list for details. 
+\item We have added comparison with a Local Binary Patterns based recognition
+system, and have shown that both our system and LBP perform better in the
+application domains or settings for which they were designed.  Please see the
+change list for details. 
 
 \item Although we claim to have a preliminary system that works in a realistic
 access control setting, we have never claimed that our method solves all problems in face
@@ -171,14 +205,16 @@ of our method.
 
 If it helps, we will try to tone down the rhetoric in XYZ places. UNFINISHED!!
 
-\item We will add further discussion contrasting the advantages and disadvantages of our
-system vs. systems incorporating 3D models. This paper does not intend to deal with large 3D pose
-although the proposed techniques are directly applicable to the cases when images of more poses or 
-even a full 3D models are available. 
+\item We will add further discussion contrasting the advantages and
+disadvantages of our system vs. systems incorporating 3D models. This paper
+does not intend to deal with large 3D pose although the proposed techniques are
+directly applicable to the cases when images of more poses or even a full 3D
+models are available. 
 
 \item The issues of (mis)alignment and illumination variance are coupled in the
-sense that if one problem is solved, the other problem becomes a lot easier. But solving them
-separately is not sufficient for solving the face recognition problem. 
+sense that if one problem is solved, the other problem becomes a lot easier.
+But solving them separately is not sufficient for solving the face recognition
+problem. 
 
 \item If the data fits our model perfectly, at the correct alignment the only
 corruptions are due to occlusions.  Until the images are perfectly aligned,
@@ -189,16 +225,16 @@ algorithm to its solution.  We explicitly do blur and downsample the images to
 mollify registration effects; multiscale alignment is a well-known technique,
 and is not new to our paper.  
 
-\item We have removed the reference to scattered light, as there appear to
-be several common uses of the term.  That said, it is true that linear illumination
-models are physically motivated for scenes far more general than for convex 
-lambertian objects.  Maxwell's equations in free space are linear, and materials
-that create non-linear boundary conditions are the exception
-rather than the rule.  Without proportionality between radiance and irradiance 
+\item We have removed the reference to scattered light, as there appear to be
+several common uses of the term.  That said, it is true that linear
+illumination models are physically motivated for scenes far more general than
+for convex lambertian objects.  Maxwell's equations in free space are linear,
+and materials that create non-linear boundary conditions are the exception
+rather than the rule.  Without proportionality between radiance and irradiance
 the concept of a Bidirectional Reflectance Distribution Function and its
 generalizations are not even meaningful. 
 
-\item Rigorous justification of the choice of illuminations is a subject of 
+\item Rigorous justification of the choice of illuminations is a subject of
 continuing research.  Our current choice is motivated empirically by the
 experiments described in the paper. 
 
@@ -223,8 +259,8 @@ more complex extensions to our work.
 computation for the alignment stage is linear in the size of the gallery.  The
 variation in alignment across classes is indeed small, but still changes the
 objective enough to affect recognition results.  Aligning to a generic face (or
-a gallery based on ``aligned'' images of many people) is a good idea, and one we
-have considered as well.  If nothing else, it could be used to improve
+a gallery based on ``aligned'' images of many people) is a good idea, and one
+we have considered as well.  If nothing else, it could be used to improve
 alignment initialization instead of using raw face detector output.  It may
 also be useful to use the roughly aligned test image to quicky eliminate some
 of the classes from further consideration.  Again, we have deliberately tried
