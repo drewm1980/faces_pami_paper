@@ -232,7 +232,7 @@ algorithm design, starting with a minimalist foundation benefits both
 practitioners as well as researchers.  Other researchers have already published
 more complex extensions to our work.
 
-\item  {\bf There is no extensive computation involved in
+\item  There is no extensive computation involved in
     Step 13 of Algorithm 1. In fact, for each candidate
     subject $i\in {k_1, \ldots, k_s}$ for recognition, Step
     13 simply uses the transformation $\tau_i$ obtained
@@ -245,7 +245,7 @@ more complex extensions to our work.
     computation for the alignment stage (Step 2-9) is
     linear in the size of the gallery. However, thanks to
     its separability, the alignment stage can be easily
-    parallelized.}
+    parallelized.
 
     The variation in alignment across classes is indeed
     small, but still changes the objective enough to affect
@@ -312,7 +312,7 @@ threshold is liberal, premature convergence would occur. How are such
 thresholds picked and how universal are they? Does every new dataset need its
 own threshold?''
 
-{\bf For the $\ell_1$ minimizations we terminate the ALM
+For the $\ell_1$ minimizations we terminate the ALM
 algorithm when the relative changes of primal variables in
 two consecutive iterations become small, as suggested by
 [27]. That is,
@@ -327,7 +327,7 @@ eventually, although convergence may be very slow if they
 are chosen poorly. For the alignment
 iteration, we terminate when the change of objective value
 (\ie $\|\e\|_1$) in two consecutive iterations becomes
-small.} We use the same set of convergence thresholds for
+small. We use the same set of convergence thresholds for
 all the data sets we ran against. 
 
 \item (v) ``The problem, however, is that if we minimize a function one variable at
@@ -348,7 +348,7 @@ Reviewer 3 makes the following requests:
 impostors in the dataset, to judge the effect of the ``Sparse
 Concentration Index''.
 
-{\bf We have added experiments to the paper demonstrating
+We have added experiments to the paper demonstrating
 the utility of the sparse representation(SR)-based
 recognition stage for classification.  In general, we see a
 few percentage points of improvement in recognition rate
@@ -358,7 +358,7 @@ recognition based purely on alignment error (with $S$=1).
 While this effect is desirable, as discussed in the paper,
 it is worthy emphasizing that the SR-based recognition also
 enables us to compute SCI, which has demonstrated its power
-for impostor rejection.}
+for impostor rejection.
 
 \item ``I would also retitle the paper to include ``robust measure''
 instead of ``sparse representation", as the L1 Cost is just a robust
