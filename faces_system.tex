@@ -138,26 +138,48 @@ Sparse Representation,  Error Correction, Validation and Outlier Rejection.
 %Automatic face recognition remains one of the most active areas in computer vision.
 
 
-\PARstart{T}{here} has been a historical tendency for face recognition algorithms to work well under laboratory conditions  (well aligned images, similar lighting conditions, and little change in appearance) but degrade drastically when tested in less-controlled real-world environments. Although achieving high recognition performance under uncontrolled conditions and with limited gallery images has been the traditional goal of face recognition research, existing techniques are not yet able to meet the performance requirements of high-stakes security-related applications. While there have been many successes in less-demanding applications such as online image search and family photo album organization (e.g.\ Google Picassa, Microsoft Photo Gallery, and Apple iPhoto), there have been a number of high-profile failed trials of face recognition technology in extremely challenging mass surveillance/watch-list applications. 
+\PARstart{F}{ace} recognition applications to date have fallen into roughly two
+categories.  Face recognition has recently seen a lot of success in a family of
+less-demanding applications such as online image search and family photo album
+organization (e.g.\ Google Picassa, Microsoft Photo Gallery, and Apple iPhoto).
+At the other end of the tractability spectrum there are the terrorist watchlist
+and mass surveillance applications that have for the most part dominated the
+field of face recognition research.  However, there are many face recognition
+that fall roughly between these extremes, where very high recognition
+performance is desired, but the users in the gallery are still allies of the
+system rather than adversaries.  These applications include access control for
+secure facilities (e.g., prisons, office buildings), computer systems,
+automobiles, or automatic teller machines, where controlled gallery images can
+be obtained in advance.  These applications are very interesting due to their
+potential sociological impact.  Since the gallery subjects are allies, rather
+than opponents, of the recognition system, this creates the possibility of
+carefully controlling the acquisition of the training data. While the same can
+be said for other biometrics such as fingerprints and iris recognition, face
+recognition has the potential of working with test data that is much less
+controlled, allowing the access control system to be made less intrusive to the
+users of the system. To some extent, the goal of this paper is to show how a
+reliable face recognition system can be built for this admittedly restricted,
+but still important, scenario. 
 
-Somewhat surprisingly, face recognition has not seen widespread applications or success in more tractable security settings, such as access control for secure facilities (e.g., prisons, office buildings), computer systems, automobiles, or automatic teller machines, where controlled gallery images can be obtained in advance.
-%\footnote{Face recognition scenarios where both gallery and test data are uncontrolled continue to be an active research area \cite{LFW}, and has become more popular recently due to the aforementioned online applications.}  
-These applications are very interesting due to their potential sociological and technological impact.  They are also qualitatively different from mass surveillance or online image applications because they demand extremely reliable systems whose performance must compete with other biometric measures such as fingerprint and iris. Because the gallery subjects are allies, rather than opponents, of the recognition system, this creates the possibility of carefully controlling the acquisition of the training data (as is common practice for other biometrics). However, unlike other biometrics, face recognition has the potential of working with test data that is much less controlled, allowing the access control system to be made more discreet and much less intrusive. To some extent, the goal of this paper is to show how a reliable face recognition system can be built for this admittedly restrictive, but still important, scenario. 
-
-Classical holistic subspace-based face recognition methods \cite{Turk1991-CVPR,Belhumeur1997-PAMI} are well known for their speed and simplicity, as well as for their natural extension to linear illumination
-models.  However, their performance has been shown to be extremely brittle not
-only to alignment variation, but to even minor occlusions caused by, say, a
-wisp of hair, a blinked eye, or mouth that is slightly open. One promising
-recent direction, set forth in \cite{Wright2009-PAMI}, casts the recognition
-problem as one of finding a sparse representation of the test image in terms of
-the training set as a whole, up to some sparse error due to occlusion. A
-\emph{sparse representation-based classification} (SRC) method is then proposed
-for recognition. The main idea is that the sparse nonzero coefficients should
+Very few recognition systems specifically target applications where many well-
+controlled training images are available.  Of these, the classical holistic
+subspace-based face recognition methods \cite{Turk1991-CVPR,Belhumeur1997-PAMI}
+are well known for their speed and simplicity, as well as for their natural
+extension to linear illumination models.  However, their performance has been
+shown to be extremely brittle not only to alignment variation, but to even
+minor occlusions caused by, say, a wisp of hair, a blinked eye, or mouth that
+is slightly open. One promising recent direction, set forth in
+\cite{Wright2009-PAMI}, casts the recognition problem as one of finding a
+sparse representation of the test image in terms of the training set as a
+whole, up to some sparse error due to occlusion. A \emph{sparse
+representation-based classification} (SRC) method is then proposed for
+recognition. The main idea is that the sparse nonzero coefficients should
 concentrate on the training samples with the same class label as the test
 sample. SRC has demonstrated striking recognition performance despite severe
 occlusion or corruption by solving a simple convex program.  
-%For this reason, the final recognition stage of our proposed system will consist of SRC,
-%and the alignment stage that precedes it will be based on similar techniques.
+%For this reason, the final recognition stage of our proposed system will
+%consist of SRC, and the alignment stage that precedes it will be based on
+%similar techniques.
 
 \begin{figure} \centering \begin{tabular}{cc}
 \includegraphics[height=1in]{figures_cvpr/promo/case1/detector.png}&
