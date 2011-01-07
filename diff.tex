@@ -157,30 +157,54 @@ Sparse Representation,  Error Correction, Validation and Outlier Rejection.
 %Automatic face recognition remains one of the most active areas in computer vision.
 
 
-\PARstart{T}{here} \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{has been }\DIFaddend a historical tendency for face recognition algorithms to work well under laboratory conditions  \DIFdelbegin \DIFdel{but degrade }\DIFdelend \DIFaddbegin \DIFadd{(well aligned images, similar lighting conditions, and little change in appearance) but degrade drastically }\DIFaddend when tested in less-controlled \DIFdelbegin \DIFdel{environments.  }\DIFdelend \DIFaddbegin \DIFadd{real-world environments. Although achieving high recognition performance under uncontrolled conditions and with limited gallery images has been the traditional goal of face recognition research, existing techniques are not yet able to meet the performance requirements of high-stakes security-related applications. }\DIFaddend While there have been \DIFdelbegin \DIFdel{several high profile }\DIFdelend \DIFaddbegin \DIFadd{many successes in less-demanding applications such as online image search and family photo album organization (e.g.}\ \DIFadd{Google Picassa, Microsoft Photo Gallery, and Apple iPhoto), there have been a number of high-profile }\DIFaddend failed trials of face recognition technology \DIFdelbegin \DIFdel{for extremely difficult }\DIFdelend \DIFaddbegin \DIFadd{in extremely challenging }\DIFaddend mass surveillance/watch-list applications\DIFaddbegin \DIFadd{. 
-}
-
-\DIFadd{Somewhat surprisingly}\DIFaddend , face recognition has not \DIFdelbegin \DIFdel{even }\DIFdelend seen widespread applications \DIFaddbegin \DIFadd{or success }\DIFaddend in more tractable \DIFaddbegin \DIFadd{security }\DIFaddend settings, such as access control for \DIFdelbegin \DIFdel{buildings}\DIFdelend \DIFaddbegin \DIFadd{secure facilities (e.g., prisons, office buildings)}\DIFaddend , computer systems, automobiles, or \DIFdelbegin \DIFdel{even }\DIFdelend automatic teller machines\DIFdelbegin \DIFdel{.}\footnote{\DIFdel{Face recognition scenarios where both gallery and test data are uncontrolled is an active research area as well }%DIFDELCMD < \cite{LFW}%%%
+\DIFdelbegin %DIFDELCMD < \PARstart{T}{here} %%%
+\DIFdel{is a historical tendency for face recognition algorithms to work well under laboratory conditions but degrade when tested in less-controlled environments.While there have been several high profile failed trials }\DIFdelend \DIFaddbegin \PARstart{F}{ace} \DIFadd{recognition applications to date have fallen into roughly two
+categories.  Face recognition has recently seen a lot of success in a family of
+less-demanding applications such as online image search and family photo album
+organization (e.g.}\ \DIFadd{Google Picassa, Microsoft Photo Gallery, and Apple iPhoto).
+At the other end of the tractability spectrum there are the terrorist watchlist
+and mass surveillance applications that have for the most part dominated the
+field }\DIFaddend of face recognition \DIFdelbegin \DIFdel{technology for extremely difficult mass surveillance / watch-list applications, face recognition has not even seen widespread applications in more tractable settings, such as }\DIFdelend \DIFaddbegin \DIFadd{research.  However, there are many face recognition
+that fall roughly between these extremes, where very high recognition
+performance is desired, but the users in the gallery are still allies of the
+system rather than adversaries.  These applications include }\DIFaddend access control for
+\DIFdelbegin \DIFdel{buildings}\DIFdelend \DIFaddbegin \DIFadd{secure facilities (e.g., prisons, office buildings)}\DIFaddend , computer systems,
+automobiles, or \DIFdelbegin \DIFdel{even }\DIFdelend automatic teller machines\DIFdelbegin \DIFdel{.}\footnote{\DIFdel{Face recognition scenarios where both gallery and test data are uncontrolled is an active research area as well }%DIFDELCMD < \cite{LFW}%%%
 \DIFdel{.}}  %DIFAUXCMD
 \addtocounter{footnote}{-1}%DIFAUXCMD
-\DIFdelend \DIFaddbegin \DIFadd{, where controlled gallery images can be obtained in advance.
-%DIF > \footnote{Face recognition scenarios where both gallery and test data are uncontrolled continue to be an active research area \cite{LFW}, and has become more popular recently due to the aforementioned online applications.}  
-}\DIFaddend These applications are very interesting due to their potential sociological \DIFaddbegin \DIFadd{and technological }\DIFaddend impact.  They are also qualitatively different from \DIFdelbegin \DIFdel{surveillance }\DIFdelend \DIFaddbegin \DIFadd{mass surveillance or online image }\DIFaddend applications because they demand extremely reliable systems \DIFdelbegin \DIFdel{, and because }\DIFdelend \DIFaddbegin \DIFadd{whose performance must compete with other biometric measures such as fingerprint and iris. Because }\DIFaddend the gallery subjects are allies, rather than opponents, of the recognition system\DIFdelbegin \DIFdel{.  This }\DIFdelend \DIFaddbegin \DIFadd{, this }\DIFaddend creates the possibility of carefully controlling the acquisition of the training data \DIFdelbegin \DIFdel{, even if the testing data may be less controlledfor usability reasons}\DIFdelend \DIFaddbegin \DIFadd{(as is common practice for other biometrics). However, unlike other biometrics, face recognition has the potential of working with test data that is much less controlled, allowing the access control system to be made more discreet and much less intrusive. To some extent, the goal of this paper is to show how a reliable face recognition system can be built for this admittedly restrictive, but still important, scenario}\DIFaddend . 
+\DIFdelend \DIFaddbegin \DIFadd{, where controlled gallery images can
+be obtained in advance.  }\DIFaddend These applications are very interesting due to their
+potential sociological impact.  \DIFdelbegin \DIFdel{They are also qualitatively different from surveillance applications because they demand extremely reliable systems, and because }\DIFdelend \DIFaddbegin \DIFadd{Since }\DIFaddend the gallery subjects are allies, rather
+than opponents, of the recognition system\DIFdelbegin \DIFdel{.  This }\DIFdelend \DIFaddbegin \DIFadd{, this }\DIFaddend creates the possibility of
+carefully controlling the acquisition of the training data\DIFdelbegin \DIFdel{, even if the testing data may be less
+controlledfor usability reasons}\DIFdelend \DIFaddbegin \DIFadd{. While the same can
+be said for other biometrics such as fingerprints and iris recognition, face
+recognition has the potential of working with test data that is much less
+controlled, allowing the access control system to be made less intrusive to the
+users of the system. To some extent, the goal of this paper is to show how a
+reliable face recognition system can be built for this restricted,
+but still important, scenario}\DIFaddend . 
 
-Classical holistic \DIFdelbegin \DIFdel{subspace based }\DIFdelend \DIFaddbegin \DIFadd{subspace-based face recognition }\DIFaddend methods \cite{Turk1991-CVPR,Belhumeur1997-PAMI} are well known for their speed and simplicity, as well as for their natural extension to linear illumination
-models.  However, their performance has been shown to be extremely brittle not
-only to alignment variation, but to \DIFdelbegin \DIFdel{occlusions}\DIFdelend \DIFaddbegin \DIFadd{even minor occlusions caused by, say, a
-wisp of hair, a blinked eye, or mouth that is slightly open}\DIFaddend . One promising
-recent direction, set forth in \cite{Wright2009-PAMI}, casts the recognition
-problem as one of finding a sparse representation of the test image in terms of
-the training set as a whole, up to some sparse error due to occlusion. A
-\emph{sparse representation-based classification} (SRC) method is then proposed
-for recognition. The main idea is that the sparse nonzero coefficients should
+\DIFdelbegin \DIFdel{Classical holistic
+subspace based }\DIFdelend \DIFaddbegin \DIFadd{Very few recognition systems specifically target applications where many well-
+controlled training images are available.  Of these, the classical holistic
+subspace-based face recognition }\DIFaddend methods \cite{Turk1991-CVPR,Belhumeur1997-PAMI}
+are well known for their speed and simplicity, as well as for their natural
+extension to linear illumination models.  However, their performance has been
+shown to be extremely brittle not only to alignment variation, but to \DIFdelbegin \DIFdel{occlusions}\DIFdelend \DIFaddbegin \DIFadd{even
+minor occlusions caused by, say, a wisp of hair, a blinked eye, or mouth that
+is slightly open}\DIFaddend . One promising recent direction, set forth in
+\cite{Wright2009-PAMI}, casts the recognition problem as one of finding a
+sparse representation of the test image in terms of the training set as a
+whole, up to some sparse error due to occlusion. A \emph{sparse
+representation-based classification} (SRC) method is then proposed for
+recognition. The main idea is that the sparse nonzero coefficients should
 concentrate on the training samples with the same class label as the test
 sample. SRC has demonstrated striking recognition performance despite severe
 occlusion or corruption by solving a simple convex program.  
-%DIF > For this reason, the final recognition stage of our proposed system will consist of SRC,
-%DIF > and the alignment stage that precedes it will be based on similar techniques.
+%DIF > For this reason, the final recognition stage of our proposed system will
+%DIF > consist of SRC, and the alignment stage that precedes it will be based on
+%DIF > similar techniques.
 
 \begin{figure} \centering \begin{tabular}{cc}
 \includegraphics[height=1in]{figures_cvpr/promo/case1/detector.png}&
@@ -239,10 +263,10 @@ has even a small amount of registration error against the
 training images (caused by mild pose, scale, or misalignment),
 the \DIFdelbegin \DIFdel{representation }\DIFdelend \DIFaddbegin \DIFadd{sparse representation obtained using the method of }\cite{Wright2009-PAMI} \DIFaddend is no longer informative, 
 even if sufficient illuminations are present in the training, as shown in Figure
-\ref{fig:promo}(top). In addition, in order to \DIFdelbegin \DIFdel{linearly }\DIFdelend span
+\ref{fig:promo}(top). \DIFdelbegin \DIFdel{In addition}\DIFdelend \DIFaddbegin \DIFadd{Additionally}\DIFaddend , in order to \DIFdelbegin \DIFdel{linearly }\DIFdelend span
 the illuminations of a typical indoor (or outdoor) environment,
-illuminations from behind the subject are also needed in the
-training. Otherwise, even for perfectly aligned test images,
+illuminations from behind the subject are \DIFdelbegin \DIFdel{also }\DIFdelend needed in the
+training \DIFaddbegin \DIFadd{set}\DIFaddend . Otherwise, even for perfectly aligned test images,
 the \DIFdelbegin \DIFdel{representation }\DIFdelend \DIFaddbegin \DIFadd{sparse representation obtained using }\cite{Wright2009-PAMI} \DIFaddend will not necessarily be sparse or
 informative, as shown by the example in Figure
 \ref{fig:promo}(middle). Clearly, both good alignment, as well
@@ -252,7 +276,7 @@ recognition method proposed by }\cite{Wright2009-PAMI}\DIFaddend .
 %significant component of rear (more than 90 degrees from
 %frontal) illumination, either for training or testing.
 \DIFaddbegin \DIFadd{In this paper, we examine how to handle alignment and illumination simultaneously
-in the sparse representation framework, hence bring the method proposed in }\cite{Wright2009-PAMI}
+in the sparse representation framework, bringing the method proposed in }\cite{Wright2009-PAMI}
 \DIFadd{closer to practical use.
 }\DIFaddend 
 
@@ -264,16 +288,16 @@ techniques.  This fact immediately distinguishes our \DIFdelbegin \DIFdel{techni
 that either require a 3D data as an input, or attempt to estimate a 3D model
 from \DIFdelbegin \DIFdel{input }\DIFdelend 2D \DIFdelbegin \DIFdel{data }\DIFdelend \DIFaddbegin \DIFadd{input }\DIFaddend \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While these
 techniques \DIFdelbegin \DIFdel{have been shown to }\DIFdelend \DIFaddbegin \DIFadd{can }\DIFaddend achieve better robustness to pose variation given
-a sufficiently accurate 3D model, for access control applications where \DIFdelbegin \DIFdel{the user is cooperative in aligning their head to the camera, robustness to moderate misalignment is sufficient.  Furthermore, many 3D techniques rely on multiple views to estimate their model, and may have trouble if all of the training images are captured from one pose }\DIFdelend \DIFaddbegin \DIFadd{only 
-moderate misalignment and pose are present, the proposed method will be more
-than sufficient}\DIFaddend .   Note that \DIFdelbegin \DIFdel{images of people's }\DIFdelend \DIFaddbegin \DIFadd{according to the principle of photometric stereo, images of }\DIFaddend faces
+a sufficiently accurate 3D model, for access control applications where \DIFdelbegin \DIFdel{the user is cooperative in aligning their head to the camera, robustness to moderate misalignment is sufficient.  Furthermore, many 3D techniques rely on multiple views to estimate their model, and may have trouble if all of the training images are captured from one pose}\DIFdelend \DIFaddbegin \DIFadd{only 
+moderate pose variation is present, the proposed method will be more
+than sufficient}\DIFaddend .   Note that \DIFdelbegin \DIFdel{images of people's }\DIFdelend \DIFaddbegin \DIFadd{2D images of }\DIFaddend faces
 under varying \DIFdelbegin \DIFdel{illumination contain }\DIFdelend \DIFaddbegin \DIFadd{illuminations already contain 3D }\DIFaddend shape-related \DIFdelbegin \DIFdel{discriminative information,}\DIFdelend \DIFaddbegin \DIFadd{information,}\footnote{\DIFadd{In principle,
 one can recover the 3D shape of the face from multiple illuminations using photometric stereo.}} 
 \DIFaddend and this information can be leveraged by 2D algorithms \DIFaddbegin \DIFadd{for alignment and recognition 
-}\DIFaddend even if shape is not reconstructed explicitly. \DIFaddbegin \DIFadd{In addition, the proposed sparsity-based robust
-alignment and recognition techniques are not limited to 2D data and can be easily extended
-to 3D data if necessary. 
-}\DIFaddend 
+}\DIFaddend even if shape is not reconstructed explicitly. 
+%DIF > In addition, the proposed sparsity-based robust
+%DIF > alignment and recognition techniques are not limited to 2D data and can be easily extended
+%DIF > to 3D data if necessary. 
 
 % Alignment
 In holistic recognition algorithms, correspondence between points in the test
@@ -285,11 +309,11 @@ leveraging face-specific contours.  While these model-based techniques have
 advantages in dealing with variations in expression and pose, they may add
 unnecessary complexity to \DIFdelbegin \DIFdel{a system where subjects are willing to }\DIFdelend \DIFaddbegin \DIFadd{applications where subjects normally }\DIFaddend present a neutral \DIFaddbegin \DIFadd{face
 or only have moderate }\DIFaddend expression. We prefer to focus on \DIFdelbegin \DIFdel{warpings }\DIFdelend \DIFaddbegin \DIFadd{deformations }\DIFaddend with far fewer 
-\DIFdelbegin \DIFdel{parameters}\DIFdelend \DIFaddbegin \DIFadd{degrees of freedom (say an affine transform)}\DIFaddend , and to use the training images themselves 
+\DIFdelbegin \DIFdel{parameters}\DIFdelend \DIFaddbegin \DIFadd{degrees of freedom, i.e. similarity transformations}\DIFaddend , and to use the training images themselves 
 as the appearance model. Iterative registration in this spirit dates at least back to the 
 Lucas-Kanade algorithm \cite{lucas1981iterative}.
 
-However, whereas much of the early work on image registration is aimed at the
+\DIFdelbegin \DIFdel{However, whereas }\DIFdelend \DIFaddbegin \DIFadd{Whereas }\DIFaddend much of the early work on image registration is aimed at the
 problem of registering nearly identical images, say by minimizing a sum of
 squared distances \DIFaddbegin \DIFadd{or maximizing normalized correlation}\DIFaddend , here we must confront several physical factors
 simultaneously: misalignment, illumination variations, and \DIFdelbegin \DIFdel{certain amount of occlusion}\DIFdelend \DIFaddbegin \DIFadd{corrupted pixels}\DIFaddend .
@@ -338,12 +362,12 @@ projector based light stage.  \DIFdelbegin \DIFdel{Most light stages used for fa
 are the first to use projectors to indirectly illuminate a subject's face for
 the purpose of face recognition.
 
-\subsection{Contributions} In this paper, we show how the 
-\DIFdelbegin \DIFdel{two
+\subsection{Contributions} In this paper, we show how 
+\DIFdelbegin \DIFdel{the two
 }%DIFDELCMD < {\em %%%
 \DIFdel{strongly coupled}%DIFDELCMD < } %%%
-\DIFdelend \DIFaddbegin \DIFadd{mutually compounding }\DIFaddend issues of registration and illumination
-can be naturally addressed within \DIFdelbegin \DIFdel{the }\DIFdelend \DIFaddbegin \DIFadd{a robust }\DIFaddend sparse representation
+\DIFdel{issues of }\DIFdelend registration and illumination
+can be \DIFdelbegin \DIFdel{naturally addressed within the }\DIFdelend \DIFaddbegin \DIFadd{simultaneously addressed within a robust }\DIFaddend sparse representation
 framework. We show that face registration, a challenging
 nonlinear problem, can be solved by a series of linear programs
 that iteratively minimize the sparsity of the registration
@@ -353,7 +377,7 @@ variation in translation, rotation, and scale, even when
 the face is only partially visible due to eyeglasses, closed
 eyes and open mouth, sensor saturation, etc.  We also propose a
 sufficient set of training illuminations
-that is capable of interpolating typical indoor and outdoor
+that is capable of \DIFdelbegin \DIFdel{interpolating }\DIFdelend \DIFaddbegin \DIFadd{linearly representing }\DIFaddend typical indoor and outdoor
 lighting, along with a practical hardware system for capturing
 them.
 
@@ -373,16 +397,17 @@ them.
 %This paper is enhanced version of a similarly titled conference paper \cite{Wagner2009-CVPR}.  We provide experiment results on a larger internal data set, as well as more extensive experiments on public data sets.  Furthermore, we test several variations on the main pipeline that also achieve good recognition performance.  We also present an alternative formulation of the iterative alignment based on derivatives of the training images rather than the testing images.  We present results with a new internal implementation of L1 minimization using an Augmented Lagrange Method that is significantly faster than our previous interior-point based solver.
 
 
-Finally, we demonstrate the effectiveness of the proposed new
+\DIFdelbegin \DIFdel{Finally, we }\DIFdelend \DIFaddbegin \DIFadd{We then }\DIFaddend demonstrate the effectiveness of the proposed new
 methods with a complete face recognition system that is {\em
 simple, stable, and scalable}. The proposed system performs
 robust automatic recognition of subjects from loosely
-controlled input images taken both indoors and outdoors, using
-labeled frontal views of the subjects' faces under the proposed
-illuminations for training and an off-the-shelf face
+controlled \DIFdelbegin \DIFdel{input }\DIFdelend \DIFaddbegin \DIFadd{probe }\DIFaddend images taken both indoors and outdoors, 
+using \DIFdelbegin \DIFdel{labeled }\DIFdelend \DIFaddbegin \DIFadd{a gallery of 
+}\DIFaddend frontal views of the subjects' faces under the proposed
+illuminations\DIFdelbegin \DIFdel{for training and an }\DIFdelend \DIFaddbegin \DIFadd{. An }\DIFaddend off-the-shelf face
 detector\footnote{We use the OpenCV
 implementation of the Viola and Jones' face detector
-\cite{Viola2004-IJCV}.} to detect faces in images.
+\cite{Viola2004-IJCV}.} \DIFaddbegin \DIFadd{is used }\DIFaddend to detect faces in \DIFaddbegin \DIFadd{the test }\DIFaddend images.
 
 We conduct extensive experiments on the proposed system with
 both public databases and a face database that is collected by
@@ -396,20 +421,22 @@ images taken under controlled laboratory conditions, but is
 capable of handling practical indoor and outdoor illuminations as well.
 
 \DIFdelbegin %DIFDELCMD < \noindent{\bf Organization of this paper.} %%%
-\DIFdelend \DIFaddbegin \noindent{\em Organization of this paper:} \DIFaddend In Section
-\ref{sec:registration}, we derive our robust registration and
-recognition algorithm within the sparse representation
-framework. We elaborate on \DIFdelbegin \DIFdel{the implementation issues of the
-}\DIFdelend \DIFaddbegin \DIFadd{implementation issues with our }\DIFaddend algorithm, conduct region of attraction experiments with
-respect to both 2D in-plane deformation and 3D pose variation,
-and discuss its relationship to existing work\DIFdelbegin \DIFdel{in the
-literature}\DIFdelend . Section \ref{sec:illumination} is dedicated to our
-training acquisition system. Using this system, we investigate empirically the set of training illuminations required to handle practical illumination variations, and suggest a sufficient set of 38 training illuminations. Extensive experiments on
-a large-scale public database and on our own database are conducted
-in Section \ref{sec:multipie} and Section \ref{sec:own-data},
-respectively, to verify the proposed system. Section
-\ref{sec:conclusion} concludes our work with discussion of
-promising future directions.
+\DIFdelend \DIFaddbegin \noindent{\em Organization of this paper:} \DIFaddend In Section \ref{sec:registration},
+we derive our robust registration and recognition algorithm within the sparse
+representation framework. We elaborate on \DIFdelbegin \DIFdel{the implementation issuesof the
+algorithm}\DIFdelend \DIFaddbegin \DIFadd{algorithmic implementation issues}\DIFaddend ,
+conduct region of attraction experiments with respect to both 2D in-plane
+deformation and 3D pose variation, and discuss its relationship to existing
+work\DIFdelbegin \DIFdel{in the
+literature}\DIFdelend . Section \ref{sec:illumination} is dedicated to our training acquisition
+system. Using this system, we investigate empirically \DIFdelbegin \DIFdel{the set of training
+illuminations }\DIFdelend \DIFaddbegin \DIFadd{how many training
+illuminations are }\DIFaddend required to handle practical illumination variations, and
+suggest a sufficient set of 38 training illuminations. Extensive experiments on
+a large-scale public database and on our own database are conducted in Section
+\ref{sec:multipie} and Section \ref{sec:own-data}, respectively, to verify the
+proposed system. Section \ref{sec:conclusion} concludes our work with
+discussion of promising future directions.
 
 \section{\DIFdelbegin \DIFdel{Handling Practical Registration Error}\DIFdelend \DIFaddbegin \DIFadd{Robust Alignment}\DIFaddend }\label{sec:registration}
 As demonstrated in Figure \ref{fig:promo}(top), the main
@@ -492,8 +519,8 @@ Here, $J = \frac{\partial}{\partial \tau} \y \circ \tau$ is the
 Jacobian of $\y \circ \tau$ with respect to the transformation
 parameters $\tau$, and $\Delta \tau$ is the step in $\tau$. The
 above equation is underdetermined if we allow the registration
-error $\e$ to be arbitrary. Near the correct alignment we
-expect the aligned testing image to differ from $A_i \x$ only
+error $\e$ to be arbitrary. \DIFdelbegin \DIFdel{Near }\DIFdelend \DIFaddbegin \DIFadd{At }\DIFaddend the correct alignment we
+expect the \DIFdelbegin \DIFdel{aligned testing }\DIFdelend \DIFaddbegin \DIFadd{test }\DIFaddend image to differ from $A_i \x$ only
 for the minority of the pixels corrupted by occlusions. Thus,
 we seek a deformation step $\Delta \tau$ that best sparsifies the registration error $\e$, in terms of its $\ell^1$-norm:
 \begin{equation}
@@ -1178,7 +1205,8 @@ The strongest theoretical results so far regarding the relationship
 between illumination and the resulting sets of images is due to Basri and Jacobs \cite{Basri2003-PAMI}.
 \DIFdelbegin \DIFdel{That paper assumes that convex, Lambertian objectsare photographed under distant illuminationswith a fixed pose.
 Under those assumptions, the incident and reflected light are represented using distributions on a sphere and can thus be studied in a spherical harmonic basis.
-The Lambertian nature of the object acts as a low-pass filter between the incident and reflected light distributions, and as a result,
+The Lambertian nature of the object acts as a low-pass filter between the incident and reflected light distributions,
+and as a result,
 the set of }\DIFdelend \DIFaddbegin \DIFadd{The main result of this paper is that for convex Lambertian objects, distant illuminations, and fixed pose,
 %DIF > Under those assumptions, the incident and reflected light are represented using distributions on a sphere and can thus be studied in a spherical harmonic basis.
 %DIF > The Lambertian nature of the object acts as a low-pass filter between the incident and reflected light distributions,
@@ -1574,9 +1602,9 @@ algorithm on each of the 3 testing sessions. Our algorithm
 achieves recognition rates above $90\%$ for all three sessions,
 with input {\em directly} obtained from the Viola and Jones'
 face detector; there was no manual intervention for the test images.
-\DIFaddbegin \DIFadd{To demonstrate that the SCI-based recognition step is indeed beneficial
+\DIFaddbegin \DIFadd{To demonstrate that the sparse representation based recognition step is indeed beneficial
 even when there are no impostors, we include results for recognition
-based only on the alignment error residuals, shown in row 6.
+based only on the alignment error residuals(i.e. S=1), shown in row 6.
 }
 
 \DIFaddend \begin{table}
@@ -1619,7 +1647,7 @@ LBP$_d$ (LBP$_m$) & 39.9 (93.3)\% & 38.1 (91.2)\% & 33.9 (92.9)\% \\
 \hline
 \cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
 \hline
-{Algorithm 1 w/o SCI} & 90.7\% & 89.6\% & 87.5\% \\
+{Algorithm 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
 \hline
 {Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
 \hline
@@ -1712,21 +1740,34 @@ variation in hair style is very small. Hence, excluding the
 forehead part may actually result in loss of useful
 discriminative information.
 
-\subsection{Subject Validation}
+\DIFdelbegin \subsection{\DIFdel{Subject Validation}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < 
 
-We test the algorithms' ability to reject invalid images of the
+%DIFDELCMD < %%%
+\DIFdel{We test the algorithms' ability to reject invalid images of the
 88 subjects not appearing in the training database. As
 mentioned before, the \emph{sparsity concentration index} (SCI)
 is used as the outlier rejection rule. Given the sparse
 representation $\x$ of a test image with respect to $K$
 training classes, the SCI measures how concentrated the
 coefficients are on a single class in the dataset and is
-defined as in \cite{Wright2009-PAMI}:
-\begin{displaymath}
-\textup{SCI}(\x) \doteq \frac{K \cdot \max_i \|\delta_i(\x)\|_1 /
-\|\x\|_1 - 1}{K - 1} \in [0,1] .
-\end{displaymath}
-It is easy to see that if $\textup{SCI}(\x) = 1$, the test
+defined as in }%DIFDELCMD < \cite{Wright2009-PAMI}%%%
+\DIFdel{:
+}\begin{displaymath}%DIFAUXCMD
+%DIFDELCMD < \begin{displaymath}
+%DIFDELCMD < %%%
+\DIFdel{\textup{SCI}(}%DIFDELCMD < \x%%%
+\DIFdel{) \doteq \frac{K \cdot \max_i \|\delta_i(\x)\|_1 /
+\|\x\|_1 - 1}{K - 1} \in }%DIFDELCMD < [%%%
+\DIFdel{0,1}%DIFDELCMD < ] %%%
+\DIFdel{.
+}
+\end{displaymath}%DIFAUXCMD
+%DIFDELCMD < \end{displaymath}
+%DIFDELCMD < %%%
+\DIFdel{It is easy to see that if $\textup{SCI}(\x) = 1$, the test
 image is represented using images from one single subject
 class; if $\textup{SCI}(\x) = 0$, the coefficients are spread
 evenly over all classes. Thus, we can choose a threshold $t \in
@@ -1734,30 +1775,45 @@ evenly over all classes. Thus, we can choose a threshold $t \in
 if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
 invalid. We compare this classifier to classifiers based on
 thresholding the error residuals of NN, NS and LDA.
+}%DIFDELCMD < 
 
-Figure \ref{fig:roc-multipie} plots the receiver operating
+%DIFDELCMD < %%%
+\DIFdel{Figure \ref{fig:roc-multipie} plots the receiver operating
 characteristic (ROC) curves, which are generated by sweeping
 the threshold $t$ through the entire range of possible values
-for each algorithm.\footnote{Rejecting invalid images not in
+for each algorithm.}\footnote{\DIFdel{Rejecting invalid images not in
 the entire database is much more difficult than deciding if two
 face images are the same subject. Figure 8 should not be
 confused with typical ROC curves for face similarity, e.g.,
-\cite{PhillipsP2007}.} We can see that SCI based approach
+}%DIFDELCMD < \cite{PhillipsP2007}%%%
+\DIFdel{.}} %DIFAUXCMD
+\addtocounter{footnote}{-1}%DIFAUXCMD
+\DIFdel{We can see that SCI based approach
 significantly outperforms the other three algorithms. Similar
 contrasts between our algorithm and baseline algorithms were
-also observed for SRC in \cite{Wright2009-PAMI}, though on much
+also observed for SRC in }%DIFDELCMD < \cite{Wright2009-PAMI}%%%
+\DIFdel{, though on much
 smaller datasets.
+}%DIFDELCMD < 
 
-\begin{figure}
-\centerline{
-\includegraphics[width=3in]{figures_pami/pami_roc2.png}
-}\DIFaddbeginFL \vspace{-.2in}
-\DIFaddendFL \caption{{\bf ROC curves} for subject validation on Multi-PIE database.}\label{fig:roc-multipie}
+%DIFDELCMD < \begin{figure}
+%DIFDELCMD < \centerline{
+%DIFDELCMD < \includegraphics[width=3in]{figures_pami/pami_roc2.png}
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < {\bf %%%
+\DIFdel{ROC curves}%DIFDELCMD < } %%%
+\DIFdel{for subject validation on Multi-PIE database.}}%DIFAUXCMD
+%DIFDELCMD < \label{fig:roc-multipie}
+%DIFDELCMD < %%%
 %DIF < \vspace{-.6in}
-\DIFaddbeginFL \vspace{-.35in}
-\DIFaddendFL \end{figure}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < 
 
-\subsection{Comparison to Existing Work}
+%DIFDELCMD < %%%
+\DIFdelend \subsection{Comparison to Existing Work}
 We compare our result to baseline linear-projection-based
 algorithms, such as Nearest Neighbor (NN), Nearest Subspace
 (NS) \cite{Lee2005-PAMI}, and Linear Discriminant Analysis
@@ -1819,12 +1875,11 @@ changes. However, its performance is very sensitive to
 misalignment. 
 }
 
-\DIFadd{Meanwhile, although our algorithm is not designed for
+\DIFadd{Although our algorithm is not designed for
 recognition when there is only a single gallery image per user,
-and will not achieve competitive performance, we compare its
-performance with LBP within such setting for the purpose of
-better evaluation of the strength and limitation of both
-algorithms. For this experiment, we use the FERET dataset
+we compare its
+performance with LBP within this setting for completeness.
+For this experiment, we use the FERET dataset
 }\cite{phillips1998feret}\DIFadd{, which contains five standard
 partitions: `fa' is the gallery containing 1196 frontal images
 of 1196 subjects, and `fb', `fc', `dup1' and `dup2' are four
@@ -1873,12 +1928,57 @@ the training is uncontrolled and limited and the input is
 directly obtained from the face detector }\cite{Wolf2008-ECCV}\DIFadd{. 
 }
 
-\DIFadd{All these experimental results re-emphasize the importance that
+\DIFadd{All of these experimental results confirm that
 both illumination and alignment need to be simultaneously handled
-well in order to obtain accurate face recognition, even when there is
+well in order to achieve accurate face recognition, even when there is
 no obvious occlusion or corruption in the test. 
 }
 
+\subsection{\DIFadd{Subject Validation}}
+
+\DIFadd{We test the algorithms' ability to reject invalid images of the
+88 subjects not appearing in the training database. As
+mentioned before, the \emph{sparsity concentration index} (SCI)
+is used as the outlier rejection rule. Given the sparse
+representation $\x$ of a test image with respect to $K$
+training classes, the SCI measures how concentrated the
+coefficients are on a single class in the dataset and is
+defined as in }\cite{Wright2009-PAMI}\DIFadd{:
+}\begin{displaymath}
+\DIFadd{\textup{SCI}(}\x\DIFadd{) \doteq \frac{K \cdot \max_i \|\delta_i(\x)\|_1 /
+\|\x\|_1 - 1}{K - 1} \in }[\DIFadd{0,1}] \DIFadd{.
+}\end{displaymath}
+\DIFadd{It is easy to see that if $\textup{SCI}(\x) = 1$, the test
+image is represented using images from one single subject
+class; if $\textup{SCI}(\x) = 0$, the coefficients are spread
+evenly over all classes. Thus, we can choose a threshold $t \in
+[0,1]$ for the proposed method and accept a test image as valid
+if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
+invalid. We compare this classifier to classifiers based on
+thresholding the error residuals of NN, NS, LDA, and LBP.
+}
+
+\DIFadd{Figure \ref{fig:roc-multipie} plots the receiver operating
+characteristic (ROC) curves, which are generated by sweeping
+the threshold $t$ through the entire range of possible values
+for each algorithm.}\footnote{\DIFadd{Rejecting invalid images not in
+the entire database is much more difficult than deciding if two
+face images are the same subject. Figure 8 should not be
+confused with typical ROC curves for face similarity, e.g.,
+}\cite{PhillipsP2007}\DIFadd{.}} \DIFadd{We can see that SCI based approach
+significantly outperforms the other three algorithms. Similar
+contrasts between our algorithm and baseline algorithms were
+also observed for SRC in }\cite{Wright2009-PAMI}\DIFadd{, though on much
+smaller datasets.
+}
+
+\begin{figure}
+\centerline{
+\includegraphics[width=3in]{figures_pami/pami_roc2.png}
+}\vspace{-.2in}
+\caption{{\bf \DIFaddFL{ROC curves}} \DIFaddFL{for subject validation on Multi-PIE database.}}\label{fig:roc-multipie}
+\vspace{-.35in}
+\end{figure}
 
 \DIFaddend \subsection{Recognition with Synthetic Random Block Occlusion}
 
@@ -2130,9 +2230,9 @@ interesting future work.
 \DIFdelend 
 
 \section{Conclusion}\label{sec:conclusion}
-\DIFdelbegin \DIFdel{We have proposed a new algorithm and }\DIFdelend \DIFaddbegin \DIFadd{Using a well-though-out combination of existing ideas
+\DIFdelbegin \DIFdel{We }\DIFdelend \DIFaddbegin \DIFadd{Using a well-though-out combination of existing ideas
 (iterative image alignment, l1-error function, SRC, using projectors for
-illumination), one can build a }\DIFaddend system for recognizing human faces
+illumination), we }\DIFaddend have proposed a \DIFdelbegin \DIFdel{new algorithm and }\DIFdelend system for recognizing human faces
 from images taken under practical conditions \DIFdelbegin \DIFdel{. The
 proposed system is very }%DIFDELCMD < {\em %%%
 \DIFdel{simple}%DIFDELCMD < }%%%
@@ -2147,12 +2247,15 @@ motivated, and competitive with state-of-the-art recognition systems for access
 control scenarios. 
 }
 
-\DIFaddend The system achieves extremely {\em stable} performance under
+\DIFaddend The system achieves extremely \DIFdelbegin %DIFDELCMD < {\em %%%
+\DIFdel{stable }%DIFDELCMD < } %%%
+\DIFdelend \DIFaddbegin \DIFadd{stable }\DIFaddend performance under
 a wide range of variations in illumination, misalignment, and even under small amounts of
 pose and occlusion. We achieve very good recognition performance on
 large-scale tests with public datasets as well as our practical face
-images, while using only frontal 2D images in the training without
-any explicit 3D face model.
+images, while using only frontal 2D images in the \DIFdelbegin \DIFdel{training without
+any }\DIFdelend \DIFaddbegin \DIFadd{gallery and no
+}\DIFaddend explicit 3D face model.
 Our system could potentially be extended to better handle large pose
 and expression, either by incorporating training images with different poses or
 expressions or by explicitly modeling and compensating the associated deformations

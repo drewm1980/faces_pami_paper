@@ -158,7 +158,7 @@ be said for other biometrics such as fingerprints and iris recognition, face
 recognition has the potential of working with test data that is much less
 controlled, allowing the access control system to be made less intrusive to the
 users of the system. To some extent, the goal of this paper is to show how a
-reliable face recognition system can be built for this admittedly restricted,
+reliable face recognition system can be built for this restricted,
 but still important, scenario. 
 
 Very few recognition systems specifically target applications where many well-
@@ -227,10 +227,10 @@ has even a small amount of registration error against the
 training images (caused by mild pose, scale, or misalignment),
 the sparse representation obtained using the method of \cite{Wright2009-PAMI} is no longer informative, 
 even if sufficient illuminations are present in the training, as shown in Figure
-\ref{fig:promo}(top). In addition, in order to span
+\ref{fig:promo}(top). Additionally, in order to span
 the illuminations of a typical indoor (or outdoor) environment,
-illuminations from behind the subject are also needed in the
-training. Otherwise, even for perfectly aligned test images,
+illuminations from behind the subject are needed in the
+training set. Otherwise, even for perfectly aligned test images,
 the sparse representation obtained using \cite{Wright2009-PAMI} will not necessarily be sparse or
 informative, as shown by the example in Figure
 \ref{fig:promo}(middle). Clearly, both good alignment, as well
@@ -240,7 +240,7 @@ recognition method proposed by \cite{Wright2009-PAMI}.
 %significant component of rear (more than 90 degrees from
 %frontal) illumination, either for training or testing.
 In this paper, we examine how to handle alignment and illumination simultaneously
-in the sparse representation framework, hence bring the method proposed in \cite{Wright2009-PAMI}
+in the sparse representation framework, bringing the method proposed in \cite{Wright2009-PAMI}
 closer to practical use.
 
 \subsection{Related Work}
@@ -253,13 +253,14 @@ from 2D input \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While these
 techniques can achieve better robustness to pose variation given
 a sufficiently accurate 3D model, for access control applications where only 
 moderate pose variation is present, the proposed method will be more
-than sufficient.   Note that according to the principle of photometric stereo, images of faces
+than sufficient.   Note that 2D images of faces
 under varying illuminations already contain 3D shape-related information,\footnote{In principle,
 one can recover the 3D shape of the face from multiple illuminations using photometric stereo.} 
 and this information can be leveraged by 2D algorithms for alignment and recognition 
-even if shape is not reconstructed explicitly. In addition, the proposed sparsity-based robust
-alignment and recognition techniques are not limited to 2D data and can be easily extended
-to 3D data if necessary. 
+even if shape is not reconstructed explicitly. 
+%In addition, the proposed sparsity-based robust
+%alignment and recognition techniques are not limited to 2D data and can be easily extended
+%to 3D data if necessary. 
 
 % Alignment
 In holistic recognition algorithms, correspondence between points in the test
@@ -271,11 +272,11 @@ leveraging face-specific contours.  While these model-based techniques have
 advantages in dealing with variations in expression and pose, they may add
 unnecessary complexity to applications where subjects normally present a neutral face
 or only have moderate expression. We prefer to focus on deformations with far fewer 
-degrees of freedom (say an affine transform), and to use the training images themselves 
+degrees of freedom, i.e. similarity transformations, and to use the training images themselves 
 as the appearance model. Iterative registration in this spirit dates at least back to the 
 Lucas-Kanade algorithm \cite{lucas1981iterative}.
 
-However, whereas much of the early work on image registration is aimed at the
+Whereas much of the early work on image registration is aimed at the
 problem of registering nearly identical images, say by minimizing a sum of
 squared distances or maximizing normalized correlation, here we must confront several physical factors
 simultaneously: misalignment, illumination variations, and corrupted pixels.
@@ -319,9 +320,9 @@ other applications, to our knowledge, we
 are the first to use projectors to indirectly illuminate a subject's face for
 the purpose of face recognition.
 
-\subsection{Contributions} In this paper, we show how the 
-mutually compounding issues of registration and illumination
-can be naturally addressed within a robust sparse representation
+\subsection{Contributions} In this paper, we show how 
+registration and illumination
+can be simultaneously addressed within a robust sparse representation
 framework. We show that face registration, a challenging
 nonlinear problem, can be solved by a series of linear programs
 that iteratively minimize the sparsity of the registration
@@ -331,7 +332,7 @@ variation in translation, rotation, and scale, even when
 the face is only partially visible due to eyeglasses, closed
 eyes and open mouth, sensor saturation, etc.  We also propose a
 sufficient set of training illuminations
-that is capable of interpolating typical indoor and outdoor
+that is capable of linearly representing typical indoor and outdoor
 lighting, along with a practical hardware system for capturing
 them.
 
@@ -351,16 +352,17 @@ them.
 %This paper is enhanced version of a similarly titled conference paper \cite{Wagner2009-CVPR}.  We provide experiment results on a larger internal data set, as well as more extensive experiments on public data sets.  Furthermore, we test several variations on the main pipeline that also achieve good recognition performance.  We also present an alternative formulation of the iterative alignment based on derivatives of the training images rather than the testing images.  We present results with a new internal implementation of L1 minimization using an Augmented Lagrange Method that is significantly faster than our previous interior-point based solver.
 
 
-Finally, we demonstrate the effectiveness of the proposed new
+We then demonstrate the effectiveness of the proposed new
 methods with a complete face recognition system that is {\em
 simple, stable, and scalable}. The proposed system performs
 robust automatic recognition of subjects from loosely
-controlled input images taken both indoors and outdoors, using
-labeled frontal views of the subjects' faces under the proposed
-illuminations for training and an off-the-shelf face
+controlled probe images taken both indoors and outdoors, 
+using a gallery of 
+frontal views of the subjects' faces under the proposed
+illuminations. An off-the-shelf face
 detector\footnote{We use the OpenCV
 implementation of the Viola and Jones' face detector
-\cite{Viola2004-IJCV}.} to detect faces in images.
+\cite{Viola2004-IJCV}.} is used to detect faces in the test images.
 
 We conduct extensive experiments on the proposed system with
 both public databases and a face database that is collected by
@@ -373,18 +375,19 @@ clearly demonstrate that our system not only works well with
 images taken under controlled laboratory conditions, but is
 capable of handling practical indoor and outdoor illuminations as well.
 
-\noindent{\em Organization of this paper:} In Section
-\ref{sec:registration}, we derive our robust registration and
-recognition algorithm within the sparse representation
-framework. We elaborate on implementation issues with our algorithm, conduct region of attraction experiments with
-respect to both 2D in-plane deformation and 3D pose variation,
-and discuss its relationship to existing work. Section \ref{sec:illumination} is dedicated to our
-training acquisition system. Using this system, we investigate empirically the set of training illuminations required to handle practical illumination variations, and suggest a sufficient set of 38 training illuminations. Extensive experiments on
-a large-scale public database and on our own database are conducted
-in Section \ref{sec:multipie} and Section \ref{sec:own-data},
-respectively, to verify the proposed system. Section
-\ref{sec:conclusion} concludes our work with discussion of
-promising future directions.
+\noindent{\em Organization of this paper:} In Section \ref{sec:registration},
+we derive our robust registration and recognition algorithm within the sparse
+representation framework. We elaborate on algorithmic implementation issues,
+conduct region of attraction experiments with respect to both 2D in-plane
+deformation and 3D pose variation, and discuss its relationship to existing
+work. Section \ref{sec:illumination} is dedicated to our training acquisition
+system. Using this system, we investigate empirically how many training
+illuminations are required to handle practical illumination variations, and
+suggest a sufficient set of 38 training illuminations. Extensive experiments on
+a large-scale public database and on our own database are conducted in Section
+\ref{sec:multipie} and Section \ref{sec:own-data}, respectively, to verify the
+proposed system. Section \ref{sec:conclusion} concludes our work with
+discussion of promising future directions.
 
 \section{Robust Alignment}\label{sec:registration}
 As demonstrated in Figure \ref{fig:promo}(top), the main
@@ -1604,12 +1607,11 @@ samples, which demonstrates its robustness to illumination
 changes. However, its performance is very sensitive to
 misalignment. 
 
-Meanwhile, although our algorithm is not designed for
+Although our algorithm is not designed for
 recognition when there is only a single gallery image per user,
-and will not achieve competitive performance, we compare its
-performance with LBP within such setting for the purpose of
-better evaluation of the strength and limitation of both
-algorithms. For this experiment, we use the FERET dataset
+we compare its
+performance with LBP within this setting for completeness.
+For this experiment, we use the FERET dataset
 \cite{phillips1998feret}, which contains five standard
 partitions: `fa' is the gallery containing 1196 frontal images
 of 1196 subjects, and `fb', `fc', `dup1' and `dup2' are four
@@ -1656,9 +1658,9 @@ observed on the Labeled Face in the Wild (LFW) database, where
 the training is uncontrolled and limited and the input is
 directly obtained from the face detector \cite{Wolf2008-ECCV}. 
 
-All these experimental results re-emphasize the importance that
+All of these experimental results confirm that
 both illumination and alignment need to be simultaneously handled
-well in order to obtain accurate face recognition, even when there is
+well in order to achieve accurate face recognition, even when there is
 no obvious occlusion or corruption in the test. 
 
 \subsection{Subject Validation}
@@ -1944,17 +1946,17 @@ interesting future work.
 \section{Conclusion}\label{sec:conclusion}
 Using a well-though-out combination of existing ideas
 (iterative image alignment, l1-error function, SRC, using projectors for
-illumination), one can build a system for recognizing human faces
+illumination), we have proposed a system for recognizing human faces
 from images taken under practical conditions that is conceptually simple, well
 motivated, and competitive with state-of-the-art recognition systems for access
 control scenarios. 
 
-The system achieves extremely {\em stable} performance under
+The system achieves extremely stable performance under
 a wide range of variations in illumination, misalignment, and even under small amounts of
 pose and occlusion. We achieve very good recognition performance on
 large-scale tests with public datasets as well as our practical face
-images, while using only frontal 2D images in the training without
-any explicit 3D face model.
+images, while using only frontal 2D images in the gallery and no
+explicit 3D face model.
 Our system could potentially be extended to better handle large pose
 and expression, either by incorporating training images with different poses or
 expressions or by explicitly modeling and compensating the associated deformations
