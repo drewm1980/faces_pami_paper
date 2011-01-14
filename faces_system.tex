@@ -207,7 +207,7 @@ Section \ref{sec:illumination}). {\bf Bottom:} The input face is well aligned an
 a sufficient set (all 38) of
 illuminations are used in the training. Both are necessary for correct recognition
 using SRC.} \label{fig:promo}
-\vspace{-.5in}
+\vspace{-.25in}
 \end{figure}
 %\subsection{Compound Effect of Registration and Illumination}
 
@@ -1431,15 +1431,16 @@ work of \cite{Georghiades2001-PAMI}, these extreme frontal
 illuminations would be sufficient to linearly represent other
 frontal illuminations, as will also be corroborated by the next
 experiment on our own dataset. For the test set, we use all 20
-illuminations from Sessions 2-4, which were recorded at
-distinct times over a period of several months. The dataset is
+illuminations from Sessions 2-4, which were recorded 
+over a period of several months. The dataset is
 challenging due to the large number of subjects, and due to
 natural variation in subject appearance over time. Table
 \ref{tab:MultiPIE-recognition} shows the result of our
 algorithm on each of the 3 testing sessions. Our algorithm
-achieves recognition rates above $90\%$ for all three sessions,
-with input {\em directly} obtained from the Viola and Jones'
-face detector; there was no manual intervention for the test images.
+achieves recognition rates above $90\%$ for all three sessions.
+For the test images, 
+alignment was initialized automatically via the Viola and Jones'
+face detector. 
 To demonstrate that the sparse representation based recognition step is indeed beneficial
 even when there are no impostors, we include results for recognition
 based only on the alignment error residuals(i.e. S=1), shown in row 6.
@@ -1493,7 +1494,7 @@ LBP$_d$ (LBP$_m$) & 39.9 (93.3)\% & 38.1 (91.2)\% & 33.9 (92.9)\% \\
 }
 \caption{{\bf Representative failures from Multi-PIE}. {\bf Top:} training from Session 1; {\bf Bottom:} test images from Session 2. Due to changes in hair, glasses, beard, or pose, our alignment fails on these subjects regardless of test image illumination.}
 \label{fig:failed-examples}
-\vspace{-.5in}
+\vspace{-.3in}
 \end{figure}
 
 \subsection{Improving the Performance by Choosing Different Sampling Windows}
@@ -1704,7 +1705,7 @@ smaller datasets.
 \includegraphics[width=3in]{figures_pami/pami_roc2.png}
 }\vspace{-.2in}
 \caption{{\bf ROC curves} for subject validation on Multi-PIE database.}\label{fig:roc-multipie}
-\vspace{-.35in}
+\vspace{-.6in}
 \end{figure}
 
 \subsection{Recognition with Synthetic Random Block Occlusion}
@@ -1731,9 +1732,10 @@ recognition rate.\vspace{-.1in}
 \includegraphics[scale=0.75,clip=true]{figures_pami/multipie_occ/occ30.png}
 \includegraphics[scale=0.75,clip=true]{figures_pami/multipie_occ/occ40.png}
 \includegraphics[scale=0.75,clip=true]{figures_pami/multipie_occ/occ50.png}
-\vspace{-.5in}
+\vspace{-.25in}
 \caption{{\bf Recognition under varying level of
-random block occlusion.} The above row shows examples of occluded test images with occlusion level from 10\% to 50\%. Our method maintains high recognition rates up to 30\% occlusion:} \vspace{1mm}
+random block occlusion.} The above row shows examples of occluded test images with occlusion level from 10\% to 50\%. Our method maintains high recognition rates up to 30\% occlusion:} 
+\vspace{3mm}
 {\small
 \begin{tabular}{|c|c|c|c|c|c| }
 \hline
@@ -1745,7 +1747,7 @@ Recognition rate & 99.6\% & 94.9\% & 79.6\% & 46.5\% & 19.8\% \\
 \end{tabular}
 }
 \label{fig:multipie-occ-rec}
-\vspace{-.5in}
+\vspace{-.25in}
 \end{figure}
 
 \subsection{Recognition with Pose and Expression} We now run tests of
@@ -1864,21 +1866,6 @@ We apply Viola and Jones' face detector on these images and
 directly use the detected faces as the input to our algorithm.
 Table~\ref{tab:UIUC-recognition} reports the performance of our
 algorithm on each category.
-\begin{table}
-\vspace{-.1in}	
-\centering \caption{Recognition rates on our own database.}
-\vspace{-.2in}
-\begin{tabular}{|c|c|c|c|c| }
-\hline
-Test Category & C1 & C2 & C3 & C4  \\
-\hline
-\hline
-Recognition Rate & 98.4\% & 95.8\% & 95.1\% & 40.9\% \\
-\hline
-\end{tabular}
-\label{tab:UIUC-recognition}
-\vspace{-.4in}
-\end{table}
 Since our focus is on face
 recognition, the errors do not include failures of the face
 detector on some of the more challenging images.
@@ -1894,6 +1881,21 @@ synthetic random block occlusions, and given that the
 illuminations are more challenging, the result is not
 surprising. In the next subsection, we will show how additional
 assumptions can be used to improve the recognition performance.
+\begin{table}[h]
+\vspace{-.1in}	
+\centering \caption{Recognition rates on our own database.}
+\vspace{-.2in}
+\begin{tabular}{|c|c|c|c|c| }
+\hline
+Test Category & C1 & C2 & C3 & C4  \\
+\hline
+\hline
+Recognition Rate & 98.4\% & 95.8\% & 95.1\% & 40.9\% \\
+\hline
+\end{tabular}
+\label{tab:UIUC-recognition}
+\vspace{-.4in}
+\end{table}
 
 \subsection{Improving the Performance with Occlusion using Overlapping Blocks}
 A traditional approach to improve the performance of face

@@ -233,7 +233,7 @@ Section \ref{sec:illumination}). {\bf Bottom:} \DIFdelbeginFL \DIFdelFL{Informat
 }\DIFaddendFL illuminations \DIFaddbeginFL \DIFaddFL{are used }\DIFaddendFL in the training. \DIFaddbeginFL \DIFaddFL{Both are necessary for correct recognition
 using SRC.}\DIFaddendFL } \label{fig:promo}
 %DIF < \vspace{-.5in}
-\DIFaddbeginFL \vspace{-.5in}
+\DIFaddbeginFL \vspace{-.25in}
 \DIFaddendFL \end{figure}
 \DIFdelbegin %DIFDELCMD < 
 
@@ -1593,16 +1593,21 @@ work of \cite{Georghiades2001-PAMI}, these extreme frontal
 illuminations would be sufficient to linearly represent other
 frontal illuminations, as will also be corroborated by the next
 experiment on our own dataset. For the test set, we use all 20
-illuminations from Sessions 2-4, which were recorded at
-distinct times over a period of several months. The dataset is
+illuminations from Sessions 2-4, which were recorded 
+\DIFdelbegin \DIFdel{at
+distinct times }\DIFdelend over a period of several months. The dataset is
 challenging due to the large number of subjects, and due to
 natural variation in subject appearance over time. Table
 \ref{tab:MultiPIE-recognition} shows the result of our
 algorithm on each of the 3 testing sessions. Our algorithm
-achieves recognition rates above $90\%$ for all three sessions,
-with input {\em directly} obtained from the Viola and Jones'
-face detector; there was no manual intervention for the test images.
-\DIFaddbegin \DIFadd{To demonstrate that the sparse representation based recognition step is indeed beneficial
+achieves recognition rates above $90\%$ for all three sessions\DIFdelbegin \DIFdel{,
+with input }%DIFDELCMD < {\em %%%
+\DIFdel{directly}%DIFDELCMD < } %%%
+\DIFdel{obtained from }\DIFdelend \DIFaddbegin \DIFadd{.
+For the test images, 
+alignment was initialized automatically via }\DIFaddend the Viola and Jones'
+face detector\DIFdelbegin \DIFdel{; there was no manual intervention for the test images. }\DIFdelend \DIFaddbegin \DIFadd{. 
+To demonstrate that the sparse representation based recognition step is indeed beneficial
 even when there are no impostors, we include results for recognition
 based only on the alignment error residuals(i.e. S=1), shown in row 6.
 }
@@ -1678,7 +1683,7 @@ LBP$_d$ (LBP$_m$) & 39.9 (93.3)\% & 38.1 (91.2)\% & 33.9 (92.9)\% \\
 \DIFaddendFL \caption{{\bf Representative \DIFdelbeginFL \DIFdelFL{examples of failed }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{failures from }\DIFaddendFL Multi-PIE\DIFdelbeginFL \DIFdelFL{subjects}\DIFdelendFL }. {\bf Top:} training from Session 1; {\bf Bottom:} test images from Session 2. Due to \DIFdelbeginFL \DIFdelFL{change of }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{changes in }\DIFaddendFL hair\DIFdelbeginFL \DIFdelFL{style}\DIFdelendFL , glasses, beard, or pose, our alignment fails on these subjects regardless of test image illumination.}
 \label{fig:failed-examples}
 %DIF < \vspace{-.8in}
-\DIFaddbeginFL \vspace{-.5in}
+\DIFaddbeginFL \vspace{-.3in}
 \DIFaddendFL \end{figure}
 \DIFdelbegin \subsection{\DIFdel{Improving the Performance by Choosing Different Sampling Windows}}
 %DIFAUXCMD
@@ -1977,7 +1982,7 @@ smaller datasets.
 \includegraphics[width=3in]{figures_pami/pami_roc2.png}
 }\vspace{-.2in}
 \caption{{\bf \DIFaddFL{ROC curves}} \DIFaddFL{for subject validation on Multi-PIE database.}}\label{fig:roc-multipie}
-\vspace{-.35in}
+\vspace{-.6in}
 \end{figure}
 
 \DIFaddend \subsection{Recognition with Synthetic Random Block Occlusion}
@@ -2005,9 +2010,10 @@ recognition rate.\DIFaddbegin \vspace{-.1in}
 \includegraphics[scale=0.75,clip=true]{figures_pami/multipie_occ/occ30.png}
 \includegraphics[scale=0.75,clip=true]{figures_pami/multipie_occ/occ40.png}
 \includegraphics[scale=0.75,clip=true]{figures_pami/multipie_occ/occ50.png}
-\DIFaddbeginFL \vspace{-.5in}
+\DIFaddbeginFL \vspace{-.25in}
 \DIFaddendFL \caption{{\bf Recognition under varying level of
-random block occlusion.} The above row shows examples of occluded test images with occlusion level from 10\% to 50\%. Our method maintains high recognition rates up to 30\% occlusion\DIFdelbeginFL \DIFdelFL{(see table below). }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{:}\DIFaddendFL } \DIFaddbeginFL \vspace{1mm}
+random block occlusion.} The above row shows examples of occluded test images with occlusion level from 10\% to 50\%. Our method maintains high recognition rates up to 30\% occlusion\DIFdelbeginFL \DIFdelFL{(see table below). }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{:}\DIFaddendFL } 
+\DIFaddbeginFL \vspace{3mm}
 {\small
 \DIFaddendFL \begin{tabular}{|c|c|c|c|c|c| }
 \hline
@@ -2019,8 +2025,10 @@ Recognition rate & 99.6\% & 94.9\% & 79.6\% & 46.5\% & 19.8\% \\
 \end{tabular}
 \DIFaddbeginFL }
 \DIFaddendFL \label{fig:multipie-occ-rec}
-\vspace{-.5in}
-\end{figure}
+\DIFdelbeginFL %DIFDELCMD < \vspace{-.5in}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \vspace{-.25in}
+\DIFaddendFL \end{figure}
 
 \subsection{Recognition with Pose and Expression} We now run tests of
 our algorithm on a subset of the images from Multi-PIE with pose and expression variation in the test set, although we do not model these variations explicitly.
@@ -2143,24 +2151,35 @@ We apply Viola and Jones' face detector on these images and
 directly use the detected faces as the input to our algorithm.
 Table~\ref{tab:UIUC-recognition} reports the performance of our
 algorithm on each category.
-\begin{table}
-\DIFaddbeginFL \vspace{-.1in}	
-\DIFaddendFL \centering \caption{Recognition rates on our own database.}
-\DIFaddbeginFL \vspace{-.2in}
-\DIFaddendFL \begin{tabular}{|c|c|c|c|c| }
-\hline
-Test Category & C1 & C2 & C3 & C4  \\
-\hline
-\hline
-Recognition \DIFdelbeginFL \DIFdelFL{rate }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Rate }\DIFaddendFL & 98.4\% & 95.8\% & 95.1\% & 40.9\% \\
-\hline
-\end{tabular}
-\label{tab:UIUC-recognition}
-\DIFdelbeginFL %DIFDELCMD < \vspace{-.25in}
+\DIFdelbegin %DIFDELCMD < \begin{table}	
+%DIFDELCMD < \centering %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdel{Recognition rates on our own database.}}
+%DIFAUXCMD
+%DIFDELCMD < \begin{tabular}{|c|c|c|c|c| }
+%DIFDELCMD < \hline
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \vspace{-.4in}
-\DIFaddendFL \end{table}
-Since our focus is on face
+\DIFdel{Test Category }%DIFDELCMD < & %%%
+\DIFdel{C1 }%DIFDELCMD < & %%%
+\DIFdel{C2 }%DIFDELCMD < & %%%
+\DIFdel{C3 }%DIFDELCMD < & %%%
+\DIFdel{C4  }%DIFDELCMD < \\
+%DIFDELCMD < \hline
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdel{Recognition rate }%DIFDELCMD < & %%%
+\DIFdel{98.4}%DIFDELCMD < \% & %%%
+\DIFdel{95.8}%DIFDELCMD < \% & %%%
+\DIFdel{95.1}%DIFDELCMD < \% & %%%
+\DIFdel{40.9}%DIFDELCMD < \% \\
+%DIFDELCMD < \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \label{tab:UIUC-recognition}
+%DIFDELCMD < \vspace{-.25in}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < %%%
+\DIFdelend Since our focus is on face
 recognition, the errors do not include failures of the face
 detector on some of the more challenging images.
 As one can see, our algorithm achieves higher than 95\%
@@ -2175,6 +2194,22 @@ synthetic random block occlusions, and given that the
 illuminations are more challenging, the result is not
 surprising. In the next subsection, we will show how additional
 assumptions can be used to improve the recognition performance.
+\DIFaddbegin \begin{table}[h]
+\vspace{-.1in}	
+\centering \caption{\DIFaddFL{Recognition rates on our own database.}}
+\vspace{-.2in}
+\begin{tabular}{|c|c|c|c|c| }
+\hline
+\DIFaddFL{Test Category }& \DIFaddFL{C1 }& \DIFaddFL{C2 }& \DIFaddFL{C3 }& \DIFaddFL{C4  }\\
+\hline
+\hline
+\DIFaddFL{Recognition Rate }& \DIFaddFL{98.4}\% & \DIFaddFL{95.8}\% & \DIFaddFL{95.1}\% & \DIFaddFL{40.9}\% \\
+\hline
+\end{tabular}
+\label{tab:UIUC-recognition}
+\vspace{-.4in}
+\end{table}
+\DIFaddend 
 
 \subsection{Improving the Performance with Occlusion using Overlapping Blocks}
 A traditional approach to improve the performance of face
