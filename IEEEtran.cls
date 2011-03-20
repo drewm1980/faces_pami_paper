@@ -249,9 +249,6 @@
 \newif\if@IEEEusingAfourpaper       \@IEEEusingAfourpaperfalse
 
 
-% V1.6b internal flag to show if using cspaper
-\newif\if@IEEEusingcspaper       \@IEEEusingcspaperfalse
-
 
 % IEEEtran class scratch pad registers
 % dimen
@@ -281,14 +278,6 @@
                             \def\CLASSOPTIONpaper{letter}%
                             \def\CLASSINFOpaperwidth{8.5in}%
                             \def\CLASSINFOpaperheight{11in}}                         
-
-\DeclareOption{cspaper}{\setlength{\paperheight}{10.75in}%
-                            \setlength{\paperwidth}{7.875in}%
-                            \@IEEEusingAfourpaperfalse
-                            \@IEEEusingcspapertrue
-                            \def\CLASSOPTIONpaper{letter}%
-                            \def\CLASSINFOpaperwidth{7.875in}%
-                            \def\CLASSINFOpaperheight{10.75in}}  
 
 
 \DeclareOption{a4paper}{\setlength{\paperheight}{297mm}%
@@ -800,21 +789,13 @@
 
 
 \columnsep         1pc
-\textwidth        41pc   % 2 x 21pc + 1pc = 43pc
+\textwidth        43pc   % 2 x 21pc + 1pc = 43pc
  
 
 % the default side margins are equal
 \if@IEEEusingAfourpaper 
 \oddsidemargin        14.32mm
 \evensidemargin       14.32mm
-\else
-\oddsidemargin        0.680in
-\evensidemargin       0.680in
-\fi
-
-\if@IEEEusingcspaper 
-\oddsidemargin        0.5in
-\evensidemargin       0.5in
 \else
 \oddsidemargin        0.680in
 \evensidemargin       0.680in
