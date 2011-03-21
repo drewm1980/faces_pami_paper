@@ -1483,23 +1483,23 @@ based only on the alignment error residuals(i.e. $S=1$), shown in row 6.
 \centerline{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
 \hline
-& \multicolumn{3}{|c|}{Session 2} 
-& \multicolumn{3}{|c|}{Session 3} 
-& \multicolumn{3}{|c|}{Session 4} 
+\backslashbox{Rec.}{Align.} 
+& \multicolumn{3}{|c|}{Eye Detector} 
+& \multicolumn{3}{|c|}{Manual} 
+& \multicolumn{3}{|c|}{Iterative} 
 \\
 \hline
-\backslashbox{Rec.}{Align.}
-&det.&man.&iter.  &det.&man.&iter.  &det.&man.&iter.  \\
+Session $\rightarrow$	& 2		&3			&4			& 2		&3			&4			& 2		&3			&4		\\
 \hline
-NS	& 30.8\%	& 77.6\%	& 84.5\%	& 29.4\%	& 74.3\%	& 82.3\%	& 24.6\%	& 73.4\%	& 81.4\% \\
+NS	& 30.8\%	& 29.4\%	& 24.6\%	& 77.6\%	& 74.3\%	& 73.4\%	& 84.5\%	& 82.3\%	& 81.4\% \\
 \hline
-NN	& 26.4\%	& 67.3\%	& 73.5\%	& 24.7\%	& 66.2\%	& 69.6\%	& 21.9\%	& (62.8)\%	& 69.3\% \\
+NN	& 26.4\%	& 24.7\%	& 21.9\%	& 67.3\%	& 66.2\%	& 62.8\%	& 73.5\%	& 69.6\%	& 69.3\% \\
 \hline
-LDA	& 5.1\%		& 49.4\%	& 91.0\%	& 5.9\%		& 44.3\%	& 89.9\%	& 4.3\%		& 47.9\%	& 88.1\% \\
+LDA	& 5.1\%		& 5.9\%		& 4.3\%		& 49.4\%	& 44.3\%	& 47.9\%	& 91.0\%	& 89.9\%	& 88.1\% \\
 \hline
-LBP	& 39.9\%	& 93.3\%	& 95.2\%	& 38.1\%	& 91.2\%	& 94.7\%	& 33.9\%	& 92.9\%	& 93.5\% \\
+LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 94.7\%}	& {\bf 93.5\%} \\
 \hline
-SRC	&			&			& 93.9\%	&			&			& 93.8\%	&			&			& 92.3\% \\
+SRC	&			&			&			&			&			&			& 93.9\%	& 93.8\%	& 92.3\% \\
 \hline
 \end{tabular}
 \label{tab:MultiPIE-recognition} }
