@@ -67,6 +67,10 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
+\usepackage{multirow}
+\usepackage{pict2e}
+\usepackage{slashbox}
+
 \newcommand{\subj}{\textup{subj to}}
 
 \newcommand{\jw}[1]{{\bf \textcolor{blue}{John: #1}}}
@@ -1445,30 +1449,57 @@ To demonstrate that the sparse representation based recognition step is indeed b
 even when there are no impostors, we include results for recognition
 based only on the alignment error residuals(i.e. $S=1$), shown in row 6.
 
+%\begin{table}
+%\caption{Recognition rates on large-scale Multi-PIE database.}
+%\vspace{-.2in}
+%\centerline{
+%\begin{tabular}{|c|c|c|c|c| }
+%\hline
+%Recognition rate & Session 2 & Session 3 & Session 4  \\
+%\hline
+%\hline
+%LDA$_d$ (LDA$_m$) & 5.1 (49.4)\%  & 5.9 (44.3)\% & 4.3 (47.9)\%  \\
+%\hline
+%NN$_d$ (NN$_m$)  & 26.4 (67.3)\% & 24.7 (66.2)\% & 21.9 (62.8)\%  \\
+%\hline
+%NS$_d$ (NS$_m$) &  30.8 (77.6)\% & 29.4 (74.3)\% & 24.6 (73.4)\% \\
+%\hline
+%LBP$_d$ (LBP$_m$) & 39.9 (93.3)\% & 38.1 (91.2)\% & 33.9 (92.9)\% \\
+%\hline
+%\cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
+%\hline
+%{Algorithm 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
+%\hline
+%{Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
+%\hline
+%{Algorithm 1 with improved window} & 95.0\% & {\bf 96.3}\% & {\bf 97.3}\% \\
+%\hline
+%\end{tabular}
+%\label{tab:MultiPIE-recognition} }
+%\end{table}
 \begin{table}
 \caption{Recognition rates on large-scale Multi-PIE database.}
 \vspace{-.2in}
 \centerline{
-\begin{tabular}{|c|c|c|c|c| }
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
 \hline
-Recognition rate & Session 2 & Session 3 & Session 4  \\
+& \multicolumn{3}{|c|}{Session 2} 
+& \multicolumn{3}{|c|}{Session 3} 
+& \multicolumn{3}{|c|}{Session 4} 
+\\
 \hline
+\backslashbox{Rec.}{Align.}
+&det.&man.&iter.  &det.&man.&iter.  &det.&man.&iter.  \\
 \hline
-LDA$_d$ (LDA$_m$) & 5.1 (49.4)\%  & 5.9 (44.3)\% & 4.3 (47.9)\%  \\
+NS	& 30.8\%	& 77.6\%	& 84.5\%	& 29.4\%	& 74.3\%	& 82.3\%	& 24.6\%	& 73.4\%	& 81.4\% \\
 \hline
-NN$_d$ (NN$_m$)  & 26.4 (67.3)\% & 24.7 (66.2)\% & 21.9 (62.8)\%  \\
+NN	& 26.4\%	& 67.3\%	& 73.5\%	& 24.7\%	& 66.2\%	& 69.6\%	& 21.9\%	& (62.8)\%	& 69.3\% \\
 \hline
-NS$_d$ (NS$_m$) &  30.8 (77.6)\% & 29.4 (74.3)\% & 24.6 (73.4)\% \\
+LDA	& 5.1\%		& 49.4\%	& 91.0\%	& 5.9\%		& 44.3\%	& 89.9\%	& 4.3\%		& 47.9\%	& 88.1\% \\
 \hline
-LBP$_d$ (LBP$_m$) & 39.9 (93.3)\% & 38.1 (91.2)\% & 33.9 (92.9)\% \\
+LBP	& 39.9\%	& 93.3\%	& 95.2\%	& 38.1\%	& 91.2\%	& 94.7\%	& 33.9\%	& 92.9\%	& 93.5\% \\
 \hline
-\cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
-\hline
-{Algorithm 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
-\hline
-{Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
-\hline
-{Algorithm 1 with improved window} & 95.0\% & {\bf 96.3}\% & {\bf 97.3}\% \\
+SRC	&			&			& 93.9\%	&			&			& 93.8\%	&			&			& 92.3\% \\
 \hline
 \end{tabular}
 \label{tab:MultiPIE-recognition} }
