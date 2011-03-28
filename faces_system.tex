@@ -1403,88 +1403,50 @@ See below for the 38 training images of one subject:
 
 
 \section{Tests on Public Databases}\label{sec:multipie}
-In this section and the next section, we conduct comprehensive
-experiments on large-scale face databases to verify the performance
-of our algorithm and system. We
-first test on the largest public face database available that
-is suitable for testing our algorithm, the CMU Multi-PIE.
-One shortcoming of the CMU Multi-PIE database for our purposes
-is that there is no separate set of test images taken under natural illuminations;
-we are left to choose which sets of images to use for testing and training.
-To challenge our algorithm, we choose only a small set of illuminations for the training set,
-yet we include all illuminations in the testing set. In the following section, we will test our
-algorithm on a face dataset that is collected by our own
-system. The goal for that experiment will be to show that with a sufficient set of
-training illuminations for each subject, our algorithm indeed
-works stably and robustly with practical illumination,
-misalignment, pose, and occlusion, as already indicated by our
-experiment shown in Figure \ref{fig:promo}(bottom).
+In this section and the next section, we conduct comprehensive experiments on
+large-scale face databases to verify the performance of our algorithm and
+system. We first test on the largest public face database available that is
+suitable for testing our algorithm, the CMU Multi-PIE.  One shortcoming of the
+CMU Multi-PIE database for our purposes is that there is no separate set of
+test images taken under natural illuminations; we are left to choose which sets
+of images to use for testing and training.  To challenge our algorithm, we
+choose only a small set of illuminations for the training set, yet we include
+all illuminations in the testing set. In the following section, we will test
+our algorithm on a face dataset that is collected by our own system. The goal
+for that experiment will be to show that with a sufficient set of training
+illuminations for each subject, our algorithm indeed works stably and robustly
+with practical illumination, misalignment, pose, and occlusion, as already
+indicated by our experiment shown in Figure \ref{fig:promo}(bottom).
 
-CMU Multi-PIE provides the most extensive test set among public
-datasets. This database contains images of 337 subjects across
-simultaneous variation in pose, expression, and illumination.
-Of these 337 subjects, we use all of the 249 subjects present
-in Session 1 as the training set. The remaining 88 subjects are
-treated as ``impostors'', or invalid images. For each of the
-249 training subjects, we include frontal images of 7 frontal
-illuminations,\footnote{They are illuminations
-$\{0,1,7,13,14,16,18\}$ of \cite{Gross2008-FGR}. For each
-directional illumination, we subtract the ambient-illuminated
-image 0.} taken with neutral expression. As suggested by the
-work of \cite{Georghiades2001-PAMI}, these extreme frontal
-illuminations would be sufficient to linearly represent other
-frontal illuminations, as will also be corroborated by the next
-experiment on our own dataset. For the test set, we use all 20
-illuminations from Sessions 2-4, which were recorded 
-over a period of several months. The dataset is
-challenging due to the large number of subjects, and due to
-natural variation in subject appearance over time. Table
-\ref{tab:MultiPIE-recognition} shows the result of our
-algorithm on each of the 3 testing sessions. Our algorithm
-achieves recognition rates above $90\%$ for all three sessions.
-For the test images, 
-alignment was initialized automatically via the Viola and Jones'
-face detector. 
-To demonstrate that the sparse representation based recognition step is indeed beneficial
-even when there are no impostors, we include results for recognition
-based only on the alignment error residuals(i.e. $S=1$), shown in row 6.
+CMU Multi-PIE provides the most extensive test set among public datasets. This
+database contains images of 337 subjects across simultaneous variation in pose,
+expression, and illumination.  Of these 337 subjects, we use all of the 249
+subjects present in Session 1 as the training set. The remaining 88 subjects
+are treated as ``impostors'', or invalid images. For each of the 249 training
+subjects, we include frontal images of 7 frontal illuminations,\footnote{They
+are illuminations $\{0,1,7,13,14,16,18\}$ of \cite{Gross2008-FGR}. For each
+directional illumination, we subtract the ambient-illuminated image 0.} taken
+with neutral expression. As suggested by the work of
+\cite{Georghiades2001-PAMI}, these extreme frontal illuminations would be
+sufficient to linearly represent other frontal illuminations, as will also be
+corroborated by the next experiment on our own dataset. For the test set, we
+use all 20 illuminations from Sessions 2-4, which were recorded over a period
+of several months. The dataset is challenging due to the large number of
+subjects, and due to natural variation in subject appearance over time.  Line 5
+of Table \ref{tab:MultiPIE-recognition} shows the result of our recognition
+pipeline on each of the 3 testing sessions. Our algorithm achieves recognition
+rates above $90\%$ for all three sessions.  For the test images, our iterative
+alignment was initialized automatically via the Viola and Jones' face detector.
 
-%\begin{table}
-%\caption{Recognition rates on large-scale Multi-PIE database.}
-%\vspace{-.2in}
-%\centerline{
-%\begin{tabular}{|c|c|c|c|c| }
-%\hline
-%Recognition rate & Session 2 & Session 3 & Session 4  \\
-%\hline
-%\hline
-%LDA$_d$ (LDA$_m$) & 5.1 (49.4)\%  & 5.9 (44.3)\% & 4.3 (47.9)\%  \\
-%\hline
-%NN$_d$ (NN$_m$)  & 26.4 (67.3)\% & 24.7 (66.2)\% & 21.9 (62.8)\%  \\
-%\hline
-%NS$_d$ (NS$_m$) &  30.8 (77.6)\% & 29.4 (74.3)\% & 24.6 (73.4)\% \\
-%\hline
-%LBP$_d$ (LBP$_m$) & 39.9 (93.3)\% & 38.1 (91.2)\% & 33.9 (92.9)\% \\
-%\hline
-%\cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
-%\hline
-%{Algorithm 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
-%\hline
-%{Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
-%\hline
-%{Algorithm 1 with improved window} & 95.0\% & {\bf 96.3}\% & {\bf 97.3}\% \\
-%\hline
-%\end{tabular}
-%\label{tab:MultiPIE-recognition} }
-%\end{table}
 \begin{table}
-\caption{Recognition rates on large-scale Multi-PIE database.}
+\caption{Recognition rates on the Multi-PIE database for different pairings of alignment
+and recognition stages.}
 \vspace{-.2in}
 \centerline{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
 \hline
 \backslashbox{Rec.}{Align.} 
-& \multicolumn{3}{|c|}{Eye Detector} 
+& \multicolumn{3}{|c|}{Face Detector} 
 & \multicolumn{3}{|c|}{Manual} 
 & \multicolumn{3}{|c|}{Iterative} 
 \\
@@ -1504,6 +1466,7 @@ SRC	&			&			&			&			&			&			& 93.9\%	& 93.8\%	& 92.3\% \\
 \end{tabular}
 \label{tab:MultiPIE-recognition} }
 \end{table}
+
 \begin{figure}
 \centering
 {\small
@@ -1579,6 +1542,7 @@ forehead part may actually result in loss of useful
 discriminative information.
 
 \subsection{Comparison to Existing Work}
+% Classical algorithms
 We compare our result to baseline linear-projection-based
 algorithms, such as Nearest Neighbor (NN), Nearest Subspace
 (NS) \cite{Lee2005-PAMI}, and Linear Discriminant Analysis
@@ -1586,20 +1550,71 @@ algorithms, such as Nearest Neighbor (NN), Nearest Subspace
 results on PCA \cite{Turk1991-CVPR} as its performance is
 always below that of Nearest Subspace.} Since these algorithms
 assume pixel-accurate alignment, they are not expected to work
-well if the test is not well aligned with the training. In
+well if the test image is not well aligned with the training. In
 Table~\ref{tab:MultiPIE-recognition}, we report the results of
-those algorithms with two types of input: 1.\ the output of the
-Viola and Jones' detector, indicated by a subscript ``$d$'';
-2.\ the input face is aligned to the training with manually
-selected outer eye corners, indicated by a subscript ``$m$''.
-Notice that even with careful manual registration, these
-baseline algorithms perform significantly worse than our
-algorithm, which uses input directly from the face detector.
+these classical algorithms with three types of testing image alignment: 
+1.\ alignment from the Viola and Jones' detector,
+2.\ alignment via manually selected outer eye corners, and 
+3.\ the output of our iterative alignment algorithm.
 The performance drop of the LDA algorithm on Multi-PIE reported here
 seems to agree with that reported already in
-\cite{Gross2008-FGR}.
+\cite{Gross2008-FGR}.  All of the classical algorithms benefit
+greatly from being paired with our iterative alignment algorithm.
 
-We also compare our result to the very recent work
+% LBP
+Finally, we compare our result to Local Binary Patterns (LBP)
+\cite{Ahonen2006-PAMI}, a local appearance descriptor which is able to capture
+fine details of facial appearance and texture.  Due to its robustness to
+variations in illumination, facial expression, aging and other changes, LBP has
+achieved the state-of-the-art face recognition performance in the scenario when
+only one sample per person is used for training \cite{Tan06facerecognition}. In
+this paper, we follow the same steps as in \cite{Ahonen2006-PAMI} to construct
+an LBP descriptor for each training and testing sample. The $80\times 60$ face
+region is first divided into a regular $10\times 10$ grid of cells, each of
+size $8\times 6$ pixels. Within each cell, the histogram of 59 uniform binary
+patterns is then computed, where the patterns are generated by thresholding 8
+neighboring pixels in a circle of radius 2 using the central pixel value.
+Finally, the local histograms are concatenated to produce the global descriptor
+vector. As suggested in \cite{Ahonen2006-PAMI}, the recognition is performed
+using a nearest neighbor classifier with Chi square distance as the distance
+measure and we report the recognition rates with the same two types of input as
+before.  Recognition results for LBP on Multi-PIE are shown in
+Table~\ref{tab:MultiPIE-recognition}.  We attribute the improvement in
+performance of LBP over SRC in this experiment to its robustness to
+illumination components that are not in the training set.  Some of the test
+images used in this experiment are taken under illuminations not present in the
+training subset.  Note that, like the other classical algorithms, the
+performance of LBP is still sensitive to misalignment. This is notable given
+that LBP is often applied without any special alignment.
+
+\begin{table}
+\caption{Recognition rates on the Multi-PIE database for \cite{Yang2010-CVPR} and variants
+of Algorithm 1}
+\vspace{-.2in}
+\centerline{
+\begin{tabular}{|c|c|c|c|c| }
+\hline
+Recognition rate & Session 2 & Session 3 & Session 4  \\
+\hline
+\cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
+\hline
+{Algorithm 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
+\hline
+{Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
+\hline
+{Algorithm 1 with improved window} & 95.0\% & {\bf 96.3}\% & {\bf 97.3}\% \\
+\hline
+\end{tabular}
+\label{tab:MultiPIE-recognition2} }
+\vspace{-.3in}
+\end{table}
+
+To demonstrate that the sparse representation based recognition step is indeed
+beneficial even when there are no impostors, we include results for recognition
+based only on the alignment error residuals(i.e. $S=1$), shown in 
+Table \ref{tab:MultiPIE-recognition2}, row 6.
+
+We also compare our result to the recent work
 \cite{Yang2010-CVPR}. Notice that in \cite{Yang2010-CVPR}, the
 initial registration is again obtained from manually selected
 outer eye corners. Then, a supervised hierarchical sparse
@@ -1608,36 +1623,9 @@ enjoys certain translation invariant properties. With the same
 training and testing sets, \cite{Yang2010-CVPR} is able to
 handle any remaining misalignment and achieves state-of-the-art
 performance on the CMU Multi-PIE database.
-Table~\ref{tab:MultiPIE-recognition} shows that our algorithm
+Table~\ref{tab:MultiPIE-recognition2} shows that our algorithm
 achieves similar or better performance on different sessions of
 Multi-PIE.
-
-Finally, we compare our result to Local Binary Patterns (LBP)
-\cite{Ahonen2006-PAMI}, a local appearance descriptor which is
-able to capture fine details of facial appearance and texture.
-Due to its robustness to variations in illumination, facial
-expression, aging and other changes, LBP has achieved the
-state-of-the-art face recognition performance in the scenario
-when only one sample per person is used for training
-\cite{Tan06facerecognition}. In this paper, we follow the same
-steps as in \cite{Ahonen2006-PAMI} to construct an LBP
-descriptor for each training and testing sample. The $80\times
-60$ face region is first divided into a regular $10\times 10$
-grid of cells, each of size $8\times 6$ pixels. Within each
-cell, the histogram of 59 uniform binary patterns is then
-computed, where the patterns are generated by thresholding 8
-neighboring pixels in a circle of radius 2 using the central
-pixel value. Finally, the local histograms are concatenated to
-produce the global descriptor vector. As suggested in
-\cite{Ahonen2006-PAMI}, the recognition is performed using a
-nearest neighbor classifier with Chi square distance as the
-distance measure and we report the recognition rates with the
-same two types of input as before. As shown in
-Table~\ref{tab:MultiPIE-recognition}, LBP achieves competitive
-recognition rates given manually aligned training and testing
-samples, which demonstrates its robustness to illumination
-changes. However, its performance is very sensitive to
-misalignment. 
 
 Although our algorithm is not designed for
 recognition when there is only a single gallery image per user,
@@ -1718,29 +1706,30 @@ if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
 invalid. We compare this classifier to classifiers based on
 thresholding the error residuals of NN, NS, LDA, and LBP.
 
-Figure \ref{fig:roc-multipie} plots the receiver operating
-characteristic (ROC) curves, which are generated by sweeping
-the threshold $t$ through the entire range of possible values
-for each algorithm.\footnote{Rejecting invalid images not in
-the entire database is much more difficult than deciding if two
-face images are the same subject. Figure 8 should not be
-confused with typical ROC curves for face similarity, e.g.,
-\cite{PhillipsP2007}.} We can see that SCI based approach
-significantly outperforms the other three algorithms. Similar
-contrasts between our algorithm and baseline algorithms were
-also observed for SRC in \cite{Wright2009-PAMI}, though on much
-smaller datasets.
-
+Figure \ref{fig:roc-multipie} plots the receiver operating characteristic (ROC)
+curves, which are generated by sweeping the threshold $t$ through the entire
+range of possible values for each algorithm.\footnote{Rejecting invalid images
+not in the entire database is much more difficult than deciding if two face
+images are the same subject. Figure 8 should not be confused with typical ROC
+curves for face similarity, e.g., \cite{PhillipsP2007}.} On the left we can see
+that the SCI based recognition approach significantly outperforms the other
+algorithms, including LBP, even when all algorithms are coupled with our
+proposed iterative alignment.  In the right plot we again see that classical
+algorithms, and even LBP, are very sensitive to alignment.  Similar contrasts
+between our algorithm and baseline algorithms were also observed for SRC in
+\cite{Wright2009-PAMI}, though on much smaller datasets.
 \begin{figure}
 \centerline{
 	\begin{tabular}{cc}
-	\includegraphics[width=3in]{figures_pami/pami_roc2.png} & 
-	\includegraphics[width=3in]{figures_pami/pami_roc_revision2.png} \\
-	{\bf OLD PLOT, mixed alignment} & {\bf NEW PLOT, all iterative alignment} \\
+	\includegraphics[width=3in]{figures_pami/pami_roc_revision2.png} &
+	\includegraphics[width=3in]{figures_pami/pami_roc2.png} \\
+	{\small With iterative alignment} & {\small Classical Algorithms with manual alignment} 
+\\
 	\end{tabular}
 }
-\caption{{\bf ROC curves} for subject validation on Multi-PIE database.}\label{fig:roc-multipie}
-\vspace{-.6in}
+\caption{{\bf ROC curves} for subject validation on Multi-PIE database, (a) with iterative alignment,
+and (b) for the classical algorithms with manual alignment}\label{fig:roc-multipie}
+%\vspace{-.6in}
 \end{figure}
 
 \subsection{Recognition with Synthetic Random Block Occlusion}
