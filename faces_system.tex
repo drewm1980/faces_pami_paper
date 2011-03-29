@@ -149,7 +149,7 @@ organization (e.g.\ Google Picassa, Microsoft Photo Gallery, and Apple iPhoto).
 At the other end of the tractability spectrum there are the terrorist watchlist
 and mass surveillance applications that have for the most part dominated the
 field of face recognition research.  However, there are many face recognition
-that fall roughly between these extremes, where very high recognition
+applications that fall roughly between these extremes, where very high recognition
 performance is desired, but the users in the gallery are still allies of the
 system rather than adversaries.  These applications include access control for
 secure facilities (e.g., prisons, office buildings), computer systems,
@@ -1435,8 +1435,8 @@ represent other frontal illuminations well. For the test set,
 we use all 20 illuminations from Sessions 2-4, which were
 recorded over a period of several months. The dataset is
 challenging due to the large number of subjects, and due to
-natural variation in subject appearance over time. Table
-\ref{tab:MultiPIE-recognition2} shows the result of our
+natural variation in subject appearance over time. 
+Table \ref{tab:MultiPIE-recognition2} shows the result of our
 algorithm on each of the 3 testing sessions. Our algorithm
 achieves recognition rates above $90\%$ for all three sessions.
 For the test images, our iterative alignment was initialized
@@ -1568,7 +1568,11 @@ the test image is not well aligned with the training. In
 Table~\ref{tab:MultiPIE-recognition}, we report the results of
 these classical algorithms with three types of testing image
 alignment: 1.\ alignment from the Viola and Jones' detector,
-2.\ alignment via manually selected outer eye corners, and 3.\
+2.\ alignment via manually selected outer eye corners,
+\footnote{Two manually clicked points are sufficient to define
+a similarity transformation.  All of the experiments in this section are carried out with
+similarity transformations.}
+ and 3.\
 the output of our iterative alignment algorithm. The
 performance drop of the LDA algorithm on Multi-PIE reported
 here seems to agree with that reported already in
@@ -1881,7 +1885,7 @@ outdoor illuminations.\vspace{-0.2in}
 \includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_3995.JPG}
 \includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_4030.JPG}
 \includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_4095.JPG}
-\vspace{-.2in}
+\vspace{-.0in}
  \caption{{\bf Representative examples of category C4}. Top row: successful examples with our method using overlapping blocks. Bottom row: failures with our method using overlapping blocks.}\label{fig:examples4}
 \vspace{-.5in}
 \end{figure}
@@ -1988,7 +1992,7 @@ interesting future work.
 
 \section{Conclusion}\label{sec:conclusion}
 Using a well-though-out combination of existing ideas
-(iterative image alignment, l1-error function, SRC, using projectors for
+(iterative image alignment, $\ell_1$-error function, SRC, using projectors for
 illumination), we have proposed a system for recognizing human faces
 from images taken under practical conditions that is conceptually simple, well
 motivated, and competitive with state-of-the-art recognition systems for access
