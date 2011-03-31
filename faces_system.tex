@@ -1799,6 +1799,7 @@ Recognition rate & 99.6\% & 94.9\% & 79.6\% & 46.5\% & 19.8\% \\
 \vspace{-.4in}
 \end{figure}
 
+\vspace{-.2in}
 \subsection{Recognition with Pose and Expression} We now run tests of
 our algorithm on a subset of the images from Multi-PIE with pose and expression variation in the test set, although we do not model these variations explicitly.
 Using the same training set as above, we test our algorithm on
@@ -1810,6 +1811,7 @@ the performance of our method will be significantly improved if pose and express
 are available in the training.
 
 
+\vspace{-.1in}
 \section{Tests on Our Own Database}\label{sec:own-data} Using the training acquisition
 system we described in Section \ref{sec:illumination}, and shown in Figure
 \ref{fig:system}, we have collected the frontal view of 109
@@ -1818,6 +1820,7 @@ in Figure \ref{fig:illumination-patterns}. For testing our
 algorithm, we have also taken 935 images of these subjects with
 a different camera under a variety of practical conditions.
 
+\vspace{-.1in}
 \subsection{Necessity of Rear Illuminations} To see how
 training illuminations affect the performance of our algorithm
 in practice, we now compare how well a few frontal
@@ -1842,7 +1845,8 @@ outdoor images drop down to $94.2\%$ and $89.2\%$,
 respectively. This is a strong indication that
 frontal illuminations taken under laboratory conditions
 are insufficient for representing test images under typical indoor and
-outdoor illuminations.\vspace{-0.2in}
+outdoor illuminations.
+\vspace{-0.1in}
 
 \begin{figure}
 \centering
@@ -1891,7 +1895,7 @@ outdoor illuminations.\vspace{-0.2in}
 \includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_4095.JPG}
 \vspace{-.0in}
  \caption{{\bf Representative examples of category C4}. Top row: successful examples with our method using overlapping blocks. Bottom row: failures with our method using overlapping blocks.}\label{fig:examples4}
-\vspace{-.5in}
+\vspace{-.4in}
 \end{figure}
 
 \subsection{Large-Scale Test with Sufficient Training
@@ -1971,7 +1975,7 @@ results for individual blocks are then aggregated by voting.
 \includegraphics[width=4in]{figures_pami/occ_block.png}\vspace{-0.2in}}
 \caption{{\bf Using overlapping blocks to tackle contiguous occlusion.} (a) The test image, occluded by sunglasses. (b) The four overlapping blocks. (c) The sparse representation is calculated after alignment for each block independently. The red lines correspond to his true identity. (d) The true identity is successfully recovered by voting based on the SCI scores.}
 \label{fig:occ-block}
-\vspace{-.5in}
+\vspace{-.3in}
 \end{figure}
 
 In this experiment, we found that the using the \emph{sparsity
