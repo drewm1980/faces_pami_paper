@@ -1607,27 +1607,6 @@ SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
 \label{tab:MultiPIE-recognition} } \vspace{-.4in}
 \end{table}
 
-%\begin{table}
-%\caption{Recognition rates on the Multi-PIE database for
-%different pairings of alignment and recognition stages.}
-%\vspace{-.2in} \centerline{
-%\begin{tabular}{|c|c|c|c|c| } \hline
-%Recognition rate & Session 2 & Session 3 & Session 4  \\
-%\hline
-%LDA($d/m/i$) & 5.1 / 49.4 / 91.0\% & 5.9 / 44.3 / 89.9\% & 4.3 / 47.9 / 88.1\% \\
-%\hline
-%NN($d/m/i$) & 26.4 / 67.3 / 73.5\% & 24.7 / 66.2 / 69.6\% & 21.9 / 62.8 / 69.3\% \\
-%\hline
-%NS($d/m/i$) & 30.8 / 77.6 / 84.5\% & 29.4 / 74.3 / 82.3\% & 24.6 / 73.4 / 81.4\% \\
-%\hline
-%LBP($d/m/i$) & 39.9 / 93.3 / {\bf 95.2}\% & 38.1 / 91.2 / {\bf 94.7}\% & 33.9 / 92.9 / {\bf 93.5}\% \\
-%\hline
-%Algorithm 1 & 93.9\% & 93.8\% & 92.3\% \\
-%\hline
-%\end{tabular}
-%\label{tab:MultiPIE-recognition} }\vspace{-.4in}
-%\end{table}
-
 % LBP
 We also compare our result to Local Binary Patterns (LBP)
 \cite{Ahonen2006-PAMI}, a local appearance descriptor which is
@@ -1682,10 +1661,10 @@ using manually marked eye coordinates \cite{Deng2010-PR}. In
 Table~\ref{tab:FERET-recognition}, we report the performance of
 our algorithm on the four test sets, with input directly
 obtained from the Viola and Jones' detector. We also report the
-performance of LBP with the same three types of input as before
-in Table~\ref{tab:FERET-recognition}, where we use letters
-``$d$'', ``$m$'' and ``$i$'' to indicate face detector, manual
-alignment and our iterative alignment algorithm, respectively.
+performance of LBP with the same three types of input as before:
+we use letters
+``$d$'', ``$m$'', and ``$i$'' to indicate face detector, manual
+alignment, and our iterative alignment algorithm, respectively.
 
 \begin{table}
 \caption{Recognition rates on single gallery image FERET
