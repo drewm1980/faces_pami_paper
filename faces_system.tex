@@ -1435,7 +1435,7 @@ represent other frontal illuminations well. For the test set,
 we use all 20 illuminations from Sessions 2-4, which were
 recorded over a period of several months. The dataset is
 challenging due to the large number of subjects, and due to
-natural variation in subject appearance over time. 
+natural variation in subject appearance over time.
 Table \ref{tab:MultiPIE-recognition2} shows the result of our
 algorithm on each of the 3 testing sessions. Our algorithm
 achieves recognition rates above $90\%$ for all three sessions.
@@ -1568,12 +1568,11 @@ the test image is not well aligned with the training. In
 Table~\ref{tab:MultiPIE-recognition}, we report the results of
 these classical algorithms with three types of testing image
 alignment: 1.\ alignment from the Viola and Jones' detector,
-2.\ alignment via manually selected outer eye corners,
-\footnote{Two manually clicked points are sufficient to define
-a similarity transformation.  All of the experiments in this section are carried out with
-similarity transformations.}
- and 3.\
-the output of our iterative alignment algorithm. The
+2.\ alignment via manually selected outer eye
+corners,\footnote{Two manually clicked points are sufficient to
+define a similarity transformation. All of the experiments in
+this section are carried out with similarity transformations.}
+and 3.\ the output of our iterative alignment algorithm. The
 performance drop of the LDA algorithm on Multi-PIE reported
 here seems to agree with that reported already in
 \cite{Gross2008-FGR}.  All of the classical algorithms benefit
@@ -1608,6 +1607,27 @@ SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
 \label{tab:MultiPIE-recognition} } \vspace{-.4in}
 \end{table}
 
+%\begin{table}
+%\caption{Recognition rates on the Multi-PIE database for
+%different pairings of alignment and recognition stages.}
+%\vspace{-.2in} \centerline{
+%\begin{tabular}{|c|c|c|c|c| } \hline
+%Recognition rate & Session 2 & Session 3 & Session 4  \\
+%\hline
+%LDA($d/m/i$) & 5.1 / 49.4 / 91.0\% & 5.9 / 44.3 / 89.9\% & 4.3 / 47.9 / 88.1\% \\
+%\hline
+%NN($d/m/i$) & 26.4 / 67.3 / 73.5\% & 24.7 / 66.2 / 69.6\% & 21.9 / 62.8 / 69.3\% \\
+%\hline
+%NS($d/m/i$) & 30.8 / 77.6 / 84.5\% & 29.4 / 74.3 / 82.3\% & 24.6 / 73.4 / 81.4\% \\
+%\hline
+%LBP($d/m/i$) & 39.9 / 93.3 / {\bf 95.2}\% & 38.1 / 91.2 / {\bf 94.7}\% & 33.9 / 92.9 / {\bf 93.5}\% \\
+%\hline
+%Algorithm 1 & 93.9\% & 93.8\% & 92.3\% \\
+%\hline
+%\end{tabular}
+%\label{tab:MultiPIE-recognition} }\vspace{-.4in}
+%\end{table}
+
 % LBP
 We also compare our result to Local Binary Patterns (LBP)
 \cite{Ahonen2006-PAMI}, a local appearance descriptor which is
@@ -1616,7 +1636,7 @@ Due to its robustness to variations in illumination, facial
 expression, aging and other changes, LBP has achieved the
 state-of-the-art face recognition performance in the scenario
 when only one sample per person is used for training
-\cite{Tan06facerecognition}. 
+\cite{Tan06facerecognition}.
 In this paper, we follow the same
 steps as in \cite{Ahonen2006-PAMI} to construct an LBP
 descriptor for each training and testing sample. The $80\times
@@ -1635,7 +1655,7 @@ Table~\ref{tab:MultiPIE-recognition}, although LBP achieves
 competitive recognition rates given manually aligned training
 and testing samples, demonstrating its robustness to moderate
 misalignment, it still benefits from using the output of our
-iterative alignment algorithm as the input. 
+iterative alignment algorithm as the input.
 In addition, like
 the other classical algorithms, the performance of LBP degrades
 dramatically if it is applied directly to the output of a face
@@ -1661,9 +1681,11 @@ region from each original image to an $80\times 60$ window
 using manually marked eye coordinates \cite{Deng2010-PR}. In
 Table~\ref{tab:FERET-recognition}, we report the performance of
 our algorithm on the four test sets, with input directly
-obtained from the Viola and Jones' detector, and the
-performance of LBP with input obtained from both face detector
-and manual alignment using the eye coordinates.
+obtained from the Viola and Jones' detector. We also report the
+performance of LBP with the same three types of input as before
+in Table~\ref{tab:FERET-recognition}, where we use letters
+``$d$'', ``$m$'' and ``$i$'' to indicate face detector, manual
+alignment and our iterative alignment algorithm, respectively.
 
 \begin{table}
 \caption{Recognition rates on single gallery image FERET
@@ -1673,7 +1695,7 @@ dataset} \vspace{-.1in} \centerline{
 Recognition rate & fb & fc & dup1 & dup2 \\
 \hline
 \hline
-LBP$_d$ (LBP$_m$) & 54.8 (96.6)\% & 10.3 (58.8)\% & 29.8 (71.6)\% & 19.8 (61.5)\% \\
+LBP($d/m/i$) & 54.8 / {\bf 96.6} / 94.5 \% & 10.3 / {\bf 58.8} / 42.8\% & 29.8 / {\bf 71.6} / 46.5\% & 19.8 / {\bf 61.5} / 21.1\% \\
 \hline
 {Algorithm 1} & 95.2\% & 28.4\% & 46.1\% & 20.3\% \\
 \hline
@@ -1683,10 +1705,13 @@ LBP$_d$ (LBP$_m$) & 54.8 (96.6)\% & 10.3 (58.8)\% & 29.8 (71.6)\% & 19.8 (61.5)\
 
 As expected, our algorithm does not perform well except for
 `fb', in which the illumination is similar to the training and
-the mere variation in facial expression is handled well by the sparse error
-model. For the other three test sets, our algorithm fails because the illumination
-changes and other variations seriously violate the assumptions of our method.
-On the other hand, while LBP achieves the best recognition rates given
+the mere variation in facial expression is handled well by the
+sparse error model. For the other three test sets, our
+algorithm fails because the illumination changes and other
+variations seriously violate the assumptions of our method.
+This also explains why LBP performs worse with our iterative
+alignment algorithm, compared to manual alignment. On the other
+hand, while LBP achieves the best recognition rates given
 manually aligned training and testing samples, its performance
 degrades drastically when the input is obtained directly from
 the face detector. It is also worth noting that similar poor

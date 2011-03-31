@@ -45,14 +45,15 @@ We again thank the reviewers and the area chair for their comments.
 %I am mostly satisfied with the responses to the earlier review. The paper is
 %in much better form now and more carefully written.
 Changes have been made to the paper to address all of the changes requested by Reviewer 1,
-including a more complete set of results in Table 2 and Figure 11, and associated 
+including a more complete set of results in Table 2, Table 3 and Figure 11, and associated
 discussions.  We give a quick overview of the changes.
 
 {\bf
 	Page 1 line 16; "there are many face recognition that fall roughly.."
 	missing the word 'applications'
 }
-The typo on Page 1 is now ammended.
+
+The typo on Page 1 is now amended.
 
 {\bf
 	In Table 1, the baseline results are shown with subscripts 'd' and 'm', i.e.
@@ -63,11 +64,12 @@ The typo on Page 1 is now ammended.
 	registration is to be considered better than automatic registration - the
 	human visual sensitivity is pretty bad for a problem like registration.
 }
+
 We ran the requested experiments.  We agree with the reviewer that automatic registration
 can often out-perform manual registration.  The results back this up, and the text
-is ammended to be more clear on this point.  The new more complete benchmark is shown in
+is amended to be more clear on this point.  The new more complete benchmark is shown in
 Table 2, and Figure 11.  All of the classical methods benefit from using our iterative
-alignment procudeure.  This is even true for LBP, which is known to have some robustness
+alignment procedure.  This is even true for LBP, which is known to have some robustness
 to moderate misalignment.  The discussions have been updated to cover the new results.
 
 {\bf
@@ -80,6 +82,7 @@ to moderate misalignment.  The discussions have been updated to cover the new re
 	wrong, is the entire affine registration being done manually ? If so, as
 	mentioned above the accuracy of the human can be bad.
 }
+
 Similarity transformations are used for all of the experiments in this section, and
 therefore two manually selected outer eye corners are sufficient.  We have
 made this clear by adding a footnote.
@@ -87,6 +90,13 @@ made this clear by adding a footnote.
 {\bf
 	Some comments on this would be useful to better understand the results shown in table 1 and 2.
 }
-As already discussed, the discussion of these results has been updated. 
+
+The discussion of these results (now Table 2 and 3 in the new
+draft) has been updated. For the single gallery image FERET
+experiment (Table 3), since our algorithm is not designed for
+such scenario, it fails when the illumination changes and other
+variations seriously violate its assumption. We found that LBP
+with manual alignment achieves the best performance in this
+experiment.
 
 \end{document}
