@@ -36,377 +36,69 @@
 
    \title{\Large {\bf Manuscript  Revision Statement}}
 
-       \author{{Andrew Wagner, John Wright, Arvind Ganesh, Zihan Zhou, Hossein Mobahi, and Yi Ma}}
+   \author{{Andrew Wagner, John Wright, Arvind Ganesh, Zihan Zhou, Hossein Mobahi, and Yi Ma}}
 
    \date{}
    \maketitle
 
-We thank the reviewers for their constructive comments, and in particular
-reviewer 1 for an extra in-depth review.  While we have philosophical
-differences on several points, we deeply appreciate the constructive
-criticisms raised by the reviewers, which have helped us strengthen the paper considerably.
-Below, we respond to comments of the reviewers in order, indicating
-specific changes that we have made to address their concerns.
+\vspace{-.2in}
+We again thank the reviewers and the area chair for their comments.
+%I am mostly satisfied with the responses to the earlier review. The paper is
+%in much better form now and more carefully written.
+Changes have been made to the paper to address all of the changes requested by Reviewer 1,
+including a more complete set of results in Table 2, Table 3, Figure 11, and associated
+discussions.  We give a quick overview of the changes.
 
+{\bf
+	Page 1 line 16; "there are many face recognition that fall roughly.."
+	missing the word 'applications'
+}
 
-\section{Response to Reviewer \#1}
+The typo on Page 1 is now amended.
 
-\paragraph{About Presentation:} The reviewer suggests that we can reduce the description
-of the ALM algorithm in Section II-D. We agree that ALM has been extensively studied in the optimization
-literature. We do not claim any novelty here. However, we believe a complete description of the algorithm
-here is important for the TPAMI audience: There are
-many algorithms for solving the associated optimization problem, with drastically different complexity
-and speed. Typical vision researchers might not be so familiar with some of the recent
-developments in these algorithms. In particular some of the more effective improvements to ALM are fairly
-recent and scattered in different literatures. In fact, many of the questions raised by reviewer \#2
-ask for even more detailed explanation about the algorithms. So, we believe that a complete but brief
-description of the ALM-based algorithm is important for the audience of TPAMI to implement and
-test the ideas efficiently and correctly.
+{\bf
+	In Table 1, the baseline results are shown with subscripts 'd' and 'm', i.e.
+	using results of a detector, and manual registration. It seems like an obvious
+	omission not to include results of recognition where input comes from the
+	proposed registration algorithm itself. While the paper states that even
+	manual registration works worse, it is not particularly convincing that manual
+	registration is to be considered better than automatic registration - the
+	human visual sensitivity is pretty bad for a problem like registration.
+}
 
-We find the reviewer's other suggestions on presentation useful and have made changes accordingly. 
-In particular, the discussions of gamma and the illumination model have been made more succinct.  As
-requested, the discussion of prior projector-based systems has been expanded.
+We ran the requested experiments.  We agree with the reviewer that automatic registration
+can often out-perform manual registration.  The results back this up, and the text
+is amended to be more clear on this point.  The new more complete benchmark is shown in
+Table 2, and Figure 11.  All of the classical methods benefit from using our iterative
+alignment procedure.  This is even true for LBP, which is known to have some robustness
+to moderate misalignment.  The discussions have been updated to cover the new results.
 
-\paragraph{About Positioning and Novelty:} As we have tried to make clear, the
-proposed method does not aim to solve face recognition for all scenarios. It is
-not designed for the case where the training is uncontrolled and limited, and
-hence it may not have any advantages over other face recognition
-techniques/systems specifically designed for such scenarios.  The proposed
-system is an attempt to build a system that is not only accurate and robust
-enough to compete with other biometric measures but also discreet and
-non-intrusive when in use. There are many practical scenarios where the
-proposed setting is very relevant, such as access control, where well
-controlled training images can (and should) be obtained in advance but no well
-controlled test images are needed or available. Particularly, the system should
-be able to handle typical daily changes in facial appearance, such as occlusion
-by glasses, hats, or facial hair and variations in lighting and moderate
-expression. The possibility of achieving fully automated (at recognition time),
-touch-free identification is arguably the main advantage of face recognition
-over other biometric measures such as fingerprint and iris recognition.  To the
-best of our knowledge even for this admittedly restricted scenario, there is no
-practical face recognition system whose performance can meet the standards of
-most access control and security applications. Existing systems have found
-success  mostly in applications that are less demanding in performance, such as
-online image search or photo album organization.
+{\bf
+	In any case, the extent of manual input is unclear. It is said 'the input face
+	is aligned to the training with manually selected outer eye corners'. If only
+	2 points are manually selected, then what kind of registration can be done
+	with just 2 corresponding points? Surely not affine alignment. Many more are
+	needed if it is to be done robustly. So it is not surprising that manual
+	alignment is giving worse results than automatic. If my interpretation is
+	wrong, is the entire affine registration being done manually? If so, as
+	mentioned above the accuracy of the human can be bad.
+}
 
-Thanks to the reviewer's comments, we have modified the introduction to make this point more clear, especially clarifying the specific scenario where our method can claim novelty.
+Similarity transformations are used for all of the experiments in this section, and
+therefore two manually selected outer eye corners are sufficient.  We have
+made this clear by adding a footnote.
 
-\paragraph{About Summary Recommendation:} We agree with the reviewer that there
-is a need for a careful evaluation of our system and comparison to other
-techniques or systems for face recognition. However, because most face
-recognition systems are not designed for the scenario considered by this paper,
-a fair and meaningful comparison is difficult. Nevertheless, to clarify both
-the strengths and limitations of our approach, we have augmented the
-comparisons already performed with comparisons to Local Binary Patterns
-(LBP).  LBP is one of the most popular tools for face verification, and is used
-in many commercial face recognition systems.
+{\bf
+	Some comments on this would be useful to better understand the results shown in table 1 and 2.
+}
 
-We compare both methods on two datasets that are representative of controlled and uncontrolled training: the Multi-PIE and the FERET
-datasets.  The results indicate both suboptimal performance of LBP for applications where many controlled training images (under different illuminations) are available, and conversely, suboptimal performance of our algorithm on the FERET dataset where the training is neither controlled nor sufficient.
-
-\paragraph{Detailed Concerns or Comments by Reviewer 1:} \begin{enumerate}
-\item Reviewer 1 is correct that use of our system is largely restricted to
-users who are cooperative (in the sense of non-adversarial). Again, the main
-point of our paper is that we can make identification more reliable and
-convenient, at the relatively small cost of doing a better job of gathering
-data at enrollment time.  Ideally, face recognition will take place
-automatically as a user walks through a door or works in front a desktop.
-
-In addition, if the accuracy and reliability of a face recognition system can
-truly get close to that of fingerprint and iris, it can serve as a
-complementary measure in a multi-modal system and improve the overall security
-for high-stakes applications. To the best of our knowledge, no existing face
-recognition system, with or without cooperative training, comes close to meeting
-the standards of high-stakes access control applications.
-
-In response to the reviewer's question "is occlusion really a problem?", we have found that the use of
-the L1-norm as a robust error function improves performance even when the test
-image does not contain occlusions.  Any boundaries where the intensity changes
-in a misaligned image can result in a large, localized error component.  While
-unoccluded faces are mostly smooth, sharp boundaries still occur where there
-are cast shadows, especially at depth discontinuities such as the nostrils, the
-sides of the nose, and partially open mouths.
-
-\item Reviewer 1's interest in face recognition for terrorist watchlist and law
-enforcement applications is of limited relevance to the evaluation of this
-manuscript.  By claiming that ``the field of face recognition has set itself the
-goal of recognition with as few gallery images as possible,'' the reviewer is
-conflating the constraints of one particular application of face recognition
-(surveillance) with those of face recognition as a whole. This (noble) goal is probably easier to
-set than to meet. Although progress has been made towards this goal, the reviewer
-probably has to agree that after several decades (and several high-profile failures of
-face recognition systems in real-world testing), people are still looking for techniques
-that can achieve the performance required by high-end applications such as homeland
-security. Having such a high, long-term goal should not prevent us from making progress in developing systems that
-can already provide good guarantees of success, even if the conditions are somewhat limited.
-
-A huge part of the message of our paper is that for applications that allow it,
-we can and should be gathering more and higher quality data at enrollment.
-Note that the acquisition of fingerprints has become increasingly complete and
-accurate over years, yet for some reason the same has not happened for face
-data.  Of course, the idea that better training data helps is certainly not new
-or even recent.  What is new is: 1.  The availability of hardware to
-efficiently acquire such data (high intensity, high contrast ratio DLP
-projectors), 2.  Robust and efficient computational tools to use such data in a
-principled fashion, 3. Computer hardware fast enough to even contemplate using
-entire images as features. 
-
-\item ``It is conceivable that SRC is applicable to any feature as well - which
-underscores the fact that it is simply a pattern classification toolbox - on
-par with any found in a textbook on pattern recognition. What is it that makes
-it special for face recognition?''
-
-Most general pattern classification algorithms do not take into account the
-physically motivated linear model that is central (though by no means unique)
-to the problem of illumination variation.
-
-\item Our goal is not to achieve the best recognition rates on the NIST family
-of benchmarks (FERET, FRVT, FRGC, MBGC, GBU); rather it is to advance state of
-the art in face recognition given cooperative training images.  The motivating
-application of the NIST data sets is government law enforcement (originally for
-enforcement of drug prohibition, and more recently shifting towards border
-security).  This requires backwards compatibility with old image data, some of
-which was gathered before computers and digital cameras were even in widespread
-use.  Due to these historical reasons, none of these data sets contain multiple
-controlled illuminations.  For example, FRGC contains at most two illuminations
-per person in the gallery.  (Two studio lights were kept on, and a third light
-was switched either on or off.) The techniques used to gather these data sets
-are not a wise choice for applications where users are cooperative, for which
-the constraints on the acquisition are needlessly restrictive.  Furthermore,
-while large public data sets are critical to the rigorous comparison of
-recognition algorithms, their existence should not be used to argue against the
-development of new data acquisition techniques and associated algorithms.
-
-\item We have added comparison with a Local Binary Patterns based recognition system.  Please
-see section IV-B for details.  As can be seen in Tables I and II, and Figure 11, 
-both our system and LBP perform better in the application domains 
-for which they were designed.  
-
-\item Although we claim to have a preliminary system that works in a realistic
-access control setting, we have never claimed that our method solves all problems in face
-recognition. We do not know where the reviewer gets that wrong impression.
-In the introduction, and at multiple places later in the manuscript, we emphasize
-the importance of having more restrictive training data for guaranteeing the success
-of our method.
-
-%If it helps, we will try to tone down the rhetoric in XYZ places. UNFINISHED!!
-
-\item Section I-A (Related Work) contains discussion contrasting the
-advantages and disadvantages of our system vs.\ systems incorporating 3D
-models.  Although the proposed techniques have the potential to be extended to
-cases when images of more poses or even a full 3D models are available, this
-paper does not claim to deal with large 3D pose variation.
-
-\item The issues of (mis)alignment and illumination variation are coupled in the
-sense that if one problem is solved, the other problem becomes a lot easier. But solving them
-separately is not sufficient for solving the face recognition problem.
-
-\item If the data fits our model perfectly, at the correct alignment the only
-corruptions are due to occlusions.  Until the images are perfectly aligned,
-there is indeed a component of dense error caused by misalignment.  This dense
-error component is indeed largest where the image gradient is high (or even
-discontinuous), and the derivative of this error component is what drives the
-algorithm to its solution.  We do explicitly  blur and downsample the images to
-mollify registration effects; multiscale alignment is a well-known technique,
-and is not new to our paper.
-
-\item We have removed the reference to scattered light from Section III-A, as there appear to
-be several common uses of the term.  That said, it is true that linear illumination
-models are physically motivated for scenes far more general than for convex
-Lambertian objects.  Maxwell's equations in free space are linear, and materials
-that create non-linear boundary conditions are the exception
-rather than the rule.  Without proportionality between radiance and irradiance
-the concept of a Bidirectional Reflectance Distribution Function and its
-generalizations are not even meaningful.
-
-\item Rigorous justification of the choice of illuminations is a subject of
-continuing research.  Our current choice is motivated empirically by the
-experiments described in the paper.
-
-\item To our knowledge, we are the first to use projectors for illumination in
-face recognition applications.  Section I-A of the previous submission already
-cites several other applications that use projectors as illumination sources.
-The requested references propose a technique for improving the SNR of projector-based
-illumination systems for certain classes of objects.  We have added
-discussion of this to the paper in Section III-B.
-
-\item  It is true that one or both stages of the algorithm could be substituted
-with other techniques.  That said, the registration and recognition stages are
-coherent in the sense that they are motivated by same modeling assumptions
-(illumination model, sparse occlusion, etc.), they use the same robust penalty
-on image error (the L1-norm), and they use the same numerical optimization
-techniques (ALM).  While conceptual simplicity is a secondary concern in
-algorithm design, starting with a minimalist foundation benefits both
-practitioners as well as researchers.  Other researchers have already published
-more complex extensions to our work.
-
-\item  There is no extensive computation involved in
-    Step 13 of Algorithm 1. In fact, for each candidate
-    subject $i\in {k_1, \ldots, k_s}$ for recognition, Step
-    13 simply uses the transformation $\tau_i$ obtained
-    from the iterative alignment stage (Step 2-9) to
-    re-sample each original training
-    image of that subject, so that this new set of training
-    samples is aligned with the test sample. Nevertheless,
-    it worth mentioning that, since we perform alignment
-    separately for each class in the gallery, the
-    computation for the alignment stage (Step 2-9) is
-    linear in the size of the gallery. However, thanks to
-    its separability, the alignment stage can be easily
-    parallelized.
-
-    The variation in alignment across classes is indeed
-    small, but still changes the objective enough to affect
-    recognition results. Aligning to a generic face (or a
-    gallery based on ``aligned'' images of many people) is
-    a good idea, and one we have considered as well.  If
-    nothing else, it could be used to improve alignment
-    initialization instead of using raw face detector
-    output.  It may also be useful to use the roughly
-    aligned test image to quickly eliminate some of the
-    classes from further consideration.  Again, we have
-    deliberately tried to keep the algorithm as minimalistic
-    as possible for this publication.
-
-\item The adaptation of the Lucas-Kanade algorithm to both the L1 norm cost
-function and a linear illumination model is novel to our knowledge.  As
-discussed earlier, we disagree with Reviewer 1's contention that data
-acquisition is not a critical part of the face recognition problem -- careful (training)
-data acquisition has been critical for almost all other biometric identification
-systems (e.g.\ fingerprint and iris)! Why should face recognition be different?
-
-We believe we have demonstrated that by using a well-thought-out combination of existing ideas
-(iterative image alignment, L1-error function, SRC, using projectors for
-illumination), one can build a recognition system that is conceptually simple, well
-motivated, and competitive with state-of-the-art recognition systems for access
-control scenarios.
-
-\end{enumerate}
-
-\section{Response to Reviewer \#2}
-Reviewer 2 raises five questions, which we will now address.  Since the
-recognition optimization is convex, and convergence is therefore not an issue, we assume
-that (1)-(3) are asking about the iterative alignment scheme.
-
-\begin{enumerate}
-\item (i) ``How often an infinite loop is encountered, and how it is handled."
-
-We place a hard limit on the maximum number of alignment iterations, so the
-algorithm is guaranteed to terminate in finite time.  In practice, the
-alignment algorithm tends to converge within 4-10 iterations for each
-resolution of the multi-scale implementation. This low number of iterations is expected, since the iterative alignment scheme is locally quadratically convergent. We also place hard bounds on how
-large the deformation can be, and terminate alignment early if these bounds are
-reached.  In the cases where the alignment ``slips off'' the face, this is how
-alignment terminates.
-
-\item (ii) ``How often the starting point happens to be located in a wrong basin of
-attraction, i.e. a wrong face. (If there is any way to know this.)''
-
-Since we align the test image to the training users individually, we avoid the
-potential problem of the test image converging to a local minimum corresponding
-to a wrong face.
-
-\item (iii) ``How often the solution gets drifted away into a wrong basin of
-attraction. (If there is any way to know this.)''
-
-In Section II-E, we have conducted careful experiments to measure the region of attraction
-for the proposed alignment method. We have studied the region of attraction of the proposed
-method for both 2D and 3D pose variation, as well as how it can be improved with a proper
-multi-scale implementation.
-
-\item (iv) ``What is the criteria or threshold for convergence? If the threshold is
-stringent, the algorithms are likely to get stuck in infinite loops, and if the
-threshold is liberal, premature convergence would occur. How are such
-thresholds picked and how universal are they? Does every new dataset need its
-own threshold?''
-
-For the $\ell_1$ minimizations we terminate the ALM
-algorithm when the relative changes of primal variables in
-two consecutive iterations become small, as suggested by
-[27]. That is,
-\begin{displaymath}
-\frac{\|\x_{k+1}-\x_k\|_2}{\|\x_k\|_2} < \epsilon \quad
-\textup{and} \quad \frac{\|\e_{k+1}-\e_k\|_2}{\|\e_k\|_2} <
-\epsilon,
-\end{displaymath}
-where $\epsilon>0$ is the tolerance. With the suggested
-criteria, the $\ell_1$ minimizations are guaranteed to converge
-eventually, although convergence may be very slow if the constants
-are poorly tuned. For the alignment
-iteration, we terminate when the change of objective value
-(\ie $\|\e\|_1$) in two consecutive iterations becomes
-small. We use the same set of convergence thresholds for
-all the data sets we ran against. 
-
-\item (v) ``The problem, however, is that if we minimize a function one variable at
-a time, we may actually end up increasing the function $(L_{\mu}(x,e,\lambda_{k}))$ value.''
-
-This may be true for general nonlinear optimization problem. However for convex problems
-we are solving here, the alternating direction methods have been proven to converge, see
-[27] and related work by the same authors.
-
-
-\end{enumerate}
-
-\section{Response to Reviewer \#3}
-Reviewer 3 makes the following requests:
-
-\begin{enumerate}
-\item ``I would have liked to see the experiment for the case S=1, without
-impostors in the dataset, to judge the effect of the ``Sparse
-Concentration Index''.
-
-We have added experiment results to Table I demonstrating the utility of the
-sparse representation(SR) based recognition stage for classification.  In
-general, we see a few percentage points of improvement in recognition rate when
-using the representation residual obtained from the SR-based recognition stage
-(with $S=10$) over the recognition based purely on alignment error (with
-$S$=1).  While this effect is desirable, as discussed in the paper, it is
-worthy emphasizing that the SR-based recognition also enables us to compute
-SCI, which has demonstrated its power for impostor rejection.
-
-\item ``I would also retitle the paper to include ``robust measure''
-instead of ``sparse representation", as the L1 Cost is just a robust
-cost, and the system would probably work as well or better with other
-(even non-convex) robust cost functions.''
-
-We hope reviewer will find our above justification for the (Sparse
-Representation based) recognition convincing.  If so, the reviewer may
-therefore also agree that the current title is indeed appropriate.
-
-\item ``It might be possible to streamline the introduction a bit more, such that it
-clearly describes the algorithm before going into the details.''
-
-We have attempted to make the overall structure of our system clear earlier in the
-paper, by clarifying early on that SRC forms the recognition stage of our system
-in the introduction, as well as by making it clear in the caption of the motivating example
-is not the final pipeline.
-
-\item ``Using and requiring several input images of a person asks for a
-comment on the advantage or difference to a system that uses
-a 3D representation of a face. Please comment on this!"
-
-The primary advantage of systems that internally use a 3D model of human faces
-is that they have the potential to work over a wider range of pose variation in
-the test image.  In general, systems using 2D models are simpler and easier to
-engineer.  As far as data acquisition is concerned, 2D cameras still have a far
-higher resolution and lower noise levels than 3D cameras.  Based on the principles
-of photometric stereo, our set of 2D images may very well encode more useful shape
-information about a user's face than a single low-resolution depth image, especially if
-recognition is to be performed on 2D input images.
-
-In addition, the sparse representation techniques are not limited to frontal 2D images.
-They can be easily applied to 2D images from multiple poses or to establish alignment
-between a 2D image and a renderings from a 3D face model (if available). These are all good directions
-for future research.
-
-We have modified Section I-A and the Conclusion to address these issues.
-
-\end{enumerate}
+The discussion of these results (seen in Table 2 and 3 in the new
+draft) has been updated. For the single gallery image FERET
+experiment (Table 3), our algorithm is not designed for
+this scenario, and it fails when the illumination changes and other
+variations seriously violate its assumptions (this was true in the previous
+revision as well). We found that LBP
+with manual alignment achieves the best performance in this
+experiment.
 
 \end{document}
- a user's face than a single low-resolution depth image, especially if
-recognition is to be performed on 2D input images.
-
-In addition, the sparse representation techniques are not limited to frontal 2D images.
-They can be

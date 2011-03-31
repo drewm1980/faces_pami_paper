@@ -6,7 +6,7 @@ Towards a Practical Face Recognition System: Robust Alignment and Illumination b
 
 by Andrew Wagner, John Wright, Arvind Ganesh, Zihan Zhou, Hossein Mobahi, and Yi Ma
 
-to your journal. As in the previous submission, our paper contains color images. The stem plots in Figure 1 and Figure 15 use color to distinguish between the correct and incorrect users. Figures 2, 3, 4, and 11 are also acceptable in black and while but are more legible in color.
+to your journal. As in the previous submission, our paper contains color images. The stem plots in Figure 1 and Figure 15 use color to distinguish between the correct and incorrect users. Figures 2, 3, 4, and 11 are also acceptable in black but are more legible in color.
 
 Our manuscript currently exceeds the 30 page limit by 6 pages. Since we are proposing a new algorithm as well as implementing a complete recognition system, we feel the extra content helps make the paper useful for other practitioners. We have explained our system in detail and have added more experiments to further validate our system.
 
