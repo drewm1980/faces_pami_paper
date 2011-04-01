@@ -716,13 +716,13 @@ In order to discuss the solution to the above subproblems, we
 need to define the following soft-thresholding operator for a
 vector $\x$ and a scalar $\alpha \geq 0$:
 \begin{equation}
-\textup{shrink}(\x,\alpha) = \textup{sign}(\x)\cdot \max \{|\x| - \alpha, 0\},
+\mathcal{T}(\x,\alpha) = \textup{sign}(\x)\cdot \max \{|\x| - \alpha, 0\},
 \end{equation}
 where all the operations are performed component-wise. It is
 easy to show that the subproblem with respect to $\e$ has a
 closed-form solution given by the soft-thresholding operator:
 \begin{equation}
-\e_{k+1} = \textup{shrink}(\y - A\x_k + \mu^{-1}\blamda_k, \mu^{-1}).
+\e_{k+1} = \mathcal{T}(\y - A\x_k + \mu^{-1}\blamda_k, \mu^{-1}).
 \end{equation}
 To solve the subproblem associated with $\x$, we
 apply a first-order $\ell^1$-minimization method,
@@ -744,11 +744,11 @@ Recognition)}
 $\x_1 = \mathbf{0}$, $\e_1 = \y$, $\blamda_1 =
 \mathbf{0}$.
 \WHILE{not converged ($k = 1,2,\ldots$)}
-\STATE $\e_{k+1} = \textup{shrink}\left(\y - A\x_k +
+\STATE $\e_{k+1} = \mathcal{T}\left(\y - A\x_k +
 \frac{1}{\mu}\blamda_k, \frac{1}{\mu}\right)$;
 \STATE $t_1\leftarrow 1$, $\z_1 \leftarrow \x_k$, $\w_1 \leftarrow \x_k$;
 \WHILE{not converged ($l = 1,2,\ldots$)}
-\STATE $\w_{l+1} \leftarrow \textup{shrink}\left(\z_l +
+\STATE $\w_{l+1} \leftarrow \mathcal{T}\left(\z_l +
 \frac{1}{\gamma}A^T\left(\y - A\z_l - \e_{k+1} +
 \frac{1}{\mu}\blamda_k\right), \frac{1}{\mu\gamma}\right)$;
 \STATE $t_{l+1} \leftarrow \frac{1}{2}\left( 1 +
@@ -1825,6 +1825,7 @@ the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
 
 \bibliographystyle{IEEEtran}
 \bibliography{faces}
+
 
 % biography section
 %
