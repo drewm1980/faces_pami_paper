@@ -17,3 +17,4 @@ figures_pami
 .aux.bak
 *.aux.bak
 2
+*.orig
