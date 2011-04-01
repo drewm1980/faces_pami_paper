@@ -648,16 +648,6 @@ the sample locations could be arbitrarily selected from within a
 ``face shaped'' area. We will discuss how choosing
 different windows can affect the performance of our algorithm
 in Section \ref{sec:multipie}.
-%The strength of the
-%filter depends on how much the warping downsamples the image.
-%Although the scale component of the warping may vary with each
-%step of the iterative alignment, it is safe in practice to
-%choose a fixed conservative smoothing filter (erring slightly
-%on the side of more smoothing). Whenever a transformation
-%operator is not shown for a vector in our notation (i.e. for
-%the columns of $A$ or $J$), it means that a suitable
-%transformation has already been applied to a larger image
-%(otherwise, the dimensions of the arrays would not agree).
 
 \subsection{System Implementation}
 In this section, we discuss the computational issues related to
@@ -666,27 +656,8 @@ not hard to see that its computational complexity is dominated
 by the two steps where the $\ell^1$-norm minimization problems
 are solved; namely Step 6 for iterative registration, and Step
 14 for global sparse representation.
-%The most classical
-%solution to these $\ell^1$-minimization problems is the so
-%called \emph{primal-dual interior-point} method
-%\cite{BoydS2004}. Conceptually, it operates in an iterative
-%fashion, and a linear system is solved at each iteration.
-%Therefore, its complexity per iteration is at least $O(n^3)$,
-%where $n$ is the total number of training images for the face
-%recognition problem. Meanwhile, it is also observed in
-%\cite{YangA2010-pp} that its computational cost with respect to
-%the dimension of each sample, $m$, grows much fast than other
-%alternative methods. Hence for real-world applications, as the
-%image resolution and number of classes grow, this method will
-%soon become too slow to be useful.
 Fortunately, many fast algorithms for solving these problems have been proposed over the
 past ten years. We refer the interested reader to \cite{YangA2010-pp} for a more comprehensive survey of the developments in this area.
-%We refer the interested readers to
-%\cite{YangA2010-pp} for a comprehensive survey in the
-%literature and a detailed study of the performance of five
-%representative approaches on solving the two $\ell^1$-minimization
-%problems in Step 6 and 14 of
-%Algorithm~\ref{alg:deformable-src}.
 That work suggests that \emph{Augmented Lagrange Multiplier}
 (ALM) algorithms \cite{Bertsekas1982} strike a good balance
 between scalability and accuracy: as first order methods, they
@@ -695,17 +666,6 @@ multiplications at each iteration, making them preferable to
 more classical solutions such as interior point methods.
 However, compared to other first-order methods, they achieve
 higher accuracy with a fixed computational budget.
-%method, is always
-%among the most accurate and fastest algorithms and achieves
-%better performance in both effectiveness and efficiency
-%compared to other first-order methods.
-%Most importantly, as first-order methods, they require only
-%lightweight vector operations and matrix-vector
-%multiplications, contrast to many other methods, such as
-%primal-dual interior-point method and the homotopy method
-%\cite{DonohoD2006-pp}, which all involve expensive operations
-%such as solving a linear system. For the rest of this section,
-%we briefly describe the ALM method.
 
 We use Step 14 as an example to illustrate the ALM
 method, since solving Step 6 is very similar. Recall that in
@@ -803,18 +763,6 @@ $\x_1 = \mathbf{0}$, $\e_1 = \y$, $\blamda_1 =
 \label{alg:alm}
 \end{algorithm}
 
-%
-%Note
-%that, however, Algorithm~\ref{alg:alm} differs from
-%\cite{YangJ2009-pp} mainly in the way that the sub-problem
-%associated with $\x$ is solved. In \cite{YangJ2009-pp}, only an
-%approximation to the solution is obtained by just computing one
-%iteration of the Conjugate Gradient algorithm. As pointed out
-%by \cite{YangA2010-pp}, although this further reduces the
-%complexity of the algorithm, it converges very slowly when the
-%condition number of the matrix $A^TA$ is large, which is indeed
-%the case for the face recognition problem.
-
 We have selected this algorithm because it strikes the best
 balance between speed, accuracy, and scalability for our problem out of
 many algorithms that we have tested. We refer the interested reader to
@@ -908,37 +856,7 @@ We have gathered the statistics of the Viola and Jones'
 \end{figure*}
 
 \noindent{2) \em Multiscale Implementation.}
-        %The
-    %gain here is a reduction in the computational cost. We
-    %briefly explain how this works here. In our system, a
-    %truncated Gaussian kernel is used for blurring. In
-    %order to ensure accurate operation, we change the
-    %window size of the Gaussian kernel in proportion to its
-    %standard deviation. Consequently, achieving a large
-    %amount of blur requires a large convolution
-    %mask\footnote{It is possible to apply a low-bandwidth
-    %Gaussian kernel multiple times to achieve the same
-    %effect of a single high-bandwidth kernel. However, the
-    %time required will be at least as great as performing
-    %the single large blur.} and hence is computationally
-    %expensive.
-    %To avoid using a large window, we observe that, by
-    %down-sampling the image, a smaller blur kernel can
-    %achieve similar blurring effect. However, working at a
-    %lower resolution degrades the alignment precision.
-    %Therefore, we use a multi-scale framework to achieve
-    %computational efficiency and high precision at the same
-    %time. It starts from the smallest scale with largest
-%blur. The strong blur can handle large misalignment, but
-%the low resolution results in poor precision. We then use
-%the estimated alignment to initialize a similar process
-%that works at a higher resolution and with smaller blur.
-%This process repeats and thus the solution is computed
-%progressively.
 Performing alignment in a multiscale fashion has two benefits: first, it provides a larger region of attraction, and second, it reduces overall computational cost. Here, we further investigate the convergence behavior of the algorithm as a function of the standard deviation $\sigma$ of the Gaussian smoothing filter and the number of scales considered.
-%To see the relationship between number of scales and the
-%standard deviation $\sigma$ of the Gaussian kernel applied
-%between scales,
 We use the same 7 illuminations in
 Session 1 as training, and all 20 illuminations in the same
 session as testing. We introduce artificial deformation in
@@ -978,13 +896,10 @@ only 2 scales are used.
     $+90^\circ$ with step size 5.625$^\circ$, a total of 33
     poses. We use Viola and Jones' face detector to
     initialize our alignment algorithm.
-%whenever it succeeds. For extreme poses where the detector fails (usually for poses $> 45^\circ$), we use manual initialization by putting a reasonable square window around the face.
 Figure \ref{fig:pose-alignment} shows that our algorithm works reasonably well with poses up
 to $\pm 45^\circ$.
 Note that this level of out-of-plane
  pose variation is beyond what we intend to handle with our formulation.
-%While we don't intend to perform 2D recognition with this much pose,
-%the alignment is at least stable.
 \begin{figure}
 \centering
 {\small
@@ -1007,7 +922,6 @@ Note that this level of out-of-plane
 to $+45^{\circ}$. {\bf (j):} a case when the algorithm fails for an extreme pose ($>45^{\circ}$).
 }\label{fig:pose-alignment} \vspace{0mm}
 \end{figure}
-
 
 \subsection{Comparison with Related Work}
 Our modification to SRC roots solidly in the tradition of
@@ -1060,97 +974,17 @@ In the above section, we have made the assumption that the test image, although 
 
 \subsection{The Illumination Model}
 
-% % META: Most of this is about understanding the Basi Result.  For the Paper, don't try to derive the result; just state it.
-% % Derivation of linearity using strong assumptions
-% First, let us assume that
-% the illumination if the subject's face is distant.  This model
-% will be a good approximation as long as distance to the nearest
-% light source is much larger than the person's face.  If we
-% further assume that the object is convex so that there is no
-% self-shadowing, the illumination incident on a surface patch
-% will depend only on the surface normal, and not on the location on the surface.
-% Furthermore, if the object is Lambertian, the image intensity will not depend on the angle between patch surface normal and the sensor, or on the depth of the patch.  Since each pixel in the image corresponds to
-% some patch on the object, the vector of image intensities is a
-% linear function of the radiance of the corresponding portions
-% of the object.
-% % Motivation of low dimensionality from spherical harmonics, low-pass interpretation
-% Consider the vector space of all illuminations
-% of the object.  These are just positive functions (or more
-% generally, distributions) defined on the sphere, where each
-% point on the sphere corresponds to a direction of incoming
-% light.  Consider the vector space formed by the light exiting
-% the object.  This too is a positive function defined on the
-% sphere, where now each point on the sphere corresponds to the
-% normal of a patch on the object (or any other patch with the
-% same normal).  Under the Lambertian assumption, the radiance of
-% a patch depends on the cosine of the incident angle of incoming
-% light, and is integrated over the half-sphere of illumination
-% that the patch can "see". Thus, the surface of the object acts
-% on the sphere in a manner very similar to a half-cosine
-% approximation to a low-pass filter for a one-dimensional
-% signal.  Thus the energy leaving the object is
-% disproportionately concentrated in the subspace corresponding
-% to low spatial frequencies.  Since the image is a linear
-% function of this, the space of images of an object will also
-% tend to fall on (the positive portion of) a subspace.   In
-% \cite{Basri2003-PAMI}, Basri showed using spherical harmonic
-% basis functions that nine basis illuminations (corresponding to
-% the lowest frequency spherical harmonics) result in training
-% images that do a good job of linearly interpolating all other
-% training images.  It should be noted, however, that these basis
-% illuminations are not strictly positive, and thus neither are
-% the training images they generate (when rendered on a computer
-% that can handle negative illumination).  \footnote{Note that
-% while the spherical harmonic basis functions have regions where
-% they are negative, this does no necessary preclude this
-% theoretical result from being put to use in practice.  If the
-% geometry of the training illumination system were well
-% calibrated, it would be possible to generate approximations of
-% the positive and (rectified) negative components of the basis
-% illuminations separately, taking the difference of the
-% resulting two images, and storing it using a signed datatype.
-% Combinations of these images may not be positive, but they may
-% still be good enough to be useful.}
-
 The strongest theoretical results so far regarding the relationship
 between illumination and the resulting sets of images is due to Basri and Jacobs \cite{Basri2003-PAMI}.
 The main result of this paper is that for convex Lambertian objects, distant illuminations, and fixed pose,
-%Under those assumptions, the incident and reflected light are represented using distributions on a sphere and can thus be studied in a spherical harmonic basis.
-%The Lambertian nature of the object acts as a low-pass filter between the incident and reflected light distributions,
-%and as a result, the set of images of the object end up lying very
-%close to the subspace corresponding to low frequency spherical harmonics.\footnote{This is highly condensed; please refer to \cite{Basri2003-PAMI} for a  complete description of this result.}
 all images of the object can be well approximated by linear combinations of
 nine (properly chosen) basis images.  The basis images have mixed sign, and
 their illuminations consist of the lowest frequency spherical harmonics.
 While this is a very important result for understanding the image
 formation process, the direct application of this result in most practical
 systems is misguided for several reasons.
-% Non-physicality
-%Neither the basis illuminations, nor the basis images used
-%in the Basri analysis are physical.  Like Fourier bases, they have negative components,
-%and are thus not, at least directly, physically realizable.
-% This alone is not
-% a showstopper, however: one could, for example, decompose the basis images into
-% their positive and negative parts and use them separately.  If the images
-% are being rendered from a 3D model, ``negative'' light can be permitted.
-%There are ways to engineer around this difficulty\footnote{such as allowing negative light while rendering from a 3D model, decomposing mixed-sign illuminations and images into positive negative parts, and enforcing positivity only in the output image}, but the photometric and geometric assumptions behind this model limit its applicability even more severely.
-%Studio photographers and movie-makers
-%go to great lengths to control their effects through makeup and lighting.
-% Not only does specularity allow some of the high angular frequency components of the
-% incident illumination to affect the outgoing illumination, it even prevents
-% the relationship between incoming and outgoing light from even being expressable as a convolution.
-% Indeed, in the extreme case of an image of a mirror-surface sphere, the image is basically a warped
-% version of the sphere's incident illumination, and there is no reason to believe the set of
-% images is any lower dimensional than the set of illuminations.
 Specularities, self-shadowing, and inter-reflections all dramatically affect the appearance of face images,
 and they all do so in a way that violates the modeling assumptions of the Basri analysis.
-%Specifically, self-shadowing and inter-reflection break the simple relationship between the outgoing light
-%and the resulting images, and specularity even invalidates the representation of outgoing light that is used.
-% itself,
-%since it is no longer independent of viewing angle.
-%%If the surface has a specular component, the relationship between incoming and outgoing light
-%is no longer expressible as a convolution, and if there is self-shadowing or inter-reflection the illumination
-%of each patch will depend not only on its location on the surface, but on the illumination of other pixels in the image.
 
 Fortunately, even with these effects, for most materials the relationship between
 illumination and image is still linear,\footnote{Materials that break
@@ -1237,15 +1071,6 @@ linearity between the illuminations and the images, and not on the
 relative intensities of the illuminations, the designer has the freedom to choose the overall intensity of the illuminations
 to prevent saturation or low SNR, in a sort of offline exposure control.
 
-%Assuming that no pixels are shared by multiple illuminations is important;
-%for example, any other non-negative basis illuminations formed from positive linear
-%combinations of our basis illuminations would span a cone of lower
-%volume, and thus the resulting training images might not be
-%able to represent as wide a variety of testing images without using
-%negative coefficients in $\x$.
-%\footnote{This is true if $\x>0$ is enforced;
-%the effect of negative coefficients in $\x$ is still under study.}
-
 Assuming that the sequentially illuminated regions do not overlap results in a
 set of training images that span a larger cone than a similar number of
 overlapping regions.  This results in training images that require fewer
@@ -1290,8 +1115,6 @@ our large-scale experiments:
     \ref{fig:illumination-patterns}(a).  The more rings of
     training illuminations are added, the lower the
     representation error becomes, with diminishing returns.
-%\end{itemize}
-%\begin{itemize}
 \item {\em Granularity Experiment.} In the second
     experiment we attempt to determine how finely divided
     the illumination sphere should be.  At the first
@@ -1358,51 +1181,6 @@ See below for the 38 training images of one subject:
 \includegraphics[width=3.5in]{figures_cvpr/training.png}
 \vspace{-2em}
 \end{figure}
-
-%\subsection{Should Positivity in the Representation Coefficients
-%be Enforced?} One critical issue in linear illumination models
-%is whether to enforce nonnegativity in the coefficients $\x$,
-%i.e. whether to model illumination using a cone or a subspace.
-%Some authors, i.e. \cite{Basri2003-PAMI}, have chosen to allow
-%negative components in the coefficient vector $\x$ when
-%representing one image as a sum of other images, and only
-%enforce that the linear combination $A\x$ be positive
-%everywhere.  Unfortunately, for non-convex objects such as
-%faces, enforcing non-negativity of the representation is not
-%sufficient to guarantee that the resulting image of the object
-%is physical.  For example, consider a Lambertian planar object
-%with a cylindrical hole drilled in it that is aligned with the
-%optical axis of an orthographic camera.  Consider two images:
-%one under illumination from a distant point source aligned with
-%the hole, and one off of the hole axis.  Positively weighting
-%the on-axis image and negatively weighting the on-axis image
-%can result in an image where the bottom of the hole is more
-%strongly illuminated than the surrounding plane.  The image is
-%positive, but it is clearly non-physical.  It is worth
-%emphasizing that this phenomenon is a result of some points on
-%an object seeing a restricted subset of the illumination sphere
-%(a violation of convexity),  and not a result of the
-%directionality of the light chosen in the thought experiment.
-%While the number of coefficients that actually end up negative
-%after optimization is usually very small, we have observed
-%pathological cases where the shadows next to the user's nose in
-%the reconstructed image invert in value.
-
-%Instead of using a smaller set of training images, allowing the
-%coefficients to go negative to try to represent more test
-%illuminations, and risking over-fitting, we decided to enforce
-%non-negativity of the coefficients.  Nonnegative combinations
-%of images are guaranteed to correspond to physically plausible
-%images.  all physical illuminations unless the training images
-%actually span the boundary of the illumination cone. Because we
-%have a flexible acquisition system, we can directly generate a
-%set of illuminations that span most of the illumination cone,
-%without resorting to negative coefficients and risking
-%overfitting.  Thus, in Algorithm 1, we have enforced that the
-%coefficients $\x$ be non-negative.
-
-%One of the main factors that complicates face recognition, and computer vision in general, is that two images of the same person's face can be very different, even if the pose is carefully controlled and all points on the person's face are visible in both images.  The most safe, reliable, and general assumption that can be made about the imaging process is that it is linear with respect to the intensity of different light sources.  The set of images of a given object is therefore a cone in the non-negative orthant of the pixel basis.  All recognition algorithms that rely on vision for training rely on images sampled from this cone.
-
 
 \section{Tests on Public Databases}\label{sec:multipie}
 In this section and the next section, we conduct comprehensive experiments on
@@ -2030,38 +1808,7 @@ representation of well-aligned test images
 for face alignment and recognition in the presence of
 contiguous occlusion remains an open problem.
 
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
-% Use this command to get the appendices' numbers in "A", "B" instead of the
-% default capitalized Roman numerals ("I", "II", etc.).
-% However, the capital letter form may result in awkward subsection numbers
-% (such as "A-A"). Capitalized Roman numerals are the default.
-%\useRomanappendicesfalse
-%
-%\appendices
-%\section{Proof of the First Zonklar Equation}
-%Appendix one text goes here.
-
-% you can choose not to have a title for an appendix
-% if you want by leaving the argument blank
-%\section{}
-%Appendix two text goes here.
-
-% use section* for acknowledgement
 \section*{Acknowledgment}
-% optional entry into table of contents (if used)
-%\addcontentsline{toc}{section}{Acknowledgment}
 This work was supported by grants NSF IIS 08-49292, NSF ECCS
 07-01676, and ONR N00014-09-1-0230. JW thanks Allen Yang of UC Berkeley EECS and Robert Fossum of UIUC
 Mathematics for discussions related to this work, and
@@ -2076,21 +1823,8 @@ the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
 % The "triggered" command can be changed if desired:
 %\IEEEtriggercmd{\enlargethispage{-5in}}
 
-% references section
-% NOTE: BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% standard IEEE bibliography style from:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
 \bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,faces}
 \bibliography{faces}
-
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
 
 % biography section
 %
