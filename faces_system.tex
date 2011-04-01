@@ -1246,10 +1246,11 @@ Recognition rate & Session 2 & Session 3 & Session 4  \\
 \label{tab:MultiPIE-recognition2} }
 \end{table}
 
-\newcommand{\tempwidth}[0]{0.6in}
+\newcommand{\tempwidth}[0]{0.58in}
 \begin{figure}
+\centering
 {\small
-\begin{tabular}{c@{}c@{}c@{}c@{}c@{}c}
+\begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/111_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/196_01_01_051_08.png}  &
@@ -1359,10 +1360,11 @@ here seems to agree with that reported already in
 greatly from being paired with our iterative alignment
 algorithm.
 
-\begin{table}
+\begin{table*}
+\centering
 \caption{Recognition rates on the Multi-PIE database for
 different pairings of alignment and recognition stages.}
-\vspace{-.2in} \centerline{
+\centerline{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
 \hline
 \backslashbox{Rec.}{Align.}
@@ -1384,8 +1386,9 @@ LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 
 SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
 \hline
 \end{tabular}
-\label{tab:MultiPIE-recognition} } \vspace{-.4in}
-\end{table}
+\label{tab:MultiPIE-recognition} } 
+\vspace{-.3in}
+\end{table*}
 
 % LBP
 We also compare our result to Local Binary Patterns (LBP)
@@ -1507,17 +1510,19 @@ if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
 invalid. We compare this classifier to classifiers based on
 thresholding the error residuals of NN, NS, LDA, and LBP.
 
+\renewcommand{\tempwidth}[0]{1.85in}
 \begin{figure}[t]
+\vspace{.2in}
 \centerline{
-	\begin{tabular}{cc}
-	\includegraphics[width=3in]{figures_pami/pami_roc_revision2.png} &
-	\includegraphics[width=3in]{figures_pami/pami_roc2.png} \\
-	{\small All algorithm with iterative alignment} & {\small Classical algorithms with manual alignment}
-\\
+	\begin{tabular}{@{}c@{}c@{}}
+	\includegraphics[trim=.9in 0in 1.2in 0in, clip, width=\tempwidth]{figures_pami/pami_roc_revision2} &
+	\includegraphics[trim=.9in 0in 1.2in 0in, clip, width=\tempwidth]{figures_pami/pami_roc2} \\
+	{\small (a)} & {\small (b)} \\
 	\end{tabular}
 }
-\caption{{\bf ROC curves} for subject validation on Multi-PIE database, (a) with iterative alignment,
-and (b) for the classical algorithms with manual alignment (indicated by a subscript ``m'').}\label{fig:roc-multipie}
+\caption{{\bf ROC curves} for subject validation on Multi-PIE database, 
+(a) for all algorithms with iterative alignment, and 
+(b) for the classical algorithms with manual alignment (indicated by a subscript ``m'').}\label{fig:roc-multipie}
 \vspace{-.4in}
 \end{figure}
 
@@ -1628,30 +1633,31 @@ are insufficient for representing test images under typical indoor and
 outdoor illuminations.
 \vspace{-0.1in}
 
+\newcommand{\tempscale}{0.45}
 \begin{figure}
 \centering
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1318.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1521.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1673.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1732.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1941.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_3766.JPG} \\
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1318.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1521.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1673.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1732.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1941.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_3766.JPG} \\
 \vspace{2mm}
 \centering
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1574.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1622.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1641.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3522.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3707.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3772.JPG} \\
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1574.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1622.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1641.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3522.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3707.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3772.JPG} \\
 \vspace{2mm}
 \centering
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/glasses/DSC_1397.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/glasses/DSC_1532.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/glasses/DSC_1556.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/glasses/DSC_1585.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/glasses/DSC_1688.JPG}
-\includegraphics[scale=0.75,clip=true]{figures_pami/uiuc_example/glasses/DSC_4035.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1397.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1532.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1556.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1585.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1688.JPG}
+\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_4035.JPG}
 \vspace{-.2in}
  \caption{{\bf Representative examples of categories C1-C3}. One row for each category.}\label{fig:examples1-3}
  \vspace{0mm}
