@@ -1763,14 +1763,14 @@
 % if not a table, format it as a figure
 \else
 \@IEEEfigurecaptionsepspace
-\setbox\@tempboxa\hbox{\normalfont\sffamily\normalsize {#1.}~ #2}%
+\setbox\@tempboxa\hbox{\normalfont\sffamily\footnotesize {#1.}~ #2}%
 \ifdim \wd\@tempboxa >\hsize%
 % if caption is longer than a line, let it wrap around
-\setbox\@tempboxa\hbox{\normalfont\sffamily\normalsize {#1.}~ }%
-\parbox[t]{\hsize}{\normalfont\sffamily\normalsize \noindent\unhbox\@tempboxa#2}%
+\setbox\@tempboxa\hbox{\normalfont\sffamily\footnotesize {#1.}~ }%
+\parbox[t]{\hsize}{\normalfont\sffamily\footnotesize \noindent\unhbox\@tempboxa#2}%
 % if caption is shorter than a line, left justify
 \else%
-\hbox to\hsize{\normalfont\sffamily\normalsize\box\@tempboxa\hfil}%
+\hbox to\hsize{\normalfont\sffamily\footnotesize\box\@tempboxa\hfil}%
 \fi\fi}
 \fi
 
