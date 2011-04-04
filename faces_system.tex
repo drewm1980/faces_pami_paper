@@ -59,7 +59,16 @@
 \usepackage{amsfonts}
 \usepackage{amscd}
 \usepackage{amssymb}
-\usepackage{subfigure}
+
+%\usepackage{subfigure}
+
+%\ifCLASSOPTIONcompsoc
+ %\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+ %\usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+\usepackage[caption=false,font=footnotesize]{subfig}
+
 \usepackage{pdfsync}
 \usepackage{helvet}
 \usepackage{url}
@@ -1825,6 +1834,9 @@ Mathematics for discussions related to this work, and
 acknowledges support from a Microsoft Fellowship and
 the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
 
+% insert where needed to balance the two columns on the last page
+%\newpage
+
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
@@ -1844,15 +1856,14 @@ the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
 % optional argument. You can create your own macro to make things
 % simpler here.
 
-
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{Andrew Wagner}
-Arvind Ganesh received his Bachelor's and Master's degrees, both in Electrical
-Engineering, from the Indian Institute of Technology, Madras, India in 2006. He
-is currently a PhD candidate in the Electrical \& Computer Engineering
-Department at the University of Illinois, Urbana-Champaign. His research
-interests include compressed sensing, computer vision, and machine learning.
-His recent work focuses on low-rank matrix recovery techniques for
-batch image alignment and texture rectification.  \end{IEEEbiography}
+Andrew Wagner received his Bachelor's degree in General Engineering,
+and his Master's degree in Electrical Engineering, from the University
+of Illinois at Urbana-Champaign, where he is currently a Ph.D. 
+candidate in Electrical \& Computer Engineering.
+His research interests include robotics, computer vision, and optimal control.
+His recent work focuses on parallel algorithms for sparsity
+based face recognition.\end{IEEEbiography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{John Wright}
 Arvind Ganesh received his Bachelor's and Master's degrees, both in Electrical
@@ -1899,38 +1910,11 @@ interests include compressed sensing, computer vision, and machine learning.
 His recent work focuses on low-rank matrix recovery techniques for
 batch image alignment and texture rectification.  \end{IEEEbiography}
 
-% or if you just want to reserve a space for a photo:
-
-%
-%\begin{biography}{Andrew Wagner}
-%Biography text here.
-%\end{biography}
-%
-%\begin{biography}{John Wright}
-%Biography text here.
-%\end{biography}
-%
-%\begin{biography}{Arvind Ganesh}
-%Biography text here.
-%\end{biography}
-%
-%\begin{biography}{Zihan Zhou}
-%Biography text here.
-%\end{biography}
-%
-%\begin{biography}{Yi Ma}
-%Biography text here.
-%\end{biography}
-%
-
-
 % if you will not have a photo
 %\begin{biographynophoto}{John Doe}
 %Biography text here.
 %\end{biographynophoto}
 
-% insert where needed to balance the two columns on the last page
-%\newpage
 
 %\begin{biographynophoto}{Jane Doe}
 %Biography text here.
@@ -1948,5 +1932,4 @@ batch image alignment and texture rectification.  \end{IEEEbiography}
 % is flush with the other column.
 %\enlargethispage{-5in}
 
-% that's all folks
 \end{document}
