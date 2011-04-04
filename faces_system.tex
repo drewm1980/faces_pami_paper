@@ -46,7 +46,7 @@
 % The first is for peer review format(single column), the second is for final publication(double column).
 
 %\documentclass[12pt,journal,draftcls,letterpaper,onecolumn]{IEEEtran}
-%\documentclass[9.5pt,journal,final,finalsubmission,twocolumn]{IEEEtran}
+%\documentclass[9.5pt,journal,final,compsoc,twocolumn]{IEEEtran}
 
 \documentclass[10pt,journal,letterpaper,compsoc]{IEEEtran} % from the new style file.  supposedly double column.
 
@@ -59,16 +59,7 @@
 \usepackage{amsfonts}
 \usepackage{amscd}
 \usepackage{amssymb}
-
-%\usepackage{subfigure}
-
-%\ifCLASSOPTIONcompsoc
- %\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
- %\usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-\usepackage[caption=false,font=footnotesize]{subfig}
-
+\usepackage{subfigure}
 \usepackage{pdfsync}
 \usepackage{helvet}
 \usepackage{url}
@@ -82,6 +73,8 @@
 \usepackage{multirow}
 \usepackage{pict2e}
 \usepackage{slashbox}
+
+% \usepackage[small]{caption}
 
 \newcommand{\subj}{\textup{subj to}}
 
@@ -133,7 +126,29 @@ Illumination by Sparse Representation}
 \IEEEcompsoctitleabstractindextext{
 \vspace{0mm}
 \begin{abstract}
-Many classic and contemporary face recognition algorithms work well on public data sets, but degrade sharply when they are  used in a real recognition system. This is mostly due to the difficulty of simultaneously handling variations in illumination, image misalignment, and occlusion in the test image. We consider a scenario where the training images are well controlled, and test images are only loosely controlled. We propose a conceptually simple face recognition system that achieves a high degree of robustness and stability to illumination variation, image misalignment, and partial occlusion. The system uses tools from sparse representation to align a test face image to a set of frontal training images. The region of attraction of our alignment algorithm is computed empirically for public face datasets such as Multi-PIE. We demonstrate how to capture a set of training images with enough illumination variation that they span test images taken under uncontrolled illumination. In order to evaluate how our algorithms work under practical testing conditions, we have implemented a complete face recognition system, including a projector-based training acquisition system. Our system can efficiently and effectively recognize faces under a variety of realistic conditions, using only frontal images under the proposed illuminations as training.\vspace{0mm}
+Many classic and contemporary face recognition algorithms work
+well on public data sets, but degrade sharply when they are
+used in a real recognition system. This is mostly due to the
+difficulty of simultaneously handling variations in
+illumination, image misalignment, and occlusion in the test
+image. We consider a scenario where the training images are
+well controlled, and test images are only loosely controlled.
+We propose a conceptually simple face recognition system that
+achieves a high degree of robustness and stability to
+illumination variation, image misalignment, and partial
+occlusion. The system uses tools from sparse representation to
+align a test face image to a set of frontal training images.
+The region of attraction of our alignment algorithm is computed
+empirically for public face datasets such as Multi-PIE. We
+demonstrate how to capture a set of training images with enough
+illumination variation that they span test images taken under
+uncontrolled illumination. In order to evaluate how our
+algorithms work under practical testing conditions, we have
+implemented a complete face recognition system, including a
+projector-based training acquisition system. Our system can
+efficiently and effectively recognize faces under a variety of
+realistic conditions, using only frontal images under the
+proposed illuminations as training.\vspace{0mm}
 \end{abstract}
 
 % make the title area
@@ -153,29 +168,34 @@ Sparse Representation,  Error Correction, Validation and Outlier Rejection.
 \section{Introduction}
 %Automatic face recognition remains one of the most active areas in computer vision.
 
-
-\PARstart{F}{ace} recognition applications to date have fallen into roughly two
-categories.  Face recognition has recently seen a lot of success in a family of
-less-demanding applications such as online image search and family photo album
-organization (e.g.\ Google Picassa, Microsoft Photo Gallery, and Apple iPhoto).
-At the other end of the tractability spectrum there are the terrorist watchlist
-and mass surveillance applications that have for the most part dominated the
-field of face recognition research.  However, there are many face recognition
-applications that fall roughly between these extremes, where very high recognition
-performance is desired, but the users in the gallery are still allies of the
-system rather than adversaries.  These applications include access control for
-secure facilities (e.g., prisons, office buildings), computer systems,
-automobiles, or automatic teller machines, where controlled gallery images can
-be obtained in advance.  These applications are very interesting due to their
-potential sociological impact.  Since the gallery subjects are allies, rather
-than opponents, of the recognition system, this creates the possibility of
-carefully controlling the acquisition of the training data. While the same can
-be said for other biometrics such as fingerprints and iris recognition, face
-recognition has the potential of working with test data that is much less
-controlled, allowing the access control system to be made less intrusive to the
-users of the system. To some extent, the goal of this paper is to show how a
-reliable face recognition system can be built for this restricted,
-but still important, scenario.
+\PARstart{F}{ace} recognition applications to date have fallen
+into roughly two categories.  Face recognition has recently
+seen a lot of success in a family of less-demanding
+applications such as online image search and family photo album
+organization (e.g.\ Google Picassa, Microsoft Photo Gallery,
+and Apple iPhoto). At the other end of the tractability
+spectrum there are the terrorist watchlist and mass
+surveillance applications that have for the most part dominated
+the field of face recognition research.  However, there are
+many face recognition applications that fall roughly between
+these extremes, where very high recognition performance is
+desired, but the users in the gallery are still allies of the
+system rather than adversaries.  These applications include
+access control for secure facilities (e.g., prisons, office
+buildings), computer systems, automobiles, or automatic teller
+machines, where controlled gallery images can be obtained in
+advance.  These applications are very interesting due to their
+potential sociological impact.  Since the gallery subjects are
+allies, rather than opponents, of the recognition system, this
+creates the possibility of carefully controlling the
+acquisition of the training data. While the same can be said
+for other biometrics such as fingerprints and iris recognition,
+face recognition has the potential of working with test data
+that is much less controlled, allowing the access control
+system to be made less intrusive to the users of the system. To
+some extent, the goal of this paper is to show how a reliable
+face recognition system can be built for this restricted, but
+still important, scenario.
 
 Very few recognition systems specifically target applications where many well-
 controlled training images are available.  Of these, the classical holistic
@@ -197,7 +217,8 @@ occlusion or corruption by solving a simple convex program.
 %consist of SRC, and the alignment stage that precedes it will be based on
 %similar techniques.
 
-\begin{figure} \centering \begin{tabular}{cc}
+\begin{figure}
+\centering \begin{tabular}{cc}
 \includegraphics[height=1in]{figures_cvpr/promo/case1/detector.png}&
 \hspace{3mm}
 \includegraphics[height=1in]{figures_cvpr/promo/case1/sci_with_axis_face_case1.png}
@@ -222,8 +243,8 @@ only 24 frontal illuminations are used in the training for recognition (see
 Section \ref{sec:illumination}). {\bf Bottom:} The input face is well aligned and
 a sufficient set (all 38) of
 illuminations are used in the training. Both are necessary for correct recognition
-using SRC.} \label{fig:promo}
-\vspace{0mm}
+using SRC.}\label{fig:promo}
+\vspace{-4mm}
 \end{figure}
 %\subsection{Compound Effect of Registration and Illumination}
 
@@ -260,20 +281,22 @@ in the sparse representation framework, bringing the method proposed in \cite{Wr
 closer to practical use.
 
 \subsection{Related Work}
-
-We briefly review existing techniques for recognition, image registration, and
-handling of illumination variation.  Our system is based purely on 2D
-techniques.  This fact immediately distinguishes our approach from systems
-that either require a 3D data as an input, or attempt to estimate a 3D model
-from 2D input \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While these
-techniques can achieve better robustness to pose variation given
-a sufficiently accurate 3D model, for access control applications where only
-moderate pose variation is present, the proposed method will be more
-than sufficient.   Note that 2D images of faces
-under varying illuminations already contain 3D shape-related information,\footnote{In principle,
-one can recover the 3D shape of the face from multiple illuminations using photometric stereo.}
-and this information can be leveraged by 2D algorithms for alignment and recognition
-even if shape is not reconstructed explicitly.
+We briefly review existing techniques for recognition, image
+registration, and handling of illumination variation.  Our
+system is based purely on 2D techniques.  This fact immediately
+distinguishes our approach from systems that either require a
+3D data as an input, or attempt to estimate a 3D model from 2D
+input \cite{amberg2007reconstructing,Blanz2003-PAMI}.  While
+these techniques can achieve better robustness to pose
+variation given a sufficiently accurate 3D model, for access
+control applications where only moderate pose variation is
+present, the proposed method will be more than sufficient.
+Note that 2D images of faces under varying illuminations
+already contain 3D shape-related information,\footnote{In
+principle, one can recover the 3D shape of the face from
+multiple illuminations using photometric stereo.} and this
+information can be leveraged by 2D algorithms for alignment and
+recognition even if shape is not reconstructed explicitly.
 %In addition, the proposed sparsity-based robust
 %alignment and recognition techniques are not limited to 2D data and can be easily extended
 %to 3D data if necessary.
@@ -335,7 +358,6 @@ projector based light stage.  While similar systems have been used for
 other applications, to our knowledge, we
 are the first to use projectors to indirectly illuminate a subject's face for
 the purpose of face recognition.
-
 \subsection{Contributions} In this paper, we show how
 registration and illumination
 can be simultaneously addressed within a robust sparse representation
@@ -845,9 +867,9 @@ We have gathered the statistics of the Viola and Jones'
 \centering
 {\small
 \begin{tabular}{ccc}
-\includegraphics[height=1.4in]{figures_pami/x_y_roa.png} &
-\includegraphics[height=1.4in]{figures_pami/y_theta_roa.png} &
-\includegraphics[height=1.4in]{figures_pami/y_s_roa.png}\\
+\includegraphics[height=1.2in]{figures_pami/x_y_roa.png} &
+\includegraphics[height=1.2in]{figures_pami/y_theta_roa.png} &
+\includegraphics[height=1.2in]{figures_pami/y_s_roa.png}\\
 (a)&(b)&(c)
 \end{tabular}
 \begin{tabular}{cccc}
@@ -886,14 +908,15 @@ a similar performance compared to a much larger kernel when
 only 2 scales are used.
 \begin{figure}
 \centering
-\includegraphics[width=3.5in]{figures_pami/multiscale.png}
-\vspace{0mm}
+\includegraphics[width=3in]{figures_pami/multiscale.png}
+\vspace{-2mm}
 \caption{{\bf Multiscale alignment.} This figure shows the average success rate of alignment over all possible perturbations. A smaller blur kernel can be applied to achieve certain level of performance when more scales are used.}
 \label{fig:multiscale}
-\vspace{0mm}
+\vspace{-4mm}
 \end{figure}
 
-\noindent{3) \em 3D Pose Variation.} As densely sampled pose and
+\noindent{3) \em 3D Pose Variation.} As densely sampled pose
+and
     illumination face images are not available in any of
     the public databases, including Multi-PIE, we have
     collected our own dataset using our own system (to be
@@ -913,25 +936,24 @@ Note that this level of out-of-plane
 \centering
 {\small
 \begin{tabular}{ccccc}
-\includegraphics[height=0.55in]{figures_cvpr/5} &
-\includegraphics[height=0.55in]{figures_cvpr/7} &
-\includegraphics[height=0.55in]{figures_cvpr/09} &
-\includegraphics[height=0.55in]{figures_cvpr/11} &
-\includegraphics[height=0.55in]{figures_cvpr/13} \vspace{0mm} \\ 
+\includegraphics[height=0.5in]{figures_cvpr/5} &
+\includegraphics[height=0.5in]{figures_cvpr/7} &
+\includegraphics[height=0.5in]{figures_cvpr/09} &
+\includegraphics[height=0.5in]{figures_cvpr/11} &
+\includegraphics[height=0.5in]{figures_cvpr/13} \vspace{0mm} \\
 (a) & (b) & (c) & (d) & (e)\\
-\includegraphics[height=0.55in]{figures_cvpr/15} &
-\includegraphics[height=0.55in]{figures_cvpr/17} &
-\includegraphics[height=0.55in]{figures_cvpr/19} &
-\includegraphics[height=0.55in]{figures_cvpr/21} &
-\includegraphics[height=0.55in]{figures_cvpr/3} \vspace{0mm} \\ 
+\includegraphics[height=0.5in]{figures_cvpr/15} &
+\includegraphics[height=0.5in]{figures_cvpr/17} &
+\includegraphics[height=0.5in]{figures_cvpr/19} &
+\includegraphics[height=0.5in]{figures_cvpr/21} &
+\includegraphics[height=0.5in]{figures_cvpr/3} \vspace{0mm} \\
 (f) & (g) & (h) & (i) & (j) \vspace{0mm}
 \end{tabular}
 }
 \caption{{\bf 2D Alignment of test images with different poses to frontal training images.} {\bf (a) to (i):}  plausible alignment for pose from $-45^{\circ}$
 to $+45^{\circ}$. {\bf (j):} a case when the algorithm fails for an extreme pose ($>45^{\circ}$).
-}\label{fig:pose-alignment} \vspace{0mm}
+}\label{fig:pose-alignment} \vspace{-4mm}
 \end{figure}
-
 \subsection{Comparison with Related Work}
 Our modification to SRC roots solidly in the tradition of
 adding deformation-robustness to face recognition algorithms
@@ -1055,7 +1077,8 @@ advantages over flash-based illumination systems for face recognition:
 \item The system can be assembled from off-the-shelf hardware.
 \end{itemize}
 \begin{figure}
-\centerline{\hspace{-0.1in}\includegraphics[height=2.3in]{figures_cvpr/camera_rig.pdf}\vspace{0mm}}
+\centering
+\includegraphics[height=2in]{figures_cvpr/camera_rig.pdf}
 \caption{{\bf Training acquisition system:} Four projectors and two cameras controlled by one computer.}
 \vspace{-2em}
 \label{fig:system}
@@ -1142,7 +1165,7 @@ our large-scale experiments:
 \begin{tabular}{cc}
 \includegraphics[height=.75in]{figures_cvpr/coverage_experiment_asplode.png} &
 \includegraphics[height=.75in]{figures_cvpr/final_cvpr_illuminations_asplode.png}  \\
-(a) Coverage Experiment & (b) Chosen Illumination Patterns 
+(a) Coverage Experiment & (b) Chosen Illumination Patterns
 \end{tabular}\vspace{0mm}
 \caption{{\bf Illumination Patterns.}   The cells are illuminated in sequence.  For rear illuminations the sequence is reversed.  In the chosen pattern's rear illumination, the cells 1-5 and 7-11 are omitted for a total of 38 illuminations. The four rectangular regions correspond to the four projectors.  }
 \label{fig:illumination-patterns}
@@ -1152,8 +1175,8 @@ our large-scale experiments:
 \begin{figure}
 \centering
 \begin{tabular}{@{}c@{}c@{}}
-\includegraphics[height=1.35in]{figures_cvpr/illum_results/coverage_sunset.pdf} &
-\includegraphics[height=1.35in]{figures_cvpr/illum_results/granularity_sunset.pdf} \\
+\includegraphics[height=1.2in]{figures_cvpr/illum_results/coverage_sunset.pdf} &
+\includegraphics[height=1.2in]{figures_cvpr/illum_results/granularity_sunset.pdf} \\
 (a) Coverage & (b) Granularity
 \end{tabular}\vspace{0mm}
 \caption{{\bf Study of sufficient illuminations.} The average $\ell^1$ registration residual versus different illumination training sets. }
@@ -1161,8 +1184,8 @@ our large-scale experiments:
 \vspace{-4.5em}
 \end{figure}
 
- In the plot for the
-coverage experiment, Figure \ref{fig:illumination-sufficiency}(a),
+In the plot for the coverage experiment, Figure
+\ref{fig:illumination-sufficiency}(a),
  we clearly see two plateau regions: one is after 4 rings
 and one is after 10 rings. The first four rings represent the
 typical frontal illuminations, which are present in most public
@@ -1187,7 +1210,7 @@ can be found that performs as well or better.}
 See below for the 38 training images of one subject:
 \begin{figure}[h]
 \centering
-\includegraphics[width=3.5in]{figures_cvpr/training.png}
+\includegraphics[width=3.2in]{figures_cvpr/training.png}
 \vspace{-2em}
 \end{figure}
 
@@ -1243,11 +1266,11 @@ Algorithm 1 and \cite{Yang2010-CVPR}}
 \hline
 Recognition rate & Session 2 & Session 3 & Session 4  \\
 \hline
-{Algorithm 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
+{Alg. 1, $S=1$} & 90.7\% & 89.6\% & 87.5\% \\
 \hline
-{Algorithm 1} & 93.9\% & 93.8\% & 92.3\% \\
+{Alg. 1} & 93.9\% & 93.8\% & 92.3\% \\
 \hline
-{Algorithm 1 with improved window} & 95.0\% & {\bf 96.3}\% & {\bf 97.3}\% \\
+{Alg. 1 with improved window} & 95.0\% & {\bf 96.3}\% & {\bf 97.3}\% \\
 \hline
 \cite{Yang2010-CVPR} & {\bf 95.2}\% & 93.4\% & 95.1\% \\
 \hline
@@ -1260,24 +1283,24 @@ Recognition rate & Session 2 & Session 3 & Session 4  \\
 \centering
 {\small
 \begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_01_01_051_08.png}  &
+\hspace{-2mm}\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/111_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/196_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/130_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/163_01_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/175_01_01_051_08.png} \\
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_02_01_051_08.png}  &
+\hspace{-2mm}\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_02_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/111_02_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/196_02_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/130_02_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/163_02_01_051_08.png}  &
 \includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/175_02_01_051_08.png} \\
-(a) & (b) & (c) & (d) & (e) & (f) \vspace{0mm}
+\hspace{-2mm}(a) & (b) & (c) & (d) & (e) & (f) \vspace{0mm}
 \end{tabular}
 }
 \caption{{\bf Representative failures from Multi-PIE}. {\bf Top:} training from Session 1; {\bf Bottom:} test images from Session 2. Due to changes in hair, glasses, beard, or pose, our alignment fails on these subjects regardless of test image illumination.}
 \label{fig:failed-examples}
-\vspace{-15mm}
+\vspace{-4mm}
 \end{figure}
 
 \subsection{Improving the Performance by Choosing Different Sampling Windows}
@@ -1396,7 +1419,7 @@ LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 
 SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
 \hline
 \end{tabular}
-\label{tab:MultiPIE-recognition} } 
+\label{tab:MultiPIE-recognition} }
 \vspace{-.1in}
 \end{table*}
 
@@ -1460,7 +1483,7 @@ we use letters
 alignment, and our iterative alignment algorithm, respectively.
 
 \begin{table}
-\caption{Performance on single gallery image FERET dataset} 
+\caption{Performance on single gallery image FERET dataset}
 \vspace{-3mm} \centerline{
 \begin{tabular}{|c|c|c|c|c| }
 \hline
@@ -1472,10 +1495,10 @@ $LBP_m$ & {\bf 96.6} & {\bf 58.8} & {\bf 71.6} & {\bf 61.5} \\
 \hline
 $LBP_i$ & 94.5 & 42.8 & 46.5 & 21.1 \\
 \hline
-{Algorithm 1} & 95.2 & 28.4 & 46.1 & 20.3 \\
+{Alg. 1} & 95.2 & 28.4 & 46.1 & 20.3 \\
 \hline
 \end{tabular}
-\label{tab:FERET-recognition} } 
+\label{tab:FERET-recognition} }
 \vspace{-12mm}
 \end{table}
 
@@ -1523,21 +1546,20 @@ evenly over all classes. Thus, we can choose a threshold $t \in
 if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
 invalid. We compare this classifier to classifiers based on
 thresholding the error residuals of NN, NS, LDA, and LBP.
-
-\renewcommand{\tempwidth}[0]{1.85in}
 \begin{figure}[t]
-\vspace{-.15in}
-\centerline{
-	\begin{tabular}{@{}c@{}c@{}}
-	\includegraphics[trim=.9in 0in 1.2in 0in, clip, width=\tempwidth]{figures_pami/pami_roc_revision2} &
-	\includegraphics[trim=.9in 0in 1.2in 0in, clip, width=\tempwidth]{figures_pami/pami_roc2} \\
-	{\small (a)} & {\small (b)} \\
-	\end{tabular}
+{\small
+\centering
+\begin{tabular}{@{}c@{}c@{}}
+\includegraphics[height = 1.6in]{figures_pami/pami_roc_revision2} & \hspace{2mm}
+\includegraphics[height = 1.6in]{figures_pami/pami_roc2} \\
+(a) & \hspace{2mm}(b) \\
+\end{tabular}
 }
-\caption{{\bf ROC curves} for subject validation on Multi-PIE database, 
-(a) for all algorithms with iterative alignment, and 
+\vspace{-2mm}
+\caption{{\bf ROC curves} for subject validation on Multi-PIE database,
+(a) for all algorithms with iterative alignment, and
 (b) for the classical algorithms with manual alignment (indicated by a subscript ``m'').}\label{fig:roc-multipie}
-\vspace{-.4in}
+\vspace{-2mm}
 \end{figure}
 
 Figure \ref{fig:roc-multipie} plots the receiver operating
@@ -1545,16 +1567,17 @@ characteristic (ROC) curves, which are generated by sweeping
 the threshold $t$ through the entire range of possible values
 for each algorithm.\footnote{Rejecting invalid images not in
 the entire database is much more difficult than deciding if two
-face images are the same subject. Figure \ref{fig:roc-multipie} should not be
-confused with typical ROC curves for face similarity, e.g.,
-\cite{PhillipsP2007}.} On the left we can see that the SCI
-based recognition approach significantly outperforms the other
-algorithms, including LBP, even when all algorithms are coupled
-with our proposed iterative alignment.  In the right plot we
-again see that classical algorithms, and even LBP, are very
-sensitive to alignment.  Similar contrasts between our
-algorithm and baseline algorithms were also observed for SRC in
-\cite{Wright2009-PAMI}, though on much smaller datasets.
+face images are the same subject. Figure \ref{fig:roc-multipie}
+should not be confused with typical ROC curves for face
+similarity, e.g., \cite{PhillipsP2007}.} On the left we can see
+that the SCI based recognition approach significantly
+outperforms the other algorithms, including LBP, even when all
+algorithms are coupled with our proposed iterative alignment.
+In the right plot we again see that classical algorithms, and
+even LBP, are very sensitive to alignment.  Similar contrasts
+between our algorithm and baseline algorithms were also
+observed for SRC in \cite{Wright2009-PAMI}, though on much
+smaller datasets.
 
 \subsection{Recognition with Synthetic Random Block Occlusion}
 
@@ -1572,7 +1595,6 @@ Figure~\ref{fig:multipie-occ-rec} shows that our algorithm is
 indeed capable of handling a moderate amount of occlusion. For
 example, at 20\% occlusion, our algorithm still achieves 94.9\%
 recognition rate.
-\vspace{0mm}
 
 \newcommand{\tempscale}{0.40}
 \begin{figure}
@@ -1601,7 +1623,6 @@ Recognition rate & 99.6\% & 94.9\% & 79.6\% & 46.5\% & 19.8\% \\
 \vspace{-.5in}
 \end{figure}
 
-\vspace{-.2in}
 \subsection{Recognition with Pose and Expression} We now run tests of
 our algorithm on a subset of the images from Multi-PIE with pose and expression variation in the test set, although we do not model these variations explicitly.
 Using the same training set as above, we test our algorithm on
@@ -1734,9 +1755,9 @@ illuminations are more challenging, the result is not
 surprising. In the next subsection, we will show how additional
 assumptions can be used to improve the recognition performance.
 \begin{table}[h]
-\vspace{0mm}	
-\centering \caption{Recognition rates on our own database.}
 \vspace{0mm}
+\centering \caption{Recognition rates on our own
+database.} \vspace{0mm}
 \begin{tabular}{|c|c|c|c|c| }
 \hline
 Test Category & C1 & C2 & C3 & C4  \\
@@ -1770,8 +1791,8 @@ with respect to the training set. The recognition
 results for individual blocks are then aggregated by voting.
 
 \begin{figure}
-\centerline{
-\includegraphics[width=3in]{figures_pami/occ_block.png}\vspace{0mm}}
+\centering
+\includegraphics[width=2.6in]{figures_pami/occ_block.png}
 \caption{{\bf Using overlapping blocks to tackle contiguous occlusion.} (a) The test image, occluded by sunglasses. (b) The four overlapping blocks. (c) The sparse representation is calculated after alignment for each block independently. The red lines correspond to his true identity. (d) The true identity is successfully recovered by voting based on the SCI scores.}
 \label{fig:occ-block}
 \vspace{0mm}
@@ -1859,7 +1880,7 @@ the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{Andrew Wagner}
 Andrew Wagner received his Bachelor's degree in General Engineering,
 and his Master's degree in Electrical Engineering, from the University
-of Illinois at Urbana-Champaign, where he is currently a Ph.D. 
+of Illinois at Urbana-Champaign, where he is currently a Ph.D.
 candidate in Electrical \& Computer Engineering.
 His research interests include robotics, computer vision, and optimal control.
 His recent work focuses on parallel algorithms for sparsity
