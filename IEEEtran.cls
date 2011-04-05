@@ -790,6 +790,7 @@
 
 \columnsep         1pc
 \textwidth        43pc   % 2 x 21pc + 1pc = 43pc
+%\textwidth        45.2pc   % 2 x 21pc + 1pc = 43pc % margin HACK!!!
  
 
 % the default side margins are equal
@@ -799,6 +800,8 @@
 \else
 \oddsidemargin        0.680in
 \evensidemargin       0.680in
+%\oddsidemargin        0.50in % margin HACK!!!
+%\evensidemargin       0.50in
 \fi
 % compensate for LaTeX's 1in offset
 \addtolength{\oddsidemargin}{-1in}
@@ -1720,12 +1723,13 @@
 \newlength\belowcaptionskip
 % but only \abovecaptionskip is used above figure captions and *below* table
 % captions
-\setlength\abovecaptionskip{0.5\baselineskip}
-\setlength\belowcaptionskip{0pt}
+\setlength\abovecaptionskip{0.3\baselineskip} % HACK, affects space between captions and figures.
+\setlength\belowcaptionskip{-0pt}  % Seems to do nothing...
 % V1.6 create hooks in case the caption spacing ever needs to be
 % overridden by a user
 \def\@IEEEfigurecaptionsepspace{\vskip\abovecaptionskip\relax}%
 \def\@IEEEtablecaptionsepspace{\vskip\abovecaptionskip\relax}%
+\def\@figurebelowcaptionskip{\vskip\belowcaptionskip\relax} % HACK
 
 
 % 1.6b revise caption system so that \@makecaption uses two arguments
@@ -1763,15 +1767,17 @@
 % if not a table, format it as a figure
 \else
 \@IEEEfigurecaptionsepspace
-\setbox\@tempboxa\hbox{\normalfont\sffamily\footnotesize {#1.}~ #2}%
+\setbox\@tempboxa\hbox{\normalfont\sffamily\footnotesize {#1.}~ #2}%  HACK
 \ifdim \wd\@tempboxa >\hsize%
 % if caption is longer than a line, let it wrap around
-\setbox\@tempboxa\hbox{\normalfont\sffamily\footnotesize {#1.}~ }%
-\parbox[t]{\hsize}{\normalfont\sffamily\footnotesize \noindent\unhbox\@tempboxa#2}%
+\setbox\@tempboxa\hbox{\normalfont\sffamily\footnotesize {#1.}~ }% HACK
+\parbox[t]{\hsize}{\normalfont\sffamily\footnotesize \noindent\unhbox\@tempboxa#2}% HACK
 % if caption is shorter than a line, left justify
 \else%
-\hbox to\hsize{\normalfont\sffamily\footnotesize\box\@tempboxa\hfil}%
-\fi\fi}
+\hbox to\hsize{\normalfont\sffamily\footnotesize\box\@tempboxa\hfil}% HACK
+\fi
+\@figurebelowcaptionskip
+\fi}
 \fi
 
 \else% traditional noncompsoc \@makecaption
@@ -3747,7 +3753,7 @@ between column types.}%
     \fi\@IEEEgobbleleadPARNLSP}
 \def\IEEEkeywords{\normalfont\@IEEEtweakunitybaselinestretch{1.15}\sffamily
     \if@twocolumn
-      \@IEEEabskeysecsize\vskip 0.5\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip\noindent
+      \@IEEEabskeysecsize\vskip 0.0\baselineskip plus 0.0\baselineskip minus 0.0\baselineskip\noindent % HACK!!!
       \textbf{\IEEEkeywordsname}---\relax
     \else
       \begin{center}\@IEEEabskeysecsize\textbf{\IEEEkeywordsname}\end{center}\quotation\@IEEEabskeysecsize%
@@ -3886,9 +3892,9 @@ between column types.}%
 
 % for both journals and conferences
 % decided to put in a little rubber above the section, might help somebody
-\def\subsubsection{\@startsection{subsubsection}{3}{\parindent}{0ex plus 0.1ex minus 0.1ex}%
+\def\subsubsection{\@startsection{subsubsection}{3}{\parindent}{0ex plus 0.0ex minus 0.0ex}% HACK
 {0ex}{\normalfont\normalsize\itshape}}%
-\def\paragraph{\@startsection{paragraph}{4}{2\parindent}{0ex plus 0.1ex minus 0.1ex}%
+\def\paragraph{\@startsection{paragraph}{4}{2\parindent}{0ex plus 0.0ex minus 0.0ex}% HACK
 {0ex}{\normalfont\normalsize\itshape}}%
 
 
@@ -3906,15 +3912,15 @@ between column types.}%
 {0ex}{\normalfont\normalsize}}%
 \else% compsoc journals
 % use negative top separation as compsoc journals do not indent paragraphs after section titles
-\def\section{\@startsection{section}{1}{\z@}{-3ex plus -2ex minus -1.5ex}%
-{0.7ex plus 1ex minus 0ex}{\normalfont\large\sffamily\bfseries\scshape}}%
+\def\section{\@startsection{section}{1}{\z@}{-3ex plus -0ex minus -0.0ex}% HACK HERE
+{0.7ex plus 0ex minus 0ex}{\normalfont\large\sffamily\bfseries\scshape}}%
 % Note that subsection and smaller may not be correct for the Computer Society,
 % I have to look up an example.
-\def\subsection{\@startsection{subsection}{2}{\z@}{-3.5ex plus -1.5ex minus -1.5ex}%
-{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\sffamily\bfseries}}%
-\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-2.5ex plus -1ex minus -1ex}%
+\def\subsection{\@startsection{subsection}{2}{\z@}{-2.0ex plus -0.0ex minus -0.0ex}%  HACK HERE
+{0.7ex plus .0ex minus 0ex}{\normalfont\normalsize\sffamily\bfseries}}%
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-2.5ex plus -0ex minus -0ex}%
 {0.5ex plus 0.5ex minus 0ex}{\normalfont\normalsize\sffamily\itshape}}%
-\def\paragraph{\@startsection{paragraph}{4}{2\parindent}{-0ex plus -0.1ex minus -0.1ex}%
+\def\paragraph{\@startsection{paragraph}{4}{2\parindent}{-0ex plus -0.0ex minus -0.0ex}%
 {0ex}{\normalfont\normalsize}}%
 \fi\fi
 

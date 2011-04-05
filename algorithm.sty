@@ -23,7 +23,7 @@
 \ProvidesPackage{algorithm}
 \typeout{Document Style `algorithm' - floating environment}
 
-\RequirePackage{float}
+\RequirePackage{float_hacked}
 \RequirePackage{ifthen}
 \newcommand{\ALG@within}{nothing}
 \newboolean{ALG@within}
@@ -93,4 +93,5 @@
 \floatname{algorithm}{\ALG@name}
 
 \newcommand{\listofalgorithms}{\listof{algorithm}{\listalgorithmname}}
+
 
