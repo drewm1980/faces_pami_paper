@@ -74,6 +74,7 @@
 \usepackage{pict2e}
 \usepackage{slashbox}
 
+
 % \usepackage[small]{caption}
 
 \newcommand{\subj}{\textup{subj to}}
@@ -1849,14 +1850,17 @@ the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
 % the document is modified later
-\IEEEtriggeratref{41}
+%\IEEEtriggeratref{40}
 % The "triggered" command can be changed if desired:
 %\IEEEtriggercmd{\enlargethispage{-5in}}
 
 \bibliographystyle{IEEEtran}
 \bibliography{faces}
 
+\newcommand{\biospace}{\vspace{-2em}}
+
 % biography section
+\biospace
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/drew}}]{Andrew Wagner}
 received his Bachelor's degree in General Engineering in 2003,
 and his Master's degree in Electrical Engineering in 2006, from the University
@@ -1866,6 +1870,7 @@ His research interests include robotics, computer vision, and optimal control.
 His recent work focuses on parallel algorithms for sparsity
 based face recognition.\end{IEEEbiography}
 
+\biospace
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/john}}]{John
 Wright} received his PhD in Electrical Engineering from the
 University of Illinois at Urbana-Champaign in October 2009. He is currently a
@@ -1877,6 +1882,7 @@ Prize for Innovation, the 2009 UIUC Martin Award for Excellence in Graduate
 Research, a 2008-2010 Microsoft Research Fellowship, a Carver fellowship, and a
 UIUC Bronze Tablet award.  \end{IEEEbiography}
 
+\biospace
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{Arvind Ganesh}
 received his Bachelor's and Master's degrees, both in Electrical
 Engineering, from the Indian Institute of Technology, Madras, India in 2006. He
@@ -1886,14 +1892,22 @@ interests include compressed sensing, computer vision, and machine learning.
 His recent work focuses on low-rank matrix recovery techniques for
 batch image alignment and texture rectification.  \end{IEEEbiography}
 
+\biospace
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{Zihan Zhou}
 received... {\bf PLACEHOLDER}
 \end{IEEEbiography}
 
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{Hossein Mobahi}
-received... {\bf PLACEHOLDER}
-\end{IEEEbiography}
+\biospace
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]
+{bios/hossein}}]{Hossein Mobahi} received his Bachelor's and Master's degrees
+in Iran, both in Computer Engineering from Azad University (Tehran-South) in
+2003  and University of Tehran in 2005 respectively. He is currently a PhD
+candidate in the Computer Science Department at the University of Illinois,
+Urbana-Champaign. His research interests include pattern classification,
+clustering and optimization.  His recent research focuses on iterative
+smoothing for image alignment.  \end{IEEEbiography}
 
+\biospace
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/yi}}]{Yi
 Ma} received two Bachelors degree in Automation and Applied Mathematics
 from  Tsinghua University, Beijing, China, in 1995. He received an Master
@@ -1904,6 +1918,7 @@ professor (with tenure) at the Department of Electrical and Computer
 Engineering, University of Illinois at Urbana-Champaign, and since January 2009
 has also served as research manager for the Visual Computing Group at Microsoft
 Research Asia, Beijing, China.  \end{IEEEbiography}
+\vfill
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
@@ -1911,7 +1926,6 @@ Research Asia, Beijing, China.  \end{IEEEbiography}
 % on the last page and whether or not the columns
 % are being equalized.
 
-\vfill
 
 % Can be used to pull up biographies so that the bottom of the last one
 % is flush with the other column.
