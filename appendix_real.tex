@@ -1,76 +1,5 @@
-\documentclass[10pt,journal,letterpaper,compsoc]{IEEEtran} 
-
-\usepackage{times}
-\usepackage{epsfig}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amscd}
-\usepackage{amssymb}
-\usepackage{subfigure}
-\usepackage{pdfsync}
-\usepackage{helvet}
-\usepackage{url}
-\usepackage{color}
-
-% Include other packages here, before hyperref.
-\usepackage{mydefs}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-
-\usepackage{multirow}
-\usepackage{pict2e}
-\usepackage{slashbox}
-
-
-% \usepackage[small]{caption}
-
-\newcommand{\subj}{\textup{subj to}}
-
-\newcommand{\jw}[1]{{\bf \textcolor{blue}{John: #1}}}
-%\newcommand{\aw}[1]{\bf \color{greem} Drew: #1}
-%\newcommand{\ym}[1]{\bf \color{red}{ Yi: #1}}
-
-\newcommand{\zz}[1]{{\bf \textcolor{red}{Zihan: #1}}}
-
-\begin{document}
-%
-% paper title
-\title{Towards a Practical Face Recognition System: \\ Robust Alignment and
-Illumination by Sparse Representation\\
-(Supplementary Materials)}
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-\author{Andrew~Wagner,~\IEEEmembership{Student~Member,~IEEE,}
-        John~Wright,~\IEEEmembership{Member,~IEEE,}
-        Arvind~Ganesh,~\IEEEmembership{Student~Member,~IEEE,}
-        Zihan~Zhou,~\IEEEmembership{Student~Member,~IEEE,}
-        Hossein~Mobahi,
-        and~Yi~Ma,~\IEEEmembership{Senior~Member,~IEEE}% <-this % stops a space
-\thanks{A. Wagner, A. Ganesh, Z. Zhou, and Y. Ma are with the Dept. of Electrical and Computer Engineering at the University of Illinois at Urbana-Champaign. H. Mobahi is with the Computer Science Dept. at the University of Illinois at Urbana-Champaign.  J. Wright and Y. Ma are with Microsoft Research Asia.  Corresponding author: Andrew Wagner, awagner@illinois.edu, 1308 W. Main st. Urbana, IL 61801, (312) 343-1380.}}% <-this % stops a space
-
-% The paper headers
-%\markboth{Journal of \LaTeX\ Class Files,~Vol.~1, No.~8,~August~2002}{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
-% The only time the second header will appear is for the odd numbered pages
-% after the title page when using the twoside option.
-
-\maketitle
-
-\IEEEdisplaynotcompsoctitleabstractindextext
-\vspace{-9mm} % HACK
-
-\IEEEpeerreviewmaketitle
-
-%%%%%%%%% BODY TEXT
-\section{L1 Minimization via Augmented Lagrange Multiplier}
-
-\PARstart{I}{n} these supplementary materials we discuss the computational issues related to
+\appendix[L1 Minimization via Augmented Lagrange Multiplier]
+In this Appendix we discuss the computational issues related to
 the implementation of Algorithm~\ref{alg:deformable-src}, which is
 repeated here for convenience. It is
 not hard to see that its computational complexity is dominated
@@ -87,7 +16,6 @@ multiplications at each iteration, making them preferable to
 more classical solutions such as interior point methods.
 However, compared to other first-order methods, they achieve
 higher accuracy with a fixed computational budget.
-\input{deformable-src.tex}
 
 We use Step 14 as an example to illustrate the ALM
 method, since solving Step 6 is very similar. Recall that in
@@ -203,10 +131,4 @@ only slightly faster for per subject alignment. However, it is
 much simpler to implement and it achieves a
 \emph{speedup of more than a factor of 10} for global
 recognition!
-
-\bibliographystyle{IEEEtran}
-\bibliography{faces}
-
-\input{bios/bios}
-
-\end{document}
+%\end{comment}
