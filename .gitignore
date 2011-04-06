@@ -10,9 +10,6 @@
 *.fdb*
 *.zip
 
-figures_cvpr
-figures_pami
-
 *.swp
 .aux.bak
 *.aux.bak
