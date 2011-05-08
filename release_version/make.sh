@@ -2,5 +2,5 @@
 #latexmk -pdfdvi main.tex
 #latexmk -pdfdvi supplementary.tex
 latexmk main.tex
-#latexmk -pdfdvi supplementary.tex
+latexmk supplementary.tex
 
