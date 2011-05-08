@@ -860,11 +860,7 @@ our large-scale experiments:
 \end{enumerate}
 \begin{figure}
 \centering
-\begin{tabular}{cc}
-\includegraphics[height=.75in]{figures_cvpr/coverage_experiment_asplode.png} &
-\includegraphics[height=.75in]{figures_cvpr/final_cvpr_illuminations_asplode.png}  \\
-(a) Coverage Experiment & (b) Chosen Illumination Patterns
-\end{tabular}\vspace{0mm}
+\includegraphics{Figure_7}
 \caption{{\bf Illumination Patterns.}   The cells are illuminated in sequence.  For rear illuminations the sequence is reversed.  In the chosen pattern's rear illumination, the cells 1-5 and 7-11 are omitted for a total of 38 illuminations. The four rectangular regions correspond to the four projectors.  }
 \label{fig:illumination-patterns}
 \vspace{-.75em}
@@ -872,11 +868,7 @@ our large-scale experiments:
 
 \begin{figure}
 \centering
-\begin{tabular}{@{}c@{}c@{}}
-\includegraphics[height=1.2in]{figures_cvpr/illum_results/coverage_sunset.pdf} &
-\includegraphics[height=1.2in]{figures_cvpr/illum_results/granularity_sunset.pdf} \\
-(a) Coverage & (b) Granularity
-\end{tabular}\vspace{0mm}
+\includegraphics{Figure_8}
 \caption{{\bf Study of sufficient illuminations.} The average $\ell^1$ registration residual versus different illumination training sets. }
 \label{fig:illumination-sufficiency}
 \vspace{-3em}
@@ -908,7 +900,7 @@ can be found that performs as well or better.}
 See below for the 38 training images of one subject:
 \begin{figure}[h]
 \centering
-\includegraphics[width=3.2in]{figures_cvpr/training.png}
+\includegraphics[width=3.2in]{Figure_8_5}
 \vspace{-2em}
 \end{figure}
 
@@ -979,23 +971,7 @@ Recognition rate & Session 2 & Session 3 & Session 4  \\
 \newcommand{\tempwidth}[0]{0.58in}
 \begin{figure}
 \centering
-{\small
-\begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
-\hspace{-2mm}\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_01_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/111_01_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/196_01_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/130_01_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/163_01_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/175_01_01_051_08.png} \\
-\hspace{-2mm}\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/079_02_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/111_02_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/196_02_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/130_02_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/163_02_01_051_08.png}  &
-\includegraphics[width=\tempwidth,clip=true]{figures_pami/multipie_failed/175_02_01_051_08.png} \\
-\hspace{-2mm}(a) & (b) & (c) & (d) & (e) & (f) \vspace{0mm}
-\end{tabular}
-}
+\includegraphics{Figure_9}
 \caption{{\bf Representative failures from Multi-PIE}. {\bf Top:} training from Session 1; {\bf Bottom:} test images from Session 2. Due to changes in hair, glasses, beard, or pose, our alignment fails on these subjects regardless of test image illumination.}
 \label{fig:failed-examples}
 \vspace{-12mm}
@@ -1009,13 +985,7 @@ almost all test illuminations.
 \begin{figure}[b]
 \vspace{-1em}
 \centering
-{\small
-\begin{tabular}{@{}cc@{}}
-\includegraphics[trim=1.9in .7in 1.9in .5in, clip, height=1.0in]{figures_pami/example.png} &
-\includegraphics[trim=1.9in .7in 1.9in .5in, clip, height=1.0in]{figures_pami/example_new.png} \vspace{0mm} \\
-Default window. & Proposed window. \vspace{0mm}
-\end{tabular}
-}
+\includegraphics{Figure_10}
 \caption{{\bf Choosing different sampling windows.}}
 \label{fig:new-mask}
 \vspace{-1em}
@@ -1241,14 +1211,7 @@ if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
 invalid. We compare this classifier to classifiers based on
 thresholding the error residuals of NN, NS, LDA, and LBP.
 \begin{figure}[t]
-{\small
-\centering
-\begin{tabular}{@{}c@{}c@{}}
-\includegraphics[height = 1.6in]{figures_pami/pami_roc_revision2} & \hspace{2mm}
-\includegraphics[height = 1.6in]{figures_pami/pami_roc2} \\
-(a) & \hspace{2mm}(b) \\
-\end{tabular}
-}
+\includegraphics{Figure_11}
 \vspace{-2mm}
 \caption{{\bf ROC curves} for subject validation on Multi-PIE database,
 (a) for all algorithms with iterative alignment, and
