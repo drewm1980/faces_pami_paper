@@ -24,30 +24,13 @@
 \usepackage{pict2e}
 \usepackage{slashbox}
 
-
-% \usepackage[small]{caption}
-
 \newcommand{\subj}{\textup{subj to}}
 
-\newcommand{\jw}[1]{{\bf \textcolor{blue}{John: #1}}}
-%\newcommand{\aw}[1]{\bf \color{greem} Drew: #1}
-%\newcommand{\ym}[1]{\bf \color{red}{ Yi: #1}}
-
-\newcommand{\zz}[1]{{\bf \textcolor{red}{Zihan: #1}}}
-
 \begin{document}
-%
-% paper title
+
 \title{Towards a Practical Face Recognition System: \\ Robust Alignment and
 Illumination by Sparse Representation}
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
+
 \author{Andrew~Wagner,~\IEEEmembership{Student~Member,~IEEE,}
         John~Wright,~\IEEEmembership{Member,~IEEE,}
         Arvind~Ganesh,~\IEEEmembership{Student~Member,~IEEE,}
@@ -56,24 +39,6 @@ Illumination by Sparse Representation}
         and~Yi~Ma,~\IEEEmembership{Senior~Member,~IEEE}% <-this % stops a space
 \thanks{A. Wagner, A. Ganesh, Z. Zhou, and Y. Ma are with the Dept. of Electrical and Computer Engineering at the University of Illinois at Urbana-Champaign. H. Mobahi is with the Computer Science Dept. at the University of Illinois at Urbana-Champaign.  J. Wright and Y. Ma are with Microsoft Research Asia.  Corresponding author: Andrew Wagner, awagner@illinois.edu, 1308 W. Main st. Urbana, IL 61801, (312) 343-1380.}}% <-this % stops a space
 
-% The paper headers
-%\markboth{Journal of \LaTeX\ Class Files,~Vol.~1, No.~8,~August~2002}{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
-% The only time the second header will appear is for the odd numbered pages
-% after the title page when using the twoside option.
-
-
-% If you want to put a publisher's ID mark on the page
-% (can leave text blank if you just want to see how the
-% text height on the first page will be reduced by IEEE)
-%\pubid{0000--0000/00\$00.00~\copyright~2002 IEEE}
-
-% use only for invited papers
-%\specialpapernotice{(Invited Paper)}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%% ABSTRACT
 \IEEEcompsoctitleabstractindextext{
 \vspace{0mm}
 \begin{abstract}
@@ -110,14 +75,11 @@ Sparse Representation,  Error Correction, Validation and Outlier Rejection.
 \maketitle
 
 \IEEEdisplaynotcompsoctitleabstractindextext
-\vspace{-9mm} % HACK
-
+\vspace{-9mm} 
 
 \IEEEpeerreviewmaketitle
 
-%%%%%%%%% BODY TEXT
 \section{Introduction}
-%Automatic face recognition remains one of the most active areas in computer vision.
 
 \PARstart{F}{ace} recognition applications to date have fallen
 into roughly two categories.  Face recognition has recently
@@ -164,9 +126,6 @@ recognition. The main idea is that the sparse nonzero coefficients should
 concentrate on the training samples with the same class label as the test
 sample. SRC has demonstrated striking recognition performance despite severe
 occlusion or corruption by solving a simple convex program.
-%For this reason, the final recognition stage of our proposed system will
-%consist of SRC, and the alignment stage that precedes it will be based on
-%similar techniques.
 
 \begin{figure}
 \centering \begin{tabular}{cc}
@@ -313,22 +272,6 @@ sufficient set of training illuminations
 that is capable of linearly representing typical indoor and outdoor
 lighting, along with a practical hardware system for capturing
 them.
-
-% The two main contributions of this paper are thus to propose a simple and practical face recognition algorithm that achieves a high degree of robustness and stability to all these variations given sufficient training images, and to demonstrate a practical system for gathering sufficient training images.  While most of the techniques we use have been studied in isolation, we believe we are the first to combine them into a complete recognition pipeline that can achieve good results on realistic data.
-
-% We use tools from sparse representation
-% to align a test face image with a set of frontal training
-% images in the presence of registration error, illumination variation, and partial occlusion. The region
-% of attraction of the alignment algorithm is thoroughly characterized on public face datasets such as Multi-PIE.
-% We further demonstrate how to capture a set of training images with enough illumination variation that they span test images taken under un-controlled %illumination.
-% We have implemented a complete face recognition system, including a projector-based training acquisition system, in order to evaluate how our algorithms %work under practical testing conditions. We show
-% that our system can efficiently and effectively recognize faces under
-% a variety of realistic conditions, using only
-% frontal images under the proposed illuminations as training.
-
-
-%This paper is enhanced version of a similarly titled conference paper \cite{Wagner2009-CVPR}.  We provide experiment results on a larger internal data set, as well as more extensive experiments on public data sets.  Furthermore, we test several variations on the main pipeline that also achieve good recognition performance.  We also present an alternative formulation of the iterative alignment based on derivatives of the training images rather than the testing images.  We present results with a new internal implementation of L1 minimization using an Augmented Lagrange Method that is significantly faster than our previous interior-point based solver.
-
 
 We then demonstrate the effectiveness of the proposed new
 methods with a complete face recognition system that is {\em
@@ -1433,8 +1376,6 @@ illuminations. The recognition rate is 64.8\%. Of course, it is reasonable to ex
 the performance of our method will be significantly improved if pose and expression data
 are available in the training.
 
-
-%\vspace{-.1in}
 \section{Tests on Our Own Database}\label{sec:own-data} Using the training acquisition
 system we described in Section \ref{sec:illumination}, and shown in Figure
 \ref{fig:system}, we have collected the frontal view of 109
@@ -1653,15 +1594,7 @@ This work was supported by grants NSF IIS 08-49292, NSF ECCS
 07-01676, and ONR N00014-09-1-0230. JW thanks Allen Yang of UC Berkeley EECS and Robert Fossum of UIUC
 Mathematics for discussions related to this work, and
 acknowledges support from a Microsoft Fellowship and
-the Lemelson-Illinois Student Prize. %} %\vspace{0mm}
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{42}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
+the Lemelson-Illinois Student Prize. 
 
 \bibliographystyle{IEEEtran}
 \bibliography{faces}
@@ -1730,17 +1663,5 @@ professor (with tenure) at the Department of Electrical and Computer
 Engineering, University of Illinois at Urbana-Champaign, and since January 2009
 has also served as research manager for the Visual Computing Group at Microsoft
 Research Asia, Beijing, China.  \end{IEEEbiography}
-
-% You can push biographies down or up by placing
-% a \vfill before or after them. The appropriate
-% use of \vfill depends on what kind of text is
-% on the last page and whether or not the columns
-% are being equalized.
-
-% Can be used to pull up biographies so that the bottom of the last one
-% is flush with the other column.
-%\enlargethispage{-5in}
-
-% \input{appendix_main}
 
 \end{document}
