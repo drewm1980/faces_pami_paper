@@ -15,7 +15,6 @@
 
 \usepackage{verbatim}
 
-% Include other packages here, before hyperref.
 \usepackage{mydefs}
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -412,19 +411,7 @@ The scheme \eqref{eqn:L1-align} can be viewed as a generalized Gauss-Newton meth
 
 \begin{figure}
 \centering
-{\small
-\begin{tabular}{cccc}
-\includegraphics[height=.8in]{figures_cvpr/L1_cropped} &
-\includegraphics[height=.8in]{figures_cvpr/y_warp_L1} &
-\includegraphics[height=.8in]{figures_cvpr/y_hat_L1} &
-\includegraphics[height=.8in]{figures_cvpr/e_L1} \\
-\includegraphics[height=.8in]{figures_cvpr/L2_cropped} &
-\includegraphics[height=.8in]{figures_cvpr/y_warp_L2} &
-\includegraphics[height=.8in]{figures_cvpr/y_hat_L2} &
-\includegraphics[height=.8in]{figures_cvpr/e_L2} \\
-(a) & (b) & (c) & (d)
-\end{tabular}
-\vspace{0mm}}
+\includegraphics{Figure_2}
 \caption{{\bf Comparing alignment of a subject wearing sunglasses by
 $\ell^1$ and $\ell^2$ minimization.}
 {\bf Top:} alignment result of minimizing $\|\e\|_1$; {\bf Bottom:}
@@ -597,21 +584,8 @@ We have gathered the statistics of the Viola and Jones'
  algorithm.
 \begin{figure*}
 \centering
-{\small
-\begin{tabular}{ccc}
-\includegraphics[height=1.2in]{figures_pami/x_y_roa.png} &
-\includegraphics[height=1.2in]{figures_pami/y_theta_roa.png} &
-\includegraphics[height=1.2in]{figures_pami/y_s_roa.png}\\
-(a)&(b)&(c)
-\end{tabular}
-\begin{tabular}{cccc}
-\includegraphics[height=1in]{figures_pami/x_tr.png} &
-\includegraphics[height=1in]{figures_pami/y_tr.png} &
-\includegraphics[height=1in]{figures_pami/theta.png} &
-\includegraphics[height=1in]{figures_pami/scale.png}\\
-(d)&(e)&(f)& (g)
-\end{tabular}
-\vspace{0mm} } \caption{{\bf Region of attraction.} Fraction of
+\includegraphics{Figure_3}
+\caption{{\bf Region of attraction.} Fraction of
 subjects for which the algorithm successfully aligns a
 synthetically perturbed test image.  The amount of translation
 is expressed as a fraction of the distance between the outer
@@ -647,7 +621,7 @@ a similar performance compared to a much larger kernel when
 only 2 scales are used.
 \begin{figure}
 \centering
-\includegraphics[width=3in]{figures_pami/multiscale.png}
+\includegraphics{Figure_4}
 \vspace{-2mm}
 \caption{{\bf Multiscale alignment.} This figure shows the average success rate of alignment over all possible perturbations. A smaller blur kernel can be applied to achieve certain level of performance when more scales are used.}
 \label{fig:multiscale}
@@ -673,22 +647,7 @@ Note that this level of out-of-plane
  pose variation is beyond what we intend to handle with our formulation.
 \begin{figure}
 \centering
-{\small
-\begin{tabular}{ccccc}
-\includegraphics[height=0.5in]{figures_cvpr/5} &
-\includegraphics[height=0.5in]{figures_cvpr/7} &
-\includegraphics[height=0.5in]{figures_cvpr/09} &
-\includegraphics[height=0.5in]{figures_cvpr/11} &
-\includegraphics[height=0.5in]{figures_cvpr/13} \vspace{0mm} \\
-(a) & (b) & (c) & (d) & (e)\\
-\includegraphics[height=0.5in]{figures_cvpr/15} &
-\includegraphics[height=0.5in]{figures_cvpr/17} &
-\includegraphics[height=0.5in]{figures_cvpr/19} &
-\includegraphics[height=0.5in]{figures_cvpr/21} &
-\includegraphics[height=0.5in]{figures_cvpr/3} \vspace{0mm} \\
-(f) & (g) & (h) & (i) & (j) \vspace{0mm}
-\end{tabular}
-}
+\includegraphics{Figure_5}
 \caption{{\bf 2D Alignment of test images with different poses to frontal training images.} {\bf (a) to (i):}  plausible alignment for pose from $-45^{\circ}$
 to $+45^{\circ}$. {\bf (j):} a case when the algorithm fails for an extreme pose ($>45^{\circ}$).
 }\label{fig:pose-alignment} \vspace{-8mm}
@@ -817,7 +776,7 @@ advantages over flash-based illumination systems for face recognition:
 \end{itemize}
 \begin{figure}
 \centering
-\includegraphics[height=2in]{figures_cvpr/camera_rig.pdf}
+\includegraphics{Figure_6}
 \caption{{\bf Training acquisition system:} Four projectors and two cameras controlled by one computer.}
 \vspace{-2em}
 \label{fig:system}
