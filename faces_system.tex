@@ -1,4 +1,4 @@
-\documentclass[10pt,journal,letterpaper,compsoc]{IEEEtran} 
+\documentclass[10pt,journal,letterpaper,compsoc]{IEEEtran}
 
 \usepackage{times}
 \usepackage{epsfig}
@@ -195,7 +195,7 @@ Section \ref{sec:illumination}). {\bf Bottom:} The input face is well aligned an
 a sufficient set (all 38) of
 illuminations are used in the training. Both are necessary for correct recognition
 using SRC.}\label{fig:promo}
-\vspace{-6.9mm}
+\vspace{-5mm}
 \end{figure}
 
 Unfortunately, while the work \cite{Wright2009-PAMI} achieves impressive results, it does not deal with misalignment
@@ -497,7 +497,7 @@ result of minimizing $\|\e\|_2$. (a) {\em Green (dotted):} Initial face boundary
 given by the face detector, {\em Red (solid):} Alignment result shown on the same
 face; (b) warped testing image using the estimated transformation $\y_0$;
 (c) reconstructed face $A_i\x$ using the training; (d) image of error $\e$. }\label{fig:L1-L2-align}
-\vspace{-8.0mm}
+\vspace{-5.0mm}
 \end{figure}
 
 In addition to normalizing the training images (which is done
@@ -586,15 +586,16 @@ in Section \ref{sec:multipie}.
 \subsection{System Implementation}
 The runtime of Algorithm~\ref{alg:deformable-src} is dominated
 by the time spent solving two qualitatively similar $\ell_1$ minimization problems.
-We have developed custom solvers for this purpose based on 
-\emph{Augmented Lagrange Multiplier} (ALM) algorithm.  
+We have developed custom solvers for this purpose based on
+\emph{Augmented Lagrange Multiplier} (ALM) algorithm.
 We have selected this algorithm because it strikes the best
 balance between speed, accuracy, and scalability for our problem out of
 many algorithms that we have tested. We refer the reader to our
 supplementary materials for a more in-depth discussion of our
-solvers.  
+solvers.
 For a more detailed discussion of competing
-approaches, we refer the interested reader to \cite{YangA2010-pp} 
+approaches, we refer the interested reader to
+\cite{YangA2010-pp}.
 On a Mac Pro with
 Dual-Core 2.66GHz Xeon processors and 4GB memory,
 running on our database containing images size $80\times 60$
@@ -675,11 +676,18 @@ We have gathered the statistics of the Viola and Jones'
 \includegraphics[height=1in]{figures_pami/scale.png}\\
 (d)&(e)&(f)& (g)
 \end{tabular}
-\vspace{0mm}
-}
-\caption{{\bf Region of attraction.} Fraction of subjects for which the algorithm successfully aligns a synthetically perturbed test image.  The amount of translation is expressed as a fraction of the distance between the outer eye corners, and the amount of in-plane rotation in degrees. {\bf Top row:} (a) Simultaneous translation in $x$ and $y$ directions. (b) Simultaneous translation in $y$ direction and in-plane rotation. (c) Simultaneous translation in $y$ direction and scale variation. {\bf Bottom row:} (d) Translation in $x$ direction only. (e) Translation in $y$ direction only. (f) In-plane rotation only. (g) Scale variation only.}
-\label{fig:attraction}
-\vspace{0mm}
+\vspace{0mm} } \caption{{\bf Region of attraction.} Fraction of
+subjects for which the algorithm successfully aligns a
+synthetically perturbed test image.  The amount of translation
+is expressed as a fraction of the distance between the outer
+eye corners, and the amount of in-plane rotation in degrees.
+{\bf Top row:} (a) Simultaneous translation in $x$ and $y$
+directions. (b) Simultaneous translation in $y$ direction and
+in-plane rotation. (c) Simultaneous translation in $y$
+direction and scale variation. {\bf Bottom row:} (d)
+Translation in $x$ direction only. (e) Translation in $y$
+direction only. (f) In-plane rotation only. (g) Scale variation
+only.} \label{fig:attraction} \vspace{-4mm}
 \end{figure*}
 
 \noindent{2) \em Multiscale Implementation.}
@@ -708,7 +716,7 @@ only 2 scales are used.
 \vspace{-2mm}
 \caption{{\bf Multiscale alignment.} This figure shows the average success rate of alignment over all possible perturbations. A smaller blur kernel can be applied to achieve certain level of performance when more scales are used.}
 \label{fig:multiscale}
-\vspace{-4mm}
+\vspace{-2mm}
 \end{figure}
 
 \noindent{3) \em 3D Pose Variation.} As densely sampled pose
@@ -748,7 +756,7 @@ Note that this level of out-of-plane
 }
 \caption{{\bf 2D Alignment of test images with different poses to frontal training images.} {\bf (a) to (i):}  plausible alignment for pose from $-45^{\circ}$
 to $+45^{\circ}$. {\bf (j):} a case when the algorithm fails for an extreme pose ($>45^{\circ}$).
-}\label{fig:pose-alignment} \vspace{-4mm}
+}\label{fig:pose-alignment} \vspace{-8mm}
 \end{figure}
 \subsection{Comparison with Related Work}
 Our modification to SRC roots solidly in the tradition of
@@ -881,14 +889,14 @@ advantages over flash-based illumination systems for face recognition:
 \end{figure}
 With our projector system, our choice of illuminations is
 constrained only by the need to achieve a good
-SNR\footnote{Since illuminations with more pixels illuminated
+SNR,\footnote{Since illuminations with more pixels illuminated
 will have a better SNR (provided they don't saturate), there is
 an engineering tradeoff between the SNR and the number of
-training images.}, avoid saturation, and achieve
-a reasonably short acquisition time.  Two simplifying
-assumptions that we make are that every pixel is either turned
-fully on or off in every illumination, and that the illuminated
-regions do not overlap.
+training images.} avoid saturation, and achieve a reasonably
+short acquisition time.  Two simplifying assumptions that we
+make are that every pixel is either turned fully on or off in
+every illumination, and that the illuminated regions do not
+overlap.
 
 Assuming that each pixel is fully on or off enables us to guarantee
 that each illumination image has the same overall intensity, merely
@@ -977,7 +985,7 @@ our large-scale experiments:
 \end{tabular}\vspace{0mm}
 \caption{{\bf Study of sufficient illuminations.} The average $\ell^1$ registration residual versus different illumination training sets. }
 \label{fig:illumination-sufficiency}
-\vspace{-4.5em}
+\vspace{-3em}
 \end{figure}
 
 In the plot for the coverage experiment, Figure
@@ -1096,30 +1104,15 @@ Recognition rate & Session 2 & Session 3 & Session 4  \\
 }
 \caption{{\bf Representative failures from Multi-PIE}. {\bf Top:} training from Session 1; {\bf Bottom:} test images from Session 2. Due to changes in hair, glasses, beard, or pose, our alignment fails on these subjects regardless of test image illumination.}
 \label{fig:failed-examples}
-\vspace{-4mm}
+\vspace{-12mm}
 \end{figure}
-
 \subsection{Improving the Sampling Window}
 Our algorithm's errors are mostly caused by a few subjects who
 significantly change their appearances between sessions (such
 as hair, facial hair, and eyeglasses). Some representative
 examples are shown in Figure \ref{fig:failed-examples}. For those subjects, alignment and recognition fail on
 almost all test illuminations.
-
-Meanwhile, this observation also suggests that we might be able
-to improve the performance of our method by carefully choosing
-a face region which is less affected by the above factors for
-recognition. In particular, since the forehead region is likely
-to be affected by the change of hair style, we try replacing
-the previous $80 \times 60$ canonical frame with a new
-window that better excludes the forehead. We adjust the
-resolution of the window to keep $m$ approximately constant. In addition,
-we cut off two lower corners of the $80 \times 60$ canonical frame, motivated by
-the observation that in many cases the corners
-actually contain background. An example of the new window
-is shown in Figure~\ref{fig:new-mask}.
-
-\begin{figure}
+\begin{figure}[b]
 \vspace{-1em}
 \centering
 {\small
@@ -1133,6 +1126,48 @@ Default window. & Proposed window. \vspace{0mm}
 \label{fig:new-mask}
 \vspace{-1em}
 \end{figure}
+Meanwhile, this observation also suggests that we might be able
+to improve the performance of our method by carefully choosing
+a face region which is less affected by the above factors for
+recognition. In particular, since the forehead region is likely
+to be affected by the change of hair style, we try replacing
+the previous $80 \times 60$ canonical frame with a new
+window that better excludes the forehead. We adjust the
+resolution of the window to keep $m$ approximately constant. In addition,
+we cut off two lower corners of the $80 \times 60$ canonical frame, motivated by
+the observation that in many cases the corners
+actually contain background. An example of the new window
+is shown in Figure~\ref{fig:new-mask}.
+
+\begin{table*}
+\centering
+\caption{Recognition rates on the Multi-PIE database for
+different pairings of alignment and recognition stages.}
+\centerline{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
+\hline
+\backslashbox{Rec.}{Align.}
+& \multicolumn{3}{|c|}{Face Detector}
+& \multicolumn{3}{|c|}{Manual}
+& \multicolumn{3}{|c|}{Iterative Alignment}
+\\
+\hline
+Session $\rightarrow$	& 2		&3			&4			& 2		&3			&4			& 2		&3			&4		\\
+\hline
+NS	& 30.8\%	& 29.4\%	& 24.6\%	& 77.6\%	& 74.3\%	& 73.4\%	& 84.5\%	& 82.3\%	& 81.4\% \\
+\hline
+NN	& 26.4\%	& 24.7\%	& 21.9\%	& 67.3\%	& 66.2\%	& 62.8\%	& 73.5\%	& 69.6\%	& 69.3\% \\
+\hline
+LDA	& 5.1\%		& 5.9\%		& 4.3\%		& 49.4\%	& 44.3\%	& 47.9\%	& 91.0\%	& 89.9\%	& 88.1\% \\
+\hline
+LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 94.7\%}	& {\bf 93.5\%} \\
+\hline
+SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
+\hline
+\end{tabular}
+\label{tab:MultiPIE-recognition} }
+\vspace{-.1in}
+\end{table*}
 
 Table \ref{tab:MultiPIE-recognition2} shows that the
 recognition rates on Multi-PIE indeed increase with this new
@@ -1151,6 +1186,7 @@ forehead part may actually result in loss of useful
 discriminative information.
 
 \subsection{Comparison to Existing Work}
+
 We first compare our result to the recent work
 \cite{Yang2010-CVPR}. Notice that in \cite{Yang2010-CVPR}, the
 initial registration is obtained from manually selected outer
@@ -1189,36 +1225,6 @@ here seems to agree with that reported already in
 greatly from being paired with our iterative alignment
 algorithm.
 
-\begin{table*}
-\centering
-\caption{Recognition rates on the Multi-PIE database for
-different pairings of alignment and recognition stages.}
-\centerline{
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
-\hline
-\backslashbox{Rec.}{Align.}
-& \multicolumn{3}{|c|}{Face Detector}
-& \multicolumn{3}{|c|}{Manual}
-& \multicolumn{3}{|c|}{Iterative Alignment}
-\\
-\hline
-Session $\rightarrow$	& 2		&3			&4			& 2		&3			&4			& 2		&3			&4		\\
-\hline
-NS	& 30.8\%	& 29.4\%	& 24.6\%	& 77.6\%	& 74.3\%	& 73.4\%	& 84.5\%	& 82.3\%	& 81.4\% \\
-\hline
-NN	& 26.4\%	& 24.7\%	& 21.9\%	& 67.3\%	& 66.2\%	& 62.8\%	& 73.5\%	& 69.6\%	& 69.3\% \\
-\hline
-LDA	& 5.1\%		& 5.9\%		& 4.3\%		& 49.4\%	& 44.3\%	& 47.9\%	& 91.0\%	& 89.9\%	& 88.1\% \\
-\hline
-LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 94.7\%}	& {\bf 93.5\%} \\
-\hline
-SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
-\hline
-\end{tabular}
-\label{tab:MultiPIE-recognition} }
-\vspace{-.1in}
-\end{table*}
-
 % LBP
 We also compare our result to Local Binary Patterns (LBP)
 \cite{Ahonen2006-PAMI}, a local appearance descriptor which is
@@ -1227,8 +1233,7 @@ Due to its robustness to variations in illumination, facial
 expression, aging and other changes, LBP has achieved the
 state-of-the-art face recognition performance in the scenario
 when only one sample per person is used for training
-\cite{Tan06facerecognition}.
-In this paper, we follow the same
+\cite{Tan06facerecognition}. In this paper, we follow the same
 steps as in \cite{Ahonen2006-PAMI} to construct an LBP
 descriptor for each training and testing sample. The $80\times
 60$ face region is first divided into a regular $10\times 10$
@@ -1241,17 +1246,17 @@ produce the global descriptor vector. As suggested in
 \cite{Ahonen2006-PAMI}, the recognition is performed using a
 nearest neighbor classifier with Chi square distance as the
 distance measure and we report the recognition rates with the
-same three types of input as before.  As shown in
-Table~\ref{tab:MultiPIE-recognition}, although LBP achieves
-competitive recognition rates given manually aligned training
-and testing samples, demonstrating its robustness to moderate
-misalignment, it still benefits from using the output of our
-iterative alignment algorithm as the input.
-In addition, like
-the other classical algorithms, the performance of LBP degrades
-dramatically if it is applied directly to the output of a face
-detector. This is notable given that LBP is often applied
-without any special alignment in practice. Finally, we
+same three types of input as before.
+
+As shown in Table~\ref{tab:MultiPIE-recognition}, although LBP
+achieves competitive recognition rates given manually aligned
+training and testing samples, demonstrating its robustness to
+moderate misalignment, it still benefits from using the output
+of our iterative alignment algorithm as the input. In addition,
+like the other classical algorithms, the performance of LBP
+degrades dramatically if it is applied directly to the output
+of a face detector. This is notable given that LBP is often
+applied without any special alignment in practice. Finally, we
 attribute the improvement in performance of LBP over SRC in
 this experiment to its robustness to illumination components
 that cannot be linearly interpolated by the training set.
@@ -1278,6 +1283,22 @@ we use letters
 ``$d$'', ``$m$'', and ``$i$'' to indicate face detector, manual
 alignment, and our iterative alignment algorithm, respectively.
 
+As expected, our algorithm does not perform well except for
+`fb', in which the illumination is similar to the training and
+the mere variation in facial expression is handled well by the
+sparse error model. For the other three test sets, our
+algorithm fails because the illumination changes and other
+variations seriously violate the assumptions of our method.
+This also explains why LBP performs worse with our iterative
+alignment algorithm, compared to manual alignment. On the other
+hand, while LBP achieves the best recognition rates given
+manually aligned training and testing samples, its performance
+degrades drastically when the input is obtained directly from
+the face detector. It is also worth noting that similar poor
+performance of LBP, as well as other descriptors, has been
+observed on the Labeled Face in the Wild (LFW) database, where
+the training is uncontrolled and limited and the input is
+directly obtained from the face detector \cite{Wolf2008-ECCV}.
 \begin{table}
 \caption{Performance on single gallery image FERET dataset}
 \vspace{-3mm} \centerline{
@@ -1297,23 +1318,6 @@ $LBP_i$ & 94.5 & 42.8 & 46.5 & 21.1 \\
 \label{tab:FERET-recognition} }
 \vspace{-12mm}
 \end{table}
-
-As expected, our algorithm does not perform well except for
-`fb', in which the illumination is similar to the training and
-the mere variation in facial expression is handled well by the
-sparse error model. For the other three test sets, our
-algorithm fails because the illumination changes and other
-variations seriously violate the assumptions of our method.
-This also explains why LBP performs worse with our iterative
-alignment algorithm, compared to manual alignment. On the other
-hand, while LBP achieves the best recognition rates given
-manually aligned training and testing samples, its performance
-degrades drastically when the input is obtained directly from
-the face detector. It is also worth noting that similar poor
-performance of LBP, as well as other descriptors, has been
-observed on the Labeled Face in the Wild (LFW) database, where
-the training is uncontrolled and limited and the input is
-directly obtained from the face detector \cite{Wolf2008-ECCV}.
 
 All of these experimental results confirm that
 both illumination and alignment need to be simultaneously handled
@@ -1355,7 +1359,7 @@ thresholding the error residuals of NN, NS, LDA, and LBP.
 \caption{{\bf ROC curves} for subject validation on Multi-PIE database,
 (a) for all algorithms with iterative alignment, and
 (b) for the classical algorithms with manual alignment (indicated by a subscript ``m'').}\label{fig:roc-multipie}
-\vspace{-2.5em}
+\vspace{0em}
 \end{figure}
 
 Figure \ref{fig:roc-multipie} plots the receiver operating
@@ -1416,7 +1420,7 @@ Recognition rate & 99.6\% & 94.9\% & 79.6\% & 46.5\% & 19.8\% \\
 \end{tabular}
 }
 \label{fig:multipie-occ-rec}
-\vspace{-.5in}
+\vspace{-.3in}
 \end{figure}
 
 \subsection{Recognition with Pose and Expression} We now run tests of
@@ -1562,8 +1566,7 @@ Test Category & C1 & C2 & C3 & C4  \\
 Recognition Rate & 98.4\% & 95.8\% & 95.1\% & 40.9\% \\
 \hline
 \end{tabular}
-\label{tab:UIUC-recognition}
-\vspace{0mm}
+\label{tab:UIUC-recognition} \vspace{-5mm}
 \end{table}
 
 \subsection{Improving the Performance with Occlusion using Overlapping Blocks}
@@ -1589,9 +1592,10 @@ results for individual blocks are then aggregated by voting.
 \begin{figure}
 \centering
 \includegraphics[width=2.6in]{figures_pami/occ_block.png}
+\vspace{-2mm}
 \caption{{\bf Using overlapping blocks to tackle contiguous occlusion.} (a) The test image, occluded by sunglasses. (b) The four overlapping blocks. (c) The sparse representation is calculated after alignment for each block independently. The red lines correspond to his true identity. (d) The true identity is successfully recovered by voting based on the SCI scores.}
 \label{fig:occ-block}
-\vspace{-3em}
+\vspace{-5mm}
 \end{figure}
 
 In this experiment, we found that the using the \emph{sparsity
@@ -1697,14 +1701,14 @@ His recent work focuses on low-rank matrix recovery techniques for
 batch image alignment and texture rectification.  \end{IEEEbiography}
 
 \biospace
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/zihan}}]{Zihan Zhou}
-received the bachelor's degree in automation from Tsinghua
-University, China, in 2007. Since then, he has been with University of Illinois
-at Urbana-Champaign, where he received the MS degree in electrical and computer
-engineering and where he is now working toward the PhD degree. During the
-summer of 2009, he was a research intern with Microsoft Research Asia, Beijing.
-His research interests include computer vision, signal processing and machine
-learning. 
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/zihan}}]{Zihan Zhou} received the bachelor's degree in automation from Tsinghua
+University, China, in 2007. Since then, he has been with
+University of Illinois at Urbana-Champaign, where he received
+the MS degree in electrical and computer engineering and where
+he is now working toward the PhD degree. During the summer of
+2009, he was a research intern with Microsoft Research Asia,
+Beijing. His research interests include computer vision, signal
+processing and machine learning.
 \end{IEEEbiography}
 
 \biospace
@@ -1737,6 +1741,6 @@ Research Asia, Beijing, China.  \end{IEEEbiography}
 % is flush with the other column.
 %\enlargethispage{-5in}
 
-\input{appendix}
+% \input{appendix_main}
 
 \end{document}
