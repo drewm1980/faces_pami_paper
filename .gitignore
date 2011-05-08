@@ -15,3 +15,4 @@
 *.aux.bak
 2
 *.orig
+.makepp/

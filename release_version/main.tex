@@ -411,7 +411,7 @@ The scheme \eqref{eqn:L1-align} can be viewed as a generalized Gauss-Newton meth
 
 \begin{figure}
 \centering
-\includegraphics{Figure_2}
+\includegraphics[width=3.5in]{Figure_2}
 \caption{{\bf Comparing alignment of a subject wearing sunglasses by
 $\ell^1$ and $\ell^2$ minimization.}
 {\bf Top:} alignment result of minimizing $\|\e\|_1$; {\bf Bottom:}
@@ -491,7 +491,45 @@ component-wise mean:
 \end{displaymath}
 Finally, the training sets are aligned to the new $\y$.
 
-\input{deformable-src.tex}
+\begin{algorithm}[thb]
+\caption{\bf (Deformable Sparse Recovery and Classification for
+Face Recognition)} \label{alg:deformable-src}
+\begin{algorithmic}[1]
+\begin{small}
+\STATE {\bf Input:} Training images $\{A_i \in \Re^{m\times n_i}\}_{i=1}^K$ for $K$ subjects,  a test image
+$\y\in\Re^m$ and a deformation group $T$.
+\STATE
+{\bf for} each subject $i$,
+\STATE \hspace{3mm} $\tau^{(0)}
+\leftarrow I$.
+\STATE \hspace{3mm} {\bf while} not converged $(j=1,2,\ldots)$ {\bf do}
+\STATE \hspace{6mm}
+$\tilde \y(\tau) \leftarrow \frac{\y \circ \tau}{\|\y \circ
+\tau\|_2}$; \;\;\; $J \leftarrow  \frac{\partial}{\partial
+\tau} \tilde\y(\tau)  \bigr|_{\tau^{(j)}} $;
+%\STATE \hspace{6mm} $(\hat \x, \hat \e, \Delta \tau) \leftarrow \left\{\begin{array}{l} \arg \min_{\x,\e,\Delta \tau} \| \e \|_1 \\  \subj \; \y + J \Delta \tau = A_k \x + \e \end{array}\right.$
+\STATE \hspace{6mm} $ \Delta \tau =  \arg\min \; \| \e \|_1  \;
+\subj \; \tilde \y + J \Delta \tau = A_i \x + \e.$
+\STATE
+\hspace{6mm} $\tau^{(j+1)} \leftarrow \tau^{(j)} + \Delta
+\tau$;
+\STATE \hspace{3mm} {\bf end while} \STATE {\bf end} \STATE Keep
+the top $S$ candidates $k_1, \ldots, k_S$ with the smallest
+residuals $\|\e\|_1$. \STATE Compute an average transformation
+$\bar{\tau}$ from $\tau_{k_1}, \tau_{k_2}, \ldots, \tau_{k_S}$.
+\STATE Update $\y \leftarrow \y \circ \bar{\tau}$ and $\tau_i
+\leftarrow \tau_i \cdot \bar{\tau}^{-1}$ for $i = k_1, \dots,
+k_S$. \STATE Set $A \leftarrow \big[ A_{k_1} \circ
+\tau_{k_1}^{-1} \mid A_{k_2} \circ \tau_{k_2}^{-1} \mid \dots
+\mid A_{k_S} \circ \tau_{k_S}^{-1} \big]$. \STATE Solve the
+$\ell^1$-minimization problem: \hspace{2mm}
+$\hat{\x} = \arg \min_{\x, \e} \| \x \|_1 + \|\e\|_1 \;\; \subj \;\; \y = A \x + \e.$
+\STATE Compute residuals $r_i(\y) = \| {\y} - {A}_i \, \delta_i(\hat{\x}) \|_2$ for $i = k_1, \dots, k_S$.
+\STATE {\bf Output:} $\mbox{identity}(\y) = \arg\min_i r_i(\y)$.
+\end{small}
+\end{algorithmic}
+\end{algorithm}
+%\vspace{-4mm}
 
 The transformation $\tau$ defines a mapping between the
 coordinates of pixels in the large original image and a smaller
@@ -621,7 +659,7 @@ a similar performance compared to a much larger kernel when
 only 2 scales are used.
 \begin{figure}
 \centering
-\includegraphics{Figure_4}
+\includegraphics[width=3.4in]{Figure_4}
 \vspace{-2mm}
 \caption{{\bf Multiscale alignment.} This figure shows the average success rate of alignment over all possible perturbations. A smaller blur kernel can be applied to achieve certain level of performance when more scales are used.}
 \label{fig:multiscale}
@@ -776,7 +814,7 @@ advantages over flash-based illumination systems for face recognition:
 \end{itemize}
 \begin{figure}
 \centering
-\includegraphics{Figure_6}
+\includegraphics[width=2.9in]{Figure_6}
 \caption{{\bf Training acquisition system:} Four projectors and two cameras controlled by one computer.}
 \vspace{-2em}
 \label{fig:system}
@@ -860,7 +898,7 @@ our large-scale experiments:
 \end{enumerate}
 \begin{figure}
 \centering
-\includegraphics{Figure_7}
+\includegraphics[width=3.1in]{Figure_7}
 \caption{{\bf Illumination Patterns.}   The cells are illuminated in sequence.  For rear illuminations the sequence is reversed.  In the chosen pattern's rear illumination, the cells 1-5 and 7-11 are omitted for a total of 38 illuminations. The four rectangular regions correspond to the four projectors.  }
 \label{fig:illumination-patterns}
 \vspace{-.75em}
@@ -1318,7 +1356,6 @@ are insufficient for representing test images under typical indoor and
 outdoor illuminations.
 \vspace{-0.1in}
 
-\renewcommand{\tempscale}{0.45}
 \begin{figure}
 \centering
 \includegraphics{Figure_12}
