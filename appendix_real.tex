@@ -1,6 +1,6 @@
 \appendix[L1 Minimization via Augmented Lagrange Multiplier]
 In this Appendix we discuss the computational issues related to
-the implementation of Algorithm~\ref{alg:deformable-src}, which is
+the implementation of Algorithm 1, which is
 repeated here for convenience. It is
 not hard to see that its computational complexity is dominated
 by the two steps where the $\ell^1$-norm minimization problems
@@ -122,7 +122,7 @@ approaches.  On a Mac Pro with
 Dual-Core 2.66GHz Xeon processors and 4GB memory,
 running on our database containing images size $80\times 60$
 pixels from 109 subjects under 38 illuminations,
-our C implementation of Algorithm~\ref{alg:deformable-src} takes
+our C implementation of Algorithm 1 takes
 about 0.60 seconds per subject for alignment and about 2.0
 seconds for global recognition. Compared to the highly
 customized interior point method used in the conference version
