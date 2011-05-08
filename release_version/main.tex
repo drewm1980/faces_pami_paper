@@ -1006,6 +1006,36 @@ Recognition rate & Session 2 & Session 3 & Session 4  \\
 \label{tab:MultiPIE-recognition2} }
 \end{table}
 
+\begin{table*}[t]
+\centering
+\caption{Recognition rates on the Multi-PIE database for
+different pairings of alignment and recognition stages.}
+\centerline{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
+\hline
+\backslashbox{Rec.}{Align.}
+& \multicolumn{3}{|c|}{Face Detector}
+& \multicolumn{3}{|c|}{Manual}
+& \multicolumn{3}{|c|}{Iterative Alignment}
+\\
+\hline
+Session $\rightarrow$	& 2		&3			&4			& 2		&3			&4			& 2		&3			&4		\\
+\hline
+NS	& 30.8\%	& 29.4\%	& 24.6\%	& 77.6\%	& 74.3\%	& 73.4\%	& 84.5\%	& 82.3\%	& 81.4\% \\
+\hline
+NN	& 26.4\%	& 24.7\%	& 21.9\%	& 67.3\%	& 66.2\%	& 62.8\%	& 73.5\%	& 69.6\%	& 69.3\% \\
+\hline
+LDA	& 5.1\%		& 5.9\%		& 4.3\%		& 49.4\%	& 44.3\%	& 47.9\%	& 91.0\%	& 89.9\%	& 88.1\% \\
+\hline
+LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 94.7\%}	& {\bf 93.5\%} \\
+\hline
+SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
+\hline
+\end{tabular}
+\label{tab:MultiPIE-recognition} }
+\vspace{-0.05in}
+\end{table*}
+
 \newcommand{\tempwidth}[0]{0.58in}
 \begin{figure}
 \centering
@@ -1040,36 +1070,6 @@ we cut off two lower corners of the $80 \times 60$ canonical frame, motivated by
 the observation that in many cases the corners
 actually contain background. An example of the new window
 is shown in Figure~\ref{fig:new-mask}.
-
-\begin{table*}
-\centering
-\caption{Recognition rates on the Multi-PIE database for
-different pairings of alignment and recognition stages.}
-\centerline{
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c| }
-\hline
-\backslashbox{Rec.}{Align.}
-& \multicolumn{3}{|c|}{Face Detector}
-& \multicolumn{3}{|c|}{Manual}
-& \multicolumn{3}{|c|}{Iterative Alignment}
-\\
-\hline
-Session $\rightarrow$	& 2		&3			&4			& 2		&3			&4			& 2		&3			&4		\\
-\hline
-NS	& 30.8\%	& 29.4\%	& 24.6\%	& 77.6\%	& 74.3\%	& 73.4\%	& 84.5\%	& 82.3\%	& 81.4\% \\
-\hline
-NN	& 26.4\%	& 24.7\%	& 21.9\%	& 67.3\%	& 66.2\%	& 62.8\%	& 73.5\%	& 69.6\%	& 69.3\% \\
-\hline
-LDA	& 5.1\%		& 5.9\%		& 4.3\%		& 49.4\%	& 44.3\%	& 47.9\%	& 91.0\%	& 89.9\%	& 88.1\% \\
-\hline
-LBP	& 39.9\%	& 38.1\%	& 33.9\%	& 93.3\%	& 91.2\%	& 92.9\%	& {\bf 95.2\%}	& {\bf 94.7\%}	& {\bf 93.5\%} \\
-\hline
-SRC	& -- & -- & -- & -- & -- & -- & 93.9\%	& 93.8\%	& 92.3\% \\
-\hline
-\end{tabular}
-\label{tab:MultiPIE-recognition} }
-\vspace{-.1in}
-\end{table*}
 
 Table \ref{tab:MultiPIE-recognition2} shows that the
 recognition rates on Multi-PIE indeed increase with this new
@@ -1249,8 +1249,8 @@ if $\textup{SCI}(\x) \geq t$, and otherwise reject it as
 invalid. We compare this classifier to classifiers based on
 thresholding the error residuals of NN, NS, LDA, and LBP.
 \begin{figure}[t]
-\includegraphics{Figure_11}
-\vspace{-2mm}
+\includegraphics[width=3.5in]{Figure_11}
+\vspace{-6mm}
 \caption{{\bf ROC curves} for subject validation on Multi-PIE database,
 (a) for all algorithms with iterative alignment, and
 (b) for the classical algorithms with manual alignment (indicated by a subscript ``m'').}\label{fig:roc-multipie}
@@ -1292,8 +1292,8 @@ example, at 20\% occlusion, our algorithm still achieves 94.9\%
 recognition rate.
 
 \begin{figure}
-\includegraphics{Figure_11}
-\vspace{-1mm}
+\includegraphics[width=3.5in]{Figure_12}
+\vspace{-3mm}
 \caption{{\bf Recognition under varying level of
 random block occlusion.} The above row shows examples of occluded test images with occlusion level from 10\% to 50\%. Our method maintains high recognition rates up to 30\% occlusion:}
 \vspace{2mm}
@@ -1307,7 +1307,7 @@ Recognition rate & 99.6\% & 94.9\% & 79.6\% & 46.5\% & 19.8\% \\
 \end{tabular}
 }
 \label{fig:multipie-occ-rec}
-\vspace{-.3in}
+\vspace{-9mm}
 \end{figure}
 
 \subsection{Recognition with Pose and Expression} We now run tests of
@@ -1358,14 +1358,14 @@ outdoor illuminations.
 
 \begin{figure}
 \centering
-\includegraphics{Figure_12}
+\includegraphics{Figure_13}
 \caption{{\bf Representative examples of categories C1-C3}. One row for each category.}\label{fig:examples1-3}
 \vspace{-.1in}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\includegraphics{Figure_13}
+\includegraphics{Figure_14}
 \caption{{\bf Representative examples of category C4}. Top row: successful examples with our method using overlapping blocks. Bottom row: failures with our method using overlapping blocks.}\label{fig:examples4}
 \vspace{-.55in}
 \end{figure}
@@ -1443,8 +1443,7 @@ results for individual blocks are then aggregated by voting.
 
 \begin{figure}
 \centering
-%\includegraphics[width=2.6in]{Figure_14}
-\includegraphics{Figure_14}
+\includegraphics{Figure_15}
 \vspace{-2mm}
 \caption{{\bf Using overlapping blocks to tackle contiguous occlusion.} (a) The test image, occluded by sunglasses. (b) The four overlapping blocks. (c) The sparse representation is calculated after alignment for each block independently. The red lines correspond to his true identity. (d) The true identity is successfully recovered by voting based on the SCI scores.}
 \label{fig:occ-block}
