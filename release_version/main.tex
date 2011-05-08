@@ -1253,16 +1253,8 @@ indeed capable of handling a moderate amount of occlusion. For
 example, at 20\% occlusion, our algorithm still achieves 94.9\%
 recognition rate.
 
-\newcommand{\tempscale}{0.40}
 \begin{figure}
-\centering
-\begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}}
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/multipie_occ/occ10.png} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/multipie_occ/occ20.png} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/multipie_occ/occ30.png} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/multipie_occ/occ40.png} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/multipie_occ/occ50.png}  \\
-\end{tabular}
+\includegraphics{Figure_11}
 \vspace{-1mm}
 \caption{{\bf Recognition under varying level of
 random block occlusion.} The above row shows examples of occluded test images with occlusion level from 10\% to 50\%. Our method maintains high recognition rates up to 30\% occlusion:}
@@ -1329,47 +1321,15 @@ outdoor illuminations.
 \renewcommand{\tempscale}{0.45}
 \begin{figure}
 \centering
-\begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1318.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1521.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1673.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1732.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_1941.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_indoor/DSC_3766.JPG} \\
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1574.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1622.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_1641.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3522.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3707.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/normal_outdoor/DSC_3772.JPG} \\
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1397.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1532.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1556.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1585.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_1688.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/glasses/DSC_4035.JPG} \\
-\end{tabular}
+\includegraphics{Figure_12}
 \caption{{\bf Representative examples of categories C1-C3}. One row for each category.}\label{fig:examples1-3}
 \vspace{-.1in}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses/DSC_1565.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses/DSC_3656.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses/DSC_3827.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses/DSC_4090.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses/DSC_4106.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses/DSC_4126.JPG} \\
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_1611.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_3528.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_3744.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_3995.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_4030.JPG} &
-\includegraphics[scale=\tempscale,clip=true]{figures_pami/uiuc_example/sunglasses_failed/DSC_4095.JPG} \\
-\end{tabular}
- \caption{{\bf Representative examples of category C4}. Top row: successful examples with our method using overlapping blocks. Bottom row: failures with our method using overlapping blocks.}\label{fig:examples4}
+\includegraphics{Figure_13}
+\caption{{\bf Representative examples of category C4}. Top row: successful examples with our method using overlapping blocks. Bottom row: failures with our method using overlapping blocks.}\label{fig:examples4}
 \vspace{-.55in}
 \end{figure}
 
@@ -1446,7 +1406,8 @@ results for individual blocks are then aggregated by voting.
 
 \begin{figure}
 \centering
-\includegraphics[width=2.6in]{figures_pami/occ_block.png}
+%\includegraphics[width=2.6in]{Figure_14}
+\includegraphics{Figure_14}
 \vspace{-2mm}
 \caption{{\bf Using overlapping blocks to tackle contiguous occlusion.} (a) The test image, occluded by sunglasses. (b) The four overlapping blocks. (c) The sparse representation is calculated after alignment for each block independently. The red lines correspond to his true identity. (d) The true identity is successfully recovered by voting based on the SCI scores.}
 \label{fig:occ-block}
@@ -1516,7 +1477,7 @@ the Lemelson-Illinois Student Prize.
 % Biography section
 \newcommand{\biospace}{\vspace{-4em}}
 \biospace
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/drew}}]{Andrew Wagner}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Wagner}}]{Andrew Wagner}
 received his Bachelor's degree in General Engineering in 2003,
 and his Master's degree in Electrical Engineering in 2006, from the University
 of Illinois at Urbana-Champaign, where he is currently a Ph.D.
@@ -1526,7 +1487,7 @@ His recent work focuses on parallel algorithms for sparsity
 based face recognition.\end{IEEEbiography}
 
 \biospace
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/john}}]{John
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Wright}}]{John
 Wright} received his PhD in Electrical Engineering from the
 University of Illinois at Urbana-Champaign in October 2009. He is currently a
 researcher in the Visual Computing group at Microsoft Research Asia.  His
@@ -1538,7 +1499,7 @@ Research, a 2008-2010 Microsoft Research Fellowship, a Carver fellowship, and a
 UIUC Bronze Tablet award.  \end{IEEEbiography}
 
 \biospace
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/arvind}}]{Arvind Ganesh}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Ganesh}}]{Arvind Ganesh}
 received his Bachelor's and Master's degrees, both in Electrical
 Engineering, from the Indian Institute of Technology, Madras, India in 2006. He
 is currently a PhD candidate in the Electrical \& Computer Engineering
@@ -1548,7 +1509,7 @@ His recent work focuses on low-rank matrix recovery techniques for
 batch image alignment and texture rectification.  \end{IEEEbiography}
 
 \biospace
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/zihan}}]{Zihan Zhou} received the bachelor's degree in automation from Tsinghua
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Zhou}}]{Zihan Zhou} received the bachelor's degree in automation from Tsinghua
 University, China, in 2007. Since then, he has been with
 University of Illinois at Urbana-Champaign, where he received
 the MS degree in electrical and computer engineering and where
@@ -1560,14 +1521,14 @@ processing and machine learning.
 
 \biospace
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]
-{bios/hossein}}]{Hossein Mobahi} is currently a PhD
+{Mobahi}}]{Hossein Mobahi} is currently a PhD
 candidate in the Computer Science Department at the University of Illinois,
 Urbana-Champaign. His research interests include pattern classification,
 clustering and optimization.  His recent research focuses on iterative
 smoothing for image alignment.  \end{IEEEbiography}
 
 \biospace
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bios/yi}}]{Yi
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Ma}}]{Yi
 Ma} received two Bachelors degree in Automation and Applied Mathematics
 from  Tsinghua University, Beijing, China, in 1995. He received an Master
 degree in Electrical Engineering and Computer Sciences (EECS) in 1997, a second
